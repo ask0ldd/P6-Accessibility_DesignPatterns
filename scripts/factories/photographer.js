@@ -1,17 +1,18 @@
 const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fees}) => {
 
-    const DOMStringified = `
+    // ACCESSIBILITY : alt added to img
+    const NodeStringified = `
     <article>
         <a href="${userId}">
-            <img src="${portraitSrc}"/>
+            <img src="${portraitSrc}" alt="${name}'s portrait"/>
             <h2>${name}</h2>
         </a>
-        <p>${location}</p>
-        <p>${quote}</p>
-        <p>${fees}€/jour</p>
+        <p class="location">${location}</p>
+        <p class="quote">${quote}</p>
+        <p class="fees">${fees}€/jour</p>
     </article>
     `
-    return DOMStringified
+    return NodeStringified
 }
 
 function photographerFactory(data) {
@@ -23,9 +24,8 @@ function photographerFactory(data) {
     function getUserCardDOM() {
 
         const viewStringified = getPhotographerCardView({userId, portraitSrc, name, location, quote, fees})
-        const DOMElement = new DOMParser().parseFromString(viewStringified, "text/html").firstChild // firstchild cause parent node : #document can't be appended
-        
-        return DOMElement
+        const parsedNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
+        return parsedNode
 
     }
     

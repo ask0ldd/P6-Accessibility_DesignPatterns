@@ -13,8 +13,8 @@
         }
     }
 
-    async function displayData(photographers) {
-        
+    async function displayCard(photographers) {
+
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
@@ -27,7 +27,7 @@
     async function init() {
         // Récupère les datas des photographes
         const { photographers, errorMessage } = await getPhotographers();
-        errorMessage == undefined ? displayData(photographers) : console.log(errorMessage) // TODO : display the error message on the page instead of this console log
+        errorMessage == undefined ? displayCard(photographers) : console.log(errorMessage) // TODO : display the error message on the page instead of this console log
     };
     
     init();
