@@ -1,3 +1,18 @@
+const photographerCardView = (userId, portraitSrc, name, location, quote, fees) => {
+
+    const DOMStringified = `
+    <article>
+        <a href="${userId}">
+            <img src="${portraitSrc}">
+            <h2>${name}</h2>
+        </a>
+        <p>${location}</p>
+        <p>${quote}</p>
+        <p>${fees}</p>
+    </article>
+    `
+}
+
 function photographerFactory(data) {
     const { name, portrait } = data;
 
@@ -13,5 +28,6 @@ function photographerFactory(data) {
         article.appendChild(h2);
         return (article);
     }
+
     return { name, picture, getUserCardDOM }
 }
