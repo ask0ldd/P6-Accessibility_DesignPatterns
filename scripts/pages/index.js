@@ -47,8 +47,8 @@
 
     async function init() {
         // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
+        const { photographers, errorMessage } = await getPhotographers();
+        errorMessage == undefined ? displayData(photographers) : console.log(errorMessage) // TODO : display the error message on the page instead of this console log
     };
     
     init();
