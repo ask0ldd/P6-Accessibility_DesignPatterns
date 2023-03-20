@@ -1,33 +1,33 @@
-const photographerCardView = (userId, portraitSrc, name, location, quote, fees) => {
+const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fees}) => {
 
     const DOMStringified = `
     <article>
         <a href="${userId}">
-            <img src="${portraitSrc}">
+            <img src="${portraitSrc}"/>
             <h2>${name}</h2>
         </a>
         <p>${location}</p>
         <p>${quote}</p>
-        <p>${fees}</p>
+        <p>${fees}€/jour</p>
     </article>
     `
+    return DOMStringified
 }
 
 function photographerFactory(data) {
-    const { name, portrait } = data;
+    const { name , id : userId, city, country, tagline : quote, price : fees, portrait } = data
 
-    const picture = `assets/photographers/${portrait}`;
+    const portraitSrc = `./assets/photographers/${portrait}`
+    const location = city + ', ' + country
 
     function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        article.appendChild(img);
-        article.appendChild(h2);
-        return (article);
-    }
 
-    return { name, picture, getUserCardDOM }
+        const viewStringified = getPhotographerCardView({userId, portraitSrc, name, location, quote, fees})
+        const DOMElement = new DOMParser().parseFromString(viewStringified, "text/html").firstChild // firstchild cause parent node : #document can't be appended
+        
+        return DOMElement
+
+    }
+    
+    return { getUserCardDOM }
 }
