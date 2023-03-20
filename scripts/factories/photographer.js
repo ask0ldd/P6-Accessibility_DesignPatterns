@@ -3,7 +3,7 @@ const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fe
     // ACCESSIBILITY : alt added to img
     const NodeStringified = `
     <article>
-        <a href="${userId}">
+        <a href="photographer.html?id=${userId}">
             <img src="${portraitSrc}" alt="${name}'s portrait"/>
             <h2>${name}</h2>
         </a>
@@ -24,8 +24,8 @@ function photographerFactory(data) {
     function getUserCardDOM() {
 
         const viewStringified = getPhotographerCardView({userId, portraitSrc, name, location, quote, fees})
-        const parsedNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
-        return parsedNode
+        const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
+        return parsedViewNode
 
     }
     
