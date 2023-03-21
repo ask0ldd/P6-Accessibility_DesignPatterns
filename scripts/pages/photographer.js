@@ -9,7 +9,7 @@ function mediastoDOM(medias){
     const gallerySection = document.querySelector(".gallery")
     medias.forEach(media => {
         const mediaModel = mediaFactory(media)
-        if(!mediaModel?.error){
+        if(!mediaModel?.error){ // if mediaModel = image || video only 
             const mediaCardDOM = mediaModel.getMediaCardDOM()
             gallerySection.appendChild(mediaCardDOM)
         }
@@ -20,7 +20,7 @@ async function init() {
     const currentPhotographerId = getIdParam()
     const {photographerInfos, medias, errorMessage } = await fetchSelectedPhotographerDatas(currentPhotographerId)
     // filtering medias should happpens here / maybe : mediastoDOM(medias, filter) ?
-    errorMessage == undefined ? mediastoDOM(medias) : console.log(errorMessage)
+    errorMessage === undefined ? mediastoDOM(medias) : console.log(errorMessage)
 };
 
 init();

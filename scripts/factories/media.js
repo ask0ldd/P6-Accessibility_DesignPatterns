@@ -1,31 +1,3 @@
-const getVideoView = ({src, title, likes}) => {
-    // TODO : alt to add to video??
-    const NodeStringified = `
-    <article>
-        <video src=${src} controls="true"></video>
-        <div class="mediaInfos">
-            <h2>${title}</h2>
-            <p>${likes}</p>
-        </div>
-    </article>
-    `
-    return NodeStringified
-}
-
-const getImageView = ({src, title, likes}) => {
-    // ACCESSIBILITY : alt added
-    const NodeStringified = `
-    <article>
-        <img src=${src} alt="${title}"></video>
-        <div class="mediaInfos">
-            <h2>${title}</h2>
-            <p>${likes}</p>
-        </div>
-    </article>
-    `
-    return NodeStringified
-}
-
 // Products blueprints
 class Media {
     #id
@@ -111,7 +83,7 @@ function mediaFactory(media){
         }
 
         return { mediaModel, getMediaCardDOM }
-    } // TODO si ni image ni video : throw error et return error
+    }
 
     return {error : "can't create the object : invalid media datas"}
 }
