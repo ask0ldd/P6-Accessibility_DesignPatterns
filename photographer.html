@@ -28,20 +28,20 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" role="button" alt="close modale button" onclick="closeModal()"> <!-- ACCESSIBILITY ARIA ROLE + ALT -->
+          <img src="assets/icons/close.svg" role="button" aria-label="Close contact form" alt="close modale button" onclick="closeModal()" tabindex="0"> <!-- ACCESSIBILITY : ARIA ROLE + ALT + tabindex + aria label -->
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input>
-            <label>Nom</label>
-						<input>
-            <label>Email</label>
-						<input>
-            <label>Votre message</label>
-						<input>
+						<label for="prenom">Prénom</label> <!-- ACCESSIBILITY : FOR -->
+						<input id="prenom">
+            <label for="nom">Nom</label>
+						<input id="nom">
+            <label for="email">Email</label>
+						<input id="email">
+            <label for="message">Votre message</label>
+						<input id="message">
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" aria-label="Send form">Envoyer</button> <!-- ACCESSIBILITY : aria label -->
 				</form>
 			</div>
 		</dialog>

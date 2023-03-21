@@ -26,14 +26,14 @@ function photographerInfostoDOM(photographerInfos){
 
 async function init() {
     const currentPhotographerId = getIdParam()
-    const {photographerInfos, medias, errorMessage } = await fetchSelectedPhotographerDatas(currentPhotographerId)
-    // filtering medias should happpens here / maybe : mediastoDOM(medias, filter) ?
+    const {photographerInfos, medias, errorMessage } = await fetchSelectedPhotographerDatas(currentPhotographerId) // TODO deal with unknown id
+    // TODO filtering medias should happpens here / maybe : mediastoDOM(medias, filter) ?
     if(errorMessage === undefined){
         photographerInfostoDOM(photographerInfos)
         mediastoDOM(medias)
     }else{
         console.log(errorMessage)
-        // afficher message d'erreur
+        // TODO display error message
     }
 };
 
