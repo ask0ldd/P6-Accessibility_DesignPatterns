@@ -21,6 +21,7 @@ function photographerInfostoDOM(photographerInfos){
     const photographerModel = photographerFactory(photographerInfos)
     const photographerSectionDOM = photographerModel.getUserCardDOM()
     mainTag.prepend(photographerSectionDOM)
+    document.querySelector("#openModalButton").addEventListener('click', () => displayModal())
 }
 
 async function init() {
@@ -32,6 +33,7 @@ async function init() {
         mediastoDOM(medias)
     }else{
         console.log(errorMessage)
+        // afficher message d'erreur
     }
 };
 

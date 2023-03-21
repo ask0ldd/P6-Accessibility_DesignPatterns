@@ -15,9 +15,9 @@ body {
   font-style: normal;
 }
 
-#contact_modal {
+/*#contact_modal {
   display: none;
-}
+}*/
 
 .photograph-header {
   background-color: #fafafa;
@@ -79,7 +79,24 @@ body {
   background-color: #ad3a3a;
 }
 
-.modal {
+#contact_modal {
+  border-radius: 5px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  background-color: #db8876;
+  border: none;
+  margin: 5rem auto;
+}
+
+#contact_modal::backdrop {
+  background-color: rgba(196, 196, 196, 0.4);
+}
+
+/*.modal {
   border-radius: 5px;
   background-color: #db8876;
   width: 50%;
@@ -89,6 +106,10 @@ body {
   justify-content: space-between;
   padding: 35px;
   margin: auto;
+}*/
+
+.modal {
+  padding-bottom: 1rem;
 }
 
 .modal header {
@@ -104,6 +125,10 @@ body {
   font-size: 64px;
   font-weight: normal;
   text-align: center;
+}
+
+.modal label {
+  margin-top: 1rem;
 }
 
 form {

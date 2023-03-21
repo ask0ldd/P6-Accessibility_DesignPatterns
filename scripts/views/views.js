@@ -52,9 +52,10 @@ const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, 
             <p class="header-location">${location}</p>
             <p class="header-quote">${quote}</p>
         </div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button id="openModalButton" class="contact_button">Contactez-moi</button>
         <img src="${portraitSrc}" alt="${name}'s portrait" />
     </section>
     `
+    // onclick="displayModal()"
     return NodeStringified
 }
