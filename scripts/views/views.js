@@ -14,6 +14,7 @@ const getVideoView = ({src, title, likes}) => {
 
 const getImageView = ({src, title, likes}) => {
     // ACCESSIBILITY : alt added
+    // aria button for like icon
     const NodeStringified = `
     <article>
         <img src=${src} alt="${title}"></video>
@@ -38,6 +39,22 @@ const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fe
         <p class="quote">${quote}</p>
         <p class="fees">${fees}€/jour</p>
     </article>
+    `
+    return NodeStringified
+}
+
+const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, fees}) => {
+    // ACCESSIBILITY : alt added to img
+    const NodeStringified = `
+    <section class="photograph-header">
+        <div>
+            <h1>${name}</h1>
+            <p>${location}</p>
+            <p>${quote}</p>
+        </div>
+        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <img src="${portraitSrc}" alt="${name}'s portrait" />
+    </section>
     `
     return NodeStringified
 }

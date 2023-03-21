@@ -17,6 +17,20 @@
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
+  /*added*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.photograph-header img {
+  /* ADDED */
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  overflow: hidden;
+  object-fit: cover;
 }
 
 .contact_button {

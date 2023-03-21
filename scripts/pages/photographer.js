@@ -16,11 +16,23 @@ function mediastoDOM(medias){
     })
 }
 
+function photographerInfostoDOM(photographerInfos){
+    const mainTag = document.querySelector("#main")
+    const photographerModel = photographerFactory(photographerInfos)
+    const photographerSectionDOM = photographerModel.getUserCardDOM()
+    mainTag.prepend(photographerSectionDOM)
+}
+
 async function init() {
     const currentPhotographerId = getIdParam()
     const {photographerInfos, medias, errorMessage } = await fetchSelectedPhotographerDatas(currentPhotographerId)
     // filtering medias should happpens here / maybe : mediastoDOM(medias, filter) ?
-    errorMessage === undefined ? mediastoDOM(medias) : console.log(errorMessage)
+    if(errorMessage === undefined){
+        photographerInfostoDOM(photographerInfos)
+        mediastoDOM(medias)
+    }else{
+        console.log(errorMessage)
+    }
 };
 
 init();
