@@ -1,11 +1,17 @@
 const currentPage = "index.html"
+const jsonUrl = "../data/photographers.json"
+
+const fetchDatas = async() => {
+    const response =  await fetch(jsonUrl)
+    const datas = await response.json() 
+    return datas
+}
 
 // 1 > fetching photographers datas 
 async function fetchPhotographers() {
 
     try{
-        const response =  await fetch("../data/photographers.json")
-        const datas = await response.json()
+        const datas = await fetchDatas()
         return {photographers: datas.photographers}
     }
     catch(error){
@@ -16,14 +22,14 @@ async function fetchPhotographers() {
 
 // 2 > converting photographers datas into DOM nodes 
 // 3 > appending to the DOM
-async function datastoDOM(photographers) {
+function datastoDOM(photographers) {
 
-    const photographersSection = document.querySelector(".photographer_section");
+    const photographersSection = document.querySelector(".photographer_section")
 
     photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographersSection.appendChild(userCardDOM);
+        const photographerModel = photographerFactory(photographer)
+        const userCardDOM = photographerModel.getUserCardDOM()
+        photographersSection.appendChild(userCardDOM)
     });
 };
 
