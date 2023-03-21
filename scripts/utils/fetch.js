@@ -9,8 +9,8 @@ const fetchDatas = async() => {
 async function fetchSelectedPhotographerDatas(id) {
     try{
         const datas = await fetchDatas()
-        const photographer = datas.photographers.filter(photographer => photographer.id === id)[0]
-        const medias = datas.media.filter(media => media.photographerId === id)
+        const photographer = datas.photographers.filter(photographer => photographer.id === id)[0] // TODO deal with no photographer after filtering
+        const medias = datas.media.filter(media => media.photographerId === id) // TODO deal with no medias after filtering
         return ({photographerInfos : photographer, medias : medias})
     }
     catch(error){

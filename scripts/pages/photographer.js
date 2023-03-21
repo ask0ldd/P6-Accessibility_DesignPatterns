@@ -9,8 +9,10 @@ function mediastoDOM(medias){
     const gallerySection = document.querySelector(".gallery")
     medias.forEach(media => {
         const mediaModel = mediaFactory(media)
-        const mediaCardDOM = mediaModel.getMediaCardDOM()
-        gallerySection.appendChild(mediaCardDOM)
+        if(!mediaModel?.error){
+            const mediaCardDOM = mediaModel.getMediaCardDOM()
+            gallerySection.appendChild(mediaCardDOM)
+        }
     })
 }
 

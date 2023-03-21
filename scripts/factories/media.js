@@ -88,26 +88,30 @@ class Video extends Media {
 
 // Factory function
 function mediaFactory(media){
-    let formatedMedia
+    let mediaModel
     if(media.video){
-        formatedMedia = new Video(media)
+        mediaModel = new Video(media)
 
         function getMediaCardDOM(){
-            const viewStringified = getVideoView(formatedMedia.getViewProps())
+            const viewStringified = getVideoView(mediaModel.getViewProps())
             const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
             return parsedViewNode
         }
+
+        return { mediaModel, getMediaCardDOM }
     }
 
     if(media.image){
-        formatedMedia = new Image(media)
+        mediaModel = new Image(media)
 
         function getMediaCardDOM(){
-            const viewStringified = getImageView(formatedMedia.getViewProps())
+            const viewStringified = getImageView(mediaModel.getViewProps())
             const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
             return parsedViewNode
         }
+
+        return { mediaModel, getMediaCardDOM }
     } // TODO si ni image ni video : throw error et return error
 
-    return { formatedMedia, getMediaCardDOM } // return error
+    return {error : "can't create the object : invalid media datas"}
 }
