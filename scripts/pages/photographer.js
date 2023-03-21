@@ -5,8 +5,8 @@ const getIdParam = () => {
     return parseInt(params.get('id'))
 }
 
-// 1 > fetching photographers datas 
-async function getPhotographers() {
+// 1 > fetching selected photographer's datas 
+async function fetchSelectedPhotographerDatas() {
     try{
         const datas = await fetchDatas()
         photographer = datas.photographers.filter(photographer => photographer.id === id)[0]
@@ -15,13 +15,13 @@ async function getPhotographers() {
     }
     catch(error){
         console.error(error)
+        return {errorMessage : "Fetch error : This profile can't be displayed."}
     }
 }
 
-
 async function init() {
     const currentPhotographerId = getIdParam()
-
+    const {photographerInfos, medias, errorMessage } = await fetchSelectedPhotographerDatas(currentPhotographerId);
 };
 
 init();
