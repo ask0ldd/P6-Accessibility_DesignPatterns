@@ -49,8 +49,8 @@ const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, 
     <section class="photograph-header">
         <div>
             <h1>${name}</h1>
-            <p>${location}</p>
-            <p>${quote}</p>
+            <p class="header-location">${location}</p>
+            <p class="header-quote">${quote}</p>
         </div>
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
         <img src="${portraitSrc}" alt="${name}'s portrait" />

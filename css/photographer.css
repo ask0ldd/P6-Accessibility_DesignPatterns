@@ -1,4 +1,5 @@
-*, /*init added*/
+/* INIT ADDED */
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -9,6 +10,11 @@
 }
 /* */
 
+body {
+  font-family: "DM Sans";
+  font-style: normal;
+}
+
 #contact_modal {
   display: none;
 }
@@ -17,11 +23,11 @@
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
-  /*added*/
+  /* ADDED */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 2rem;
+  padding: 0 50px 2rem 50px;
 }
 
 .photograph-header img {
@@ -33,17 +39,44 @@
   object-fit: cover;
 }
 
+.photograph-header h1 {
+  /* ADDED */
+  font-weight: 400;
+  font-size: 64px;
+  color: #d3573c;
+  margin-left: -3px;
+}
+
+.photograph-header .header-location {
+  /* ADDED */
+  font-weight: 400;
+  font-size: 24px;
+  color: #901c1c;
+}
+
+.photograph-header .header-quote {
+  /* ADDED */
+  font-weight: 400;
+  font-size: 18px;
+  color: #525252;
+  margin-top: 0.75rem;
+}
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;
   color: white;
-  padding: 11px;
-  width: 170px;
+  padding: 11px 36px;
+  /*width: 170px;*/
   height: 70px;
   border: none;
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.contact_button:hover {
+  background-color: #ad3a3a;
 }
 
 .modal {
@@ -115,7 +148,8 @@ form input {
   display: flex;
   flex-direction: column;
   /*max-width: 50%;*/
-  min-width: 300px;
+  max-width: calc((100% - 176px) / 3);
+  /*min-width: 300px;*/
   flex: 1 1 25%;
 }
 
@@ -123,7 +157,8 @@ form input {
 .gallery video {
   width: 100%;
   object-fit: cover;
-  height: 450px;
+  /*height: 450px;*/
+  aspect-ratio: 350/300;
 }
 
 .gallery .mediaInfos {

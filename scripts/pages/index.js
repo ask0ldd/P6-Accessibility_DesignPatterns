@@ -20,7 +20,12 @@ async function init() {
     // 1 >
     const { photographers, errorMessage } = await fetchPhotographers();
     // 2 + 3 >
-    errorMessage == undefined ? datastoDOM(photographers) : console.log(errorMessage) // TODO : display the error message on the page instead of this console log
+    if(errorMessage === undefined) {
+        datastoDOM(photographers)}
+        else{
+            console.log(errorMessage)
+            // afficher message d'erreur
+        }
 };
 
 init();
