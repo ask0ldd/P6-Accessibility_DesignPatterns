@@ -54,7 +54,7 @@ h1 {
 .photographer_section article .location {
   /*ADDED*/
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   color: #901c1c;
   margin-top: 0.25rem;
 }
@@ -62,7 +62,7 @@ h1 {
 .photographer_section article .quote {
   /*ADDED*/
   font-weight: 500;
-  font-size: 11px;
+  font-size: 12px;
   color: #000;
   margin-top: 0.25rem;
 }
@@ -70,7 +70,7 @@ h1 {
 .photographer_section article .fees {
   /*ADDED*/
   font-weight: 500;
-  font-size: 9px;
+  font-size: 10px;
   color: #757575;
   margin-top: 0.35rem;
 }

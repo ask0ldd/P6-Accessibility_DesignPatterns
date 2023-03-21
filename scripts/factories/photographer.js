@@ -52,10 +52,9 @@ function photographerFactory(data) {
         const viewStringified = getPhotographerCardView(photographer.getViewProps())
         const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
         return parsedViewNode
-
     }
     
-    return { getUserCardDOM }
+    return { photographer, getUserCardDOM }
 }
 
 

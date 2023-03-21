@@ -1,1 +1,11 @@
-//Mettre le code JavaScript lié à la page photographer.html
+const getIdParam = () => {
+    const params = (new URL(document.location)).searchParams
+    return parseInt(params.get('id'))
+}
+
+async function init() {
+    const currentPhotographerId = getIdParam()
+
+};
+
+init();

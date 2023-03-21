@@ -1,10 +1,9 @@
+    // 1 > fetching photographers datas 
     async function getPhotographers() {
 
         try{
             const response =  await fetch("../data/photographers.json")
             const datas = await response.json()
-            console.log(datas)
-            // et bien retourner le tableau photographers seulement une fois récupéré
             return {photographers: datas.photographers}
         }
         catch(error){
@@ -13,7 +12,9 @@
         }
     }
 
-    async function displayCard(photographers) {
+    // 2 > converting photographers datas into DOM nodes 
+    // 3 > appending to the DOM
+    async function datastoDOM(photographers) {
 
         const photographersSection = document.querySelector(".photographer_section");
 
@@ -24,10 +25,14 @@
         });
     };
 
+    // 1 > fetching photographers datas 
+    // 2 > converting into DOM nodes 
+    // 3 > appending to the DOM
     async function init() {
-        // Récupère les datas des photographes
+        // 1 >
         const { photographers, errorMessage } = await getPhotographers();
-        errorMessage == undefined ? displayCard(photographers) : console.log(errorMessage) // TODO : display the error message on the page instead of this console log
+        // 2 + 3 >
+        errorMessage == undefined ? datastoDOM(photographers) : console.log(errorMessage) // TODO : display the error message on the page instead of this console log
     };
     
     init();
