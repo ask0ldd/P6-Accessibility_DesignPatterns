@@ -1,5 +1,4 @@
 const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fees}) => {
-
     // ACCESSIBILITY : alt added to img
     const NodeStringified = `
     <article>
@@ -47,12 +46,18 @@ function photographerFactory(data) {
 
     const photographer = new Photographer(data) // TODO needs to deal with errors if one value is missing / into the photographer class constructor?
 
-    function getUserCardDOM() {
+    // different photographer nodes group generated if request comes from index || photographer.html
+    if(currentPage === "index.html") 
+        function getUserCardDOM() {
+            const viewStringified = getPhotographerCardView(photographer.getViewProps())
+            const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
+            return parsedViewNode
+        }
 
-        const viewStringified = getPhotographerCardView(photographer.getViewProps())
-        const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
-        return parsedViewNode
-    }
+    if(currentPage === "photographer.html") 
+        function getUserCardDOM() {
+        
+        }
     
     return { photographer, getUserCardDOM }
 }
