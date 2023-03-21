@@ -1,24 +1,4 @@
 const currentPage = "index.html"
-const jsonUrl = "../data/photographers.json"
-
-const fetchDatas = async() => {
-    const response =  await fetch(jsonUrl)
-    const datas = await response.json() 
-    return datas
-}
-
-// 1 > fetching photographers datas 
-async function fetchPhotographers() {
-
-    try{
-        const datas = await fetchDatas()
-        return {photographers: datas.photographers}
-    }
-    catch(error){
-        console.error(error)
-        return {errorMessage : "Fetch error : This listing can't be displayed."}
-    }
-}
 
 // 2 > converting photographers datas into DOM nodes 
 // 3 > appending to the DOM
@@ -44,4 +24,3 @@ async function init() {
 };
 
 init();
-    
