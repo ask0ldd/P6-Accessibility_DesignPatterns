@@ -1,7 +1,5 @@
 class Lightbox {
 
-    // TODO ??!! create a mediaLibrary outside the lightbox?!!
-    #mediasLibrary
     #currentLibraryIndex
     #modaleNode
 
@@ -9,31 +7,20 @@ class Lightbox {
         window.addEventListener('keydown', e => this.#keyboardListener(e))
         this.#modaleNode = modaleNode
         this.#currentLibraryIndex = 0
-        if(medias) this.updateMediasLibrary(medias) // TODO use externalized mediaLibrary instead
     }
 
-    updateMediasLibrary(medias){
+    /*updateMediasLibrary(medias){
         if(medias) this.#mediasLibrary = medias // TODO use externalized mediaLibrary instead
-    }
+    }*/
 
-    getMediaIndex(mediaId){
+    /*getMediaIndex(mediaId){
         const media = this.#mediasLibrary.filter(media => media.id === mediaId)[0] // TODO use externalized mediaLibrary instead
         return this.#mediasLibrary.indexOf(media) // TODO use externalized mediaLibrary instead
         // TODO throw error if media doesn't exist
-    }
+    }*/
 
     setCurrentMedia(mediaId){
 
-    }
-
-    prevMedia(){
-        this.#currentLibraryIndex-1>=0 ? this.#currentLibraryIndex-- : this.#currentLibraryIndex = this.#mediasLibrary.length-1
-        this.updateDisplayedMedia(this.#currentLibraryIndex)
-    }
-
-    nextMedia(){
-        this.#currentLibraryIndex+1 > this.#mediasLibrary.length-1 ? this.#currentLibraryIndex = 0 : this.#currentLibraryIndex++
-        this.updateDisplayedMedia(this.#currentLibraryIndex)
     }
 
     #keyboardListener(e) // ACCESSIBILITY : keyboard navigation
@@ -57,18 +44,39 @@ class Lightbox {
         }
     }
 
-    updateDisplayedMedia(index){
-        const mediaModel = mediaFactory(this.#mediasLibrary[this.#currentLibraryIndex])
-        const mediaDOM = mediaModel.getMediaCardDOM()
+    updateDisplayedMedia(media){
+        const mediaDOM = media.getMediaCardDOM()
         this.#modaleNode.innerHTML=""
         this.#modaleNode.appendChild(mediaDOM)
     }
 
+    retrieveMediaFromLibrary(mediaId){
+        const media = mediaLibrary.getMediaAtIndex(this.#currentLibraryIndex)
+        return media 
+    }
+
+    prevMedia(){
+        //this.#currentLibraryIndex-1>=0 ? this.#currentLibraryIndex-- : this.#currentLibraryIndex = this.#mediasLibrary.length-1
+        //this.updateDisplayedMedia(this.#currentLibraryIndex)
+        this.#currentLibraryIndex-1>=0 ? this.#currentLibraryIndex-- : this.#currentLibraryIndex = mediaLibrary.length-1
+        const media = this.retrieveMediaFromLibrary(this.#currentLibraryIndex)
+        this.updateDisplayedMedia(media)
+    }
+
+    nextMedia(){
+        //this.#currentLibraryIndex+1 > this.#mediasLibrary.length-1 ? this.#currentLibraryIndex = 0 : this.#currentLibraryIndex++
+        //this.updateDisplayedMedia(this.#currentLibraryIndex)
+        this.#currentLibraryIndex+1 > mediaLibrary.length-1 ? this.#currentLibraryIndex = 0 : this.#currentLibraryIndex++
+        const media = this.retrieveMediaFromLibrary(this.#currentLibraryIndex)
+        this.updateDisplayedMedia(media)
+    }
+
     open(mediaId){
         this.#scrollLock(true)
-        // get
-        this.#currentLibraryIndex = this.getMediaIndex(mediaId)
-        this.updateDisplayedMedia(this.#currentLibraryIndex)
+        this.#currentLibraryIndex = mediaLibrary.getIndexOf(mediaId)
+        const media = mediaLibrary.getMediaAtIndex(this.#currentLibraryIndex)
+        //const media = this.retrieveMediaFromLibrary(mediaId)
+        this.updateDisplayedMedia(media)
         this.#modaleNode.showModal()
         this.#modaleNode.style.display = "flex"
     }

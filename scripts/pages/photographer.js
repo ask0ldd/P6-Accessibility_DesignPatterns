@@ -63,7 +63,7 @@ class MediaLibrary {
 
     // used by the lightbox to display the previous / next media
     getMediaAtIndex(index){
-
+        return this.#medias[index]
     }
 
     isLiked(mediaId){ // or liked key into the media object?
