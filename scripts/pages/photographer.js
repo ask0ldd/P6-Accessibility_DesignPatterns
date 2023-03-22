@@ -4,12 +4,14 @@ let filter = "popularity"
 //let likedMediasIds = []
 let lightbox
 
-/*class MediaLibrary {
+class MediaLibrary {
     #medias
     #likes
     // medias : [{media : mediaModel.media, getDOM : mediaModel.getMediaCardDOM}, ... ]
 
-    constructor(){
+    constructor(){}
+
+    add(){
 
     }
 
@@ -28,7 +30,9 @@ let lightbox
     setActiveFilter(){
 
     }
-}*/
+}
+
+const mediaLibrary = new MediaLibrary()
 
 const getIdParam = () => {
     const params = (new URL(document.location)).searchParams
@@ -37,25 +41,30 @@ const getIdParam = () => {
 
 const currentPhotographerId = getIdParam()
 
-function buildLibrary(){
-    
+function buildMediaLibrary(medias){
+    medias.forEach(media => {
+        const mediaModel = mediaFactory(media)
+        mediaLibrary.add(mediaModel)
+    })
 }
 
-function librarytoDOM(){
+/*function librarytoDOM(){
 
-}
+}*/
 
 function mediastoDOM(medias){
     const gallerySection = document.querySelector(".gallery")
     gallerySection.innerHTML=""
-    medias.forEach(media => { // get it out of infostoDOM and create a function buildLibrary
+    /*medias.forEach(media => { // get it out of infostoDOM and create a function buildLibrary
         const mediaModel = mediaFactory(media)
         // update mediaModel.likes cycling on likedMediasIds
         if(!mediaModel?.error){ // if mediaModel = image || video only 
             const mediaCardDOM = mediaModel.getMediaCardDOM()
             gallerySection.appendChild(mediaCardDOM)
         }
-    })
+    })*/
+
+    // foreach medias into mediaLibrary getDOM + gallerySection.appendChild
 }
 
 function photographerInfostoDOM(photographerInfos){
