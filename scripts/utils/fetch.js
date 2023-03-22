@@ -6,12 +6,19 @@ const fetchDatas = async() => {
     return datas
 }
 
-async function fetchSelectedPhotographerDatas(id) {
+function getSelectedPhotographerMedias(photographerId, datas){
+    return datas.media.filter(media => media.photographerId === photographerId)
+}
+
+async function fetchSelectedPhotographerDatas(photographerId, filter) {
     try{
         const datas = await fetchDatas()
-        const photographer = datas.photographers.filter(photographer => photographer.id === id)[0] // TODO deal with no photographer after filtering
-        const medias = datas.media.filter(media => media.photographerId === id) // TODO deal with no medias after filtering
-        return ({photographerInfos : photographer, medias : medias})
+        const photographer = datas.photographers.filter(photographer => photographer.id === photographerId)[0] // TODO deal with no photographer after filtering
+        const medias = getSelectedPhotographerMedias(photographerId, datas) // TODO deal with no medias after filtering
+        // TODO test if each media has a likes / date / title value, if not, show an error or maybe filtering out all media that don't have those values
+        if (filter === "popularity"  && medias.length > 1) medias.sort((a, b) => {return b.likes - a.likes}) // SORTING if medias > 1
+        if (filter === "date"  && medias.length > 1) medias.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
+        return ({photographerInfos : photographer, medias})
     }
     catch(error){
         console.error(error)
