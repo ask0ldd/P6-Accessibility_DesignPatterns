@@ -10,6 +10,7 @@ class Media {
 
     hasTheRightStructure(media) {
         if(!media.id || !media.photographerId || !media.title || !media.date || !media.price) return false
+        // TODO : verify the nature of data too
         return true
     }
 
