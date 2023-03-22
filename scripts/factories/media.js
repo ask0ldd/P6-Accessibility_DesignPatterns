@@ -6,7 +6,7 @@ class Media {
     #likes
     #date
     #price
-    #liked
+    #liked // !!
 
     hasTheRightStructure(media) {
         if(!media.id || !media.photographerId || !media.title || !media.date || !media.price) return false

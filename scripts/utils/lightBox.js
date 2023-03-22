@@ -1,5 +1,6 @@
 class Lightbox {
 
+    // TODO ??!! create a mediaLibrary outside the lightbox?!!
     #mediasLibrary
     #currentLibraryIndex
     #modaleNode

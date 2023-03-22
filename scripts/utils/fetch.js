@@ -14,7 +14,9 @@ async function fetchSelectedPhotographerDatas(photographerId, filter) {
     try{
         const datas = await fetchDatas()
         const photographer = datas.photographers.filter(photographer => photographer.id === photographerId)[0] // TODO deal with no photographer after filtering
+        if(photographer === undefined) throw new Error("No user linked to this id.")
         const medias = getSelectedPhotographerMedias(photographerId, datas) // TODO deal with no medias after filtering
+        if(medias === undefined) throw new Error("No medias linked to this id.")      
         // TODO test if each media has a likes / date / title value, if not, show an error or maybe filtering out all media that don't have those values
         if (filter === "popularity"  && medias.length > 1) medias.sort((a, b) => {return b.likes - a.likes}) // SORTING if medias > 1
         if (filter === "date"  && medias.length > 1) medias.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
@@ -22,7 +24,7 @@ async function fetchSelectedPhotographerDatas(photographerId, filter) {
     }
     catch(error){
         console.error(error)
-        return {errorMessage : "Fetch error : This profile can't be displayed."}
+        return {errorMessage : error}
     }
 }
 
