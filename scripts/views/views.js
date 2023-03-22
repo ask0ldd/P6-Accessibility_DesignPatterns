@@ -1,4 +1,4 @@
-const getVideoView = ({src, title, likes}) => {
+const getVideoView = ({id, src, title, likes}) => {
     // TODO : alt to add to video??
     const NodeStringified = `
     <article>
@@ -12,12 +12,12 @@ const getVideoView = ({src, title, likes}) => {
     return NodeStringified
 }
 
-const getImageView = ({src, title, likes}) => {
+const getImageView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : alt added
     // aria button for like icon
     const NodeStringified = `
     <article>
-        <img src=${src} alt="${title}"></video>
+        <img src=${src} alt="${title}" onclick="lightbox.open(${id})"></video>
         <div class="mediaInfos">
             <h2>${title}</h2>
             <p>${likes}</p>

@@ -38,7 +38,7 @@ async function init() {
     if(errorMessage === undefined){
         // TODO duplicate medias into a new global var to be able to cycle on it to populate the lightbox
         photographerInfostoDOM(photographerInfos)
-        lightbox = new Lightbox(medias)
+        lightbox = new Lightbox(document.querySelector('#lightbox_modal'), medias)
         mediastoDOM(medias)  
     }else{
         console.log(errorMessage)

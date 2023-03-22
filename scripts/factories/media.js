@@ -28,6 +28,7 @@ class Media {
     get title(){ return this.#title }
     get likes(){ return this.#likes }
     get owner(){ return this.#owner }
+    get id(){ return this.#id }
 }
 
 class Image extends Media { // deport src + get src() to media class ?
@@ -40,7 +41,7 @@ class Image extends Media { // deport src + get src() to media class ?
     get src(){ return this.#src }
 
     getViewProps(){
-        return {src:this.#src, title:this.title, likes:this.likes}
+        return {id:this.id, src:this.#src, title:this.title, likes:this.likes}
     }
 }
 
@@ -54,7 +55,7 @@ class Video extends Media {
     get src(){ return this.#src }
 
     getViewProps(){
-        return {src:this.#src, title:this.title, likes:this.likes}
+        return {id:this.id, src:this.#src, title:this.title, likes:this.likes}
     }
 }
 

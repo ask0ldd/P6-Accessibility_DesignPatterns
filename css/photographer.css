@@ -201,9 +201,10 @@ form input {
   font-size: 24px;
 }
 
-#lightbox-modal {
+#lightbox_modal {
   border-radius: 5px;
-  width: 100%;
+  height: 100vh;
+  width: 80vw;
   display: hidden;
   flex-direction: row;
   align-items: center;
@@ -211,4 +212,9 @@ form input {
   padding: 35px;
   background-color: #fff;
   border: none;
+  margin: auto;
+}
+
+#lightbox_modal::backdrop {
+  background-color: rgba(196, 196, 196, 0.4);
 }
