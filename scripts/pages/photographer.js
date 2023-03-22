@@ -49,17 +49,19 @@ class MediaLibrary {
         let sum = 0
     }
 
-    // used by the lightbox to not cycle out of boundaries
+    // used by the lightbox to avoid cycling out of boundaries
     get length(){
         return this.#medias.length
     }
 
     // used by the lightbox to get the medialibrary index of a selected media
     getIndexOf(mediaId){
-
+        const media = this.#medias.filter(media => media.mediaModel.id === mediaId)[0]
+        return this.#medias.indexOf(media)
+        // TODO throw error if media doesn't exist
     }
 
-    // used by the lightbox to resolve next / prev media
+    // used by the lightbox to display the previous / next media
     getMediaAtIndex(index){
 
     }
