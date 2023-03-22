@@ -231,3 +231,13 @@ form input {
 #lightbox_modal::backdrop {
   background-color: rgba(196, 196, 196, 0.4);
 }
+
+.sort-container {
+  display: flex;
+  margin: 0 100px 2rem 100px;
+  width: calc(100% - 200px);
+}
+
+.sort-container select {
+  margin-left: 2rem;
+}
