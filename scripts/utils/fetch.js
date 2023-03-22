@@ -10,7 +10,7 @@ function getSelectedPhotographerMedias(photographerId, datas){
     return datas.media.filter(media => media.photographerId === photographerId)
 }
 
-async function fetchSelectedPhotographerDatas(photographerId, filter) {
+async function fetchSelectedPhotographerDatas(photographerId) {
     try{
         const datas = await fetchDatas()
         const photographer = datas.photographers.filter(photographer => photographer.id === photographerId)[0] // TODO deal with no photographer after filtering
@@ -19,8 +19,8 @@ async function fetchSelectedPhotographerDatas(photographerId, filter) {
         if(medias === undefined) throw new Error("No medias linked to this id.")      
         // TODO test if each media has a likes / date / title value, if not, show an error or maybe filtering out all media that don't have those values
         // move filtering to mediaLibrary
-        if (filter === "popularity"  && medias.length > 1) medias.sort((a, b) => {return b.likes - a.likes}) // SORTING if medias > 1
-        if (filter === "date"  && medias.length > 1) medias.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
+        /*if (filter === "popularity"  && medias.length > 1) medias.sort((a, b) => {return b.likes - a.likes}) // SORTING if medias > 1
+        if (filter === "date"  && medias.length > 1) medias.sort((a, b) => {return new Date(b.date) - new Date(a.date)})*/
         return ({photographerInfos : photographer, medias})
     }
     catch(error){
