@@ -9,16 +9,16 @@ class Lightbox {
         window.addEventListener('keydown', e => this.#keyboardListener(e))
         this.#modaleNode = modaleNode
         this.#currentLibraryIndex = 0
-        if(medias) this.updateMediasLibrary(medias)
+        if(medias) this.updateMediasLibrary(medias) // TODO use externalized mediaLibrary instead
     }
 
     updateMediasLibrary(medias){
-        if(medias) this.#mediasLibrary = medias
+        if(medias) this.#mediasLibrary = medias // TODO use externalized mediaLibrary instead
     }
 
     getMediaIndex(mediaId){
-        const media = this.#mediasLibrary.filter(media => media.id === mediaId)[0]
-        return this.#mediasLibrary.indexOf(media)
+        const media = this.#mediasLibrary.filter(media => media.id === mediaId)[0] // TODO use externalized mediaLibrary instead
+        return this.#mediasLibrary.indexOf(media) // TODO use externalized mediaLibrary instead
         // TODO throw error if media doesn't exist
     }
 
