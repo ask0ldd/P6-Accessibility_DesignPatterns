@@ -26,12 +26,12 @@ class Lightbox {
     }
 
     prevMedia(){
-        this.#currentLibraryIndex--
+        this.#currentLibraryIndex-1>=0 ? this.#currentLibraryIndex-- : this.#currentLibraryIndex = this.#mediasLibrary.length-1
         this.updateDisplayedMedia(this.#currentLibraryIndex)
     }
 
     nextMedia(){
-        this.#currentLibraryIndex++
+        this.#currentLibraryIndex+1 > this.#mediasLibrary.length-1 ? this.#currentLibraryIndex = 0 : this.#currentLibraryIndex++
         this.updateDisplayedMedia(this.#currentLibraryIndex)
     }
 
