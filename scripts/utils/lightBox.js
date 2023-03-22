@@ -16,7 +16,9 @@ class Lightbox {
     }
 
     getMediaIndex(mediaId){
-        // throw error if media doesn't exist
+        const media = this.#mediasLibrary.filter(media => media.id === mediaId)[0]
+        return this.#mediasLibrary.indexOf(media)
+        // TODO throw error if media doesn't exist
     }
 
     setCurrentMedia(mediaId){
@@ -24,11 +26,13 @@ class Lightbox {
     }
 
     prevMedia(){
-
+        this.#currentLibraryIndex--
+        this.updateDisplayedMedia(this.#currentLibraryIndex)
     }
 
     nextMedia(){
-
+        this.#currentLibraryIndex++
+        this.updateDisplayedMedia(this.#currentLibraryIndex)
     }
 
     #keyboardListener(e) // ACCESSIBILITY : keyboard navigation
@@ -52,9 +56,18 @@ class Lightbox {
         }
     }
 
+    updateDisplayedMedia(index){
+        const mediaModel = mediaFactory(this.#mediasLibrary[this.#currentLibraryIndex])
+        const mediaDOM = mediaModel.getMediaCardDOM()
+        this.#modaleNode.innerHTML=""
+        this.#modaleNode.appendChild(mediaDOM)
+    }
+
     open(mediaId){
         this.#scrollLock(true)
+        // get
         this.#currentLibraryIndex = this.getMediaIndex(mediaId)
+        this.updateDisplayedMedia(this.#currentLibraryIndex)
         this.#modaleNode.showModal()
         this.#modaleNode.style.display = "flex"
     }
