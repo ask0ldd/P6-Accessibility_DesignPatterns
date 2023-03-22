@@ -19,6 +19,12 @@ function photographerInfostoDOM(photographerInfos){
     //document.querySelector("#openModalButton").addEventListener('click', () => displayModal())
 }
 
+const dropdownChange = () => {
+    const select = document.querySelector("#sort-select")
+    mediaLibrary.sort(select.value).pushtoDOM()
+
+}
+
 async function init() {
     if (isNaN(currentPhotographerId)) return console.error("Missing id param. This user doesn't exist.")
 

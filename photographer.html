@@ -19,11 +19,11 @@
 
       <!-- added-->
       <div class="sort-container">
-        <label for="sort">Trier par</label> <!-- ACCESSIBILITY : fisheye logo -->
-        <select name="sort" id="sort">
-          <option value="LikesDesc">Popularité</option>
+        <label for="sort-select">Trier par</label> <!-- ACCESSIBILITY : fisheye logo -->
+        <select name="sort-select" id="sort-select" onchange="dropdownChange()">
+          <option value="likesDesc">Popularité</option>
           <option value="dateDesc">Date</option>
-          <option value="TitleAsc">Titre</option>
+          <option value="titleAsc">Titre</option>
         </select>
       </div>
       <section class="gallery">
