@@ -27,6 +27,7 @@ class Media {
 
     // so those variables can be accessed via the children
     get title(){ return this.#title }
+    get date(){ return this.#date }
     get likes(){ return this.#likes }
     get liked(){ return this.#likes }
     set liked(bool){ this.#likes = bool }
