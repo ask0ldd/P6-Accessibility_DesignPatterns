@@ -1,7 +1,5 @@
 const currentPage = "photographer.html"
-//const defaultFilter = "likesDesc"
-//let filter = "likesDesc"
-//let likedMediasIds = []
+const defaultFilter = "likesDesc"
 let lightbox
 
 class MediaLibrary {
@@ -29,13 +27,13 @@ class MediaLibrary {
     }
 
     // specify a container for the nodal representation of the medialibrary
-    addDOMTarget(DOMTarget){
+    bindtoDOMTarget(DOMTarget){
         if(DOMTarget) this.#DOMTarget = DOMTarget
         return this // for methods chaining
     }
 
     // push to the DOM a nodal representation of the medialibrary
-    toDOM(){
+    pushtoDOM(){
         if(!this.#DOMTarget) throw new Error("Use addDOMTarget() method beforehand to specify a parent container")
         this.#DOMTarget.innerHTML=""
         this.#medias.forEach(media => {
@@ -44,8 +42,14 @@ class MediaLibrary {
         })
     }
 
-    get likesSum(){
+    get totalLikes(){
+        // filtering mediaModel with liked = true, add length with total of likes / use accumulator instead of filtering
         let sum = 0
+    }
+
+    isLiked(mediaId){ // or liked key into the media object?
+        const mediaIndex = this.getIndexOf(mediaId)
+        return this.#medias.mediaModel.liked
     }
 
     // used by the lightbox to avoid cycling out of boundaries
@@ -64,10 +68,6 @@ class MediaLibrary {
         return this.#medias[index] // TODO throw error if no media at that index
     }
 
-    isLiked(mediaId){ // or liked key into the media object?
-
-    }
-
     // sorting the medialibrary using the passed argument
     sort(argument){
         if(argument!=="likesDesc" && argument!=="dateDesc" && argument!=="titleAsc" ) throw new Error("Unknown sorting argument.") 
@@ -75,7 +75,9 @@ class MediaLibrary {
         if (argument === "likesDesc"  && this.length > 1) this.#medias.sort((a, b) => {return b.mediaModel.likes - a.mediaModel.likes}) // TODO SORTING if medias > 1
         if (argument === "dateDesc"  && this.length > 1) this.#medias.sort((a, b) => {return new Date(b.mediaModel.date) - new Date(a.mediaModel.date)})
         if (argument === "titleAsc"  && this.length > 1) this.#medias.sort((a, b) => {return a.mediaModel.title.toLowerCase().localeCompare(b.mediaModel.title.toLowerCase())})
+        return this
     }
+
 }
 
 // extrat the id param from the url
@@ -107,10 +109,10 @@ async function init() {
     lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
 
     // building the medialibrary before sorting it
-    mediaLibrary.build(medias).sort("likesDesc")
+    mediaLibrary.build(medias).sort(defaultFilter)
     const gallerySection = document.querySelector(".gallery")
     // specify a container into the DOM then push the medialibrary to the DOM
-    mediaLibrary.addDOMTarget(gallerySection).toDOM()
+    mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
 };
 
 const mediaLibrary = new MediaLibrary()

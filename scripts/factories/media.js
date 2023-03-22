@@ -28,6 +28,8 @@ class Media {
     // so those variables can be accessed via the children
     get title(){ return this.#title }
     get likes(){ return this.#likes }
+    get liked(){ return this.#likes }
+    set liked(bool){ this.#likes = bool }
     get owner(){ return this.#owner }
     get id(){ return this.#id }
 }

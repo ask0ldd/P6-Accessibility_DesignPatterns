@@ -11,7 +11,7 @@ class Lightbox {
      }
 
     bindto(mediaLibrary){
-        this.#mediaLibrary = mediaLibrary // reference to the library, not a copy of it, so keep being updated // maybe use an observer instead to link both parties?
+        this.#mediaLibrary = mediaLibrary // act as a reference, not a copy, so keep being updated // maybe use an observer instead to link both parties?
         return this
     }
 
