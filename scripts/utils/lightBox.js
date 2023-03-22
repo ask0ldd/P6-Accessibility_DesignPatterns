@@ -2,25 +2,17 @@ class Lightbox {
 
     #currentLibraryIndex
     #modaleNode
+    #mediaLibrary
 
-    constructor(modaleNode, medias){
+    constructor(modaleNode){
         window.addEventListener('keydown', e => this.#keyboardListener(e))
         this.#modaleNode = modaleNode
         this.#currentLibraryIndex = 0
-    }
+     }
 
-    /*updateMediasLibrary(medias){
-        if(medias) this.#mediasLibrary = medias // TODO use externalized mediaLibrary instead
-    }*/
-
-    /*getMediaIndex(mediaId){
-        const media = this.#mediasLibrary.filter(media => media.id === mediaId)[0] // TODO use externalized mediaLibrary instead
-        return this.#mediasLibrary.indexOf(media) // TODO use externalized mediaLibrary instead
-        // TODO throw error if media doesn't exist
-    }*/
-
-    setCurrentMedia(mediaId){
-
+    bindto(mediaLibrary){
+        this.#mediaLibrary = mediaLibrary // reference to the library, not a copy of it, so keep being updated // maybe use an observer instead to link both parties?
+        return this
     }
 
     #keyboardListener(e) // ACCESSIBILITY : keyboard navigation
@@ -51,30 +43,26 @@ class Lightbox {
     }
 
     retrieveMediaFromLibrary(mediaId){
-        const media = mediaLibrary.getMediaAtIndex(this.#currentLibraryIndex)
+        const media = this.#mediaLibrary.getMediaAtIndex(this.#currentLibraryIndex)
         return media 
     }
 
     prevMedia(){
-        //this.#currentLibraryIndex-1>=0 ? this.#currentLibraryIndex-- : this.#currentLibraryIndex = this.#mediasLibrary.length-1
-        //this.updateDisplayedMedia(this.#currentLibraryIndex)
-        this.#currentLibraryIndex-1>=0 ? this.#currentLibraryIndex-- : this.#currentLibraryIndex = mediaLibrary.length-1
+        this.#currentLibraryIndex-1>=0 ? this.#currentLibraryIndex-- : this.#currentLibraryIndex = this.#mediaLibrary.length-1
         const media = this.retrieveMediaFromLibrary(this.#currentLibraryIndex)
         this.updateDisplayedMedia(media)
     }
 
     nextMedia(){
-        //this.#currentLibraryIndex+1 > this.#mediasLibrary.length-1 ? this.#currentLibraryIndex = 0 : this.#currentLibraryIndex++
-        //this.updateDisplayedMedia(this.#currentLibraryIndex)
-        this.#currentLibraryIndex+1 > mediaLibrary.length-1 ? this.#currentLibraryIndex = 0 : this.#currentLibraryIndex++
+        this.#currentLibraryIndex+1 > this.#mediaLibrary.length-1 ? this.#currentLibraryIndex = 0 : this.#currentLibraryIndex++
         const media = this.retrieveMediaFromLibrary(this.#currentLibraryIndex)
         this.updateDisplayedMedia(media)
     }
 
     open(mediaId){
         this.#scrollLock(true)
-        this.#currentLibraryIndex = mediaLibrary.getIndexOf(mediaId)
-        const media = mediaLibrary.getMediaAtIndex(this.#currentLibraryIndex)
+        this.#currentLibraryIndex = this.#mediaLibrary.getIndexOf(mediaId)
+        const media = this.#mediaLibrary.getMediaAtIndex(this.#currentLibraryIndex)
         //const media = this.retrieveMediaFromLibrary(mediaId)
         this.updateDisplayedMedia(media)
         this.#modaleNode.showModal()
