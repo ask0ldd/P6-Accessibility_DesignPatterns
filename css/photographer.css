@@ -236,8 +236,24 @@ form input {
   display: flex;
   margin: 0 100px 2rem 100px;
   width: calc(100% - 200px);
+  align-items: center;
 }
 
 .sort-container select {
   margin-left: 2rem;
+  background: #911c1c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 180px;
+  height: 2rem;
+}
+
+.sort-container select:active {
+  border: none;
+}
+
+.sort-container select option {
+  height: 2rem;
+  border-bottom: 1px solid white;
 }
