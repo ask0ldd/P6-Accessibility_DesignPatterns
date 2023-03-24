@@ -41,6 +41,9 @@ class MediaLibrary {
     get totalLikes(){
         // filtering mediaModel with liked = true, add length with total of likes / use accumulator instead of filtering
         let sum = 0
+        this.#medias.forEach(media => {
+            //media.mediaModel.likes + media.mediaModel.liked
+        }) // accu instead
     }
 
     isLiked(mediaId){ // or liked key into the media object?
@@ -72,6 +75,11 @@ class MediaLibrary {
         if (argument === "dateDesc"  && this.length > 1) this.#medias.sort((a, b) => {return new Date(b.mediaModel.date) - new Date(a.mediaModel.date)})
         if (argument === "titleAsc"  && this.length > 1) this.#medias.sort((a, b) => {return a.mediaModel.title.toLowerCase().localeCompare(b.mediaModel.title.toLowerCase())})
         return this
+    }
+
+    addLiketoMedia(mediaId){
+        const media = this.getIndexOf(mediaId)
+        if(!media.mediaModel.liked) media.mediaModel.liked = true
     }
 
 }
