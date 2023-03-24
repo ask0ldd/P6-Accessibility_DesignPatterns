@@ -49,9 +49,14 @@ class MediaLibrary {
         return likes
     }
 
+    getLikes(mediaId){
+        const mediaIndex = this.getIndexOf(mediaId)
+        return this.#medias[mediaIndex].mediaModel.likes
+    }
+
     isLiked(mediaId){ // or liked key into the media object?
         const mediaIndex = this.getIndexOf(mediaId)
-        return this.#medias.mediaModel.liked
+        return this.#medias[mediaIndex].mediaModel.liked
     }
 
     // used by the lightbox to avoid cycling out of boundaries

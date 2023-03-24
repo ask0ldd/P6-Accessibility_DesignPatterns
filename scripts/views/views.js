@@ -5,7 +5,7 @@ const getVideoView = ({id, src, title, likes}) => {
         <video src=${src} controls="true"></video>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <div><p>${likes}</p><img src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
+            <div><p id="likecontainer-${id}">${likes}</p><img src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
         </div>
     </article>
     `
@@ -20,7 +20,7 @@ const getImageView = ({id, src, title, likes}) => {
         <img src=${src} alt="${title}" onclick="lightbox.open(${id})"></video>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <div><p>${likes}</p><img src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
+            <div><p id="likecontainer-${id}">${likes}</p><img src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
         </div>
     </article>
     `

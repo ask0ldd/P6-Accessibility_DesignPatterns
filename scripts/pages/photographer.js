@@ -29,6 +29,8 @@ function dropdownChange () {
 function addLiketoMedia (mediaId) {
     mediaLibrary.addLiketoMedia(mediaId)
     // TODO should refresh the likes value of the media article
+    const target = document.querySelector('#likecontainer-'+mediaId)
+    target.innerHTML = mediaLibrary.isLiked(mediaId) + mediaLibrary.getLikes(mediaId)
     stickyBar.update()
 }
 
