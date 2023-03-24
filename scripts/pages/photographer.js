@@ -28,7 +28,7 @@ const dropdownChange = () => {
 
 const addLiketoMedia = (mediaId) => {
     mediaLibrary.addLiketoMedia(mediaId)
-    stickyBar.refresh()
+    stickyBar.update()
 }
 
 async function init() {
@@ -47,8 +47,9 @@ async function init() {
     const gallerySection = document.querySelector(".gallery")
     // specify a container into the DOM then push the medialibrary to the DOM
     mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
-    console.log(mediaLibrary.totalLikes)
-    stickyBar = new StickyBar(".sticky-bar").bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).refresh()
+
+    stickyBar = new StickyBar(".sticky-bar")
+    stickyBar.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
 }
 
 const mediaLibrary = new MediaLibrary()
