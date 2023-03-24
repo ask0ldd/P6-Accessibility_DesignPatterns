@@ -38,10 +38,19 @@ class MediaLibrary {
         })
     }
     
-    addLiketoMedia(mediaId){
+    selectMedia(mediaId){
+        const mediaIndex = this.getIndexOf(mediaId)
+        return this.#medias[mediaIndex].mediaModel
+    }
+
+    /*addLiketoMedia(mediaId){
         const mediaIndex = this.getIndexOf(mediaId)
         if(!this.#medias[mediaIndex].mediaModel.liked) this.#medias[mediaIndex].mediaModel.liked = true
-    }
+    }*/
+
+    /*addLike(){
+        if(!this.liked) this.liked = true
+    }*/
 
     get totalLikes(){
         // adding likes number with liked (true = 1 / false = 0)
@@ -49,7 +58,7 @@ class MediaLibrary {
         return likes
     }
 
-    getLikes(mediaId){
+    /*getLikes(mediaId){
         const mediaIndex = this.getIndexOf(mediaId)
         return this.#medias[mediaIndex].mediaModel.likes
     }
@@ -57,7 +66,7 @@ class MediaLibrary {
     isLiked(mediaId){ // or liked key into the media object?
         const mediaIndex = this.getIndexOf(mediaId)
         return this.#medias[mediaIndex].mediaModel.liked
-    }
+    }*/
 
     // used by the lightbox to avoid cycling out of boundaries
     get length(){
@@ -84,7 +93,5 @@ class MediaLibrary {
         if (argument === "titleAsc"  && this.length > 1) this.#medias.sort((a, b) => {return a.mediaModel.title.toLowerCase().localeCompare(b.mediaModel.title.toLowerCase())})
         return this
     }
-
-    refreshView(){}
 
 }
