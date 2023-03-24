@@ -41,7 +41,8 @@ async function init() {
     const gallerySection = document.querySelector(".gallery")
     // specify a container into the DOM then push the medialibrary to the DOM
     mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
-};
+    console.log(mediaLibrary.totalLikes)
+}
 
 const mediaLibrary = new MediaLibrary()
-init();
+init()

@@ -6,7 +6,7 @@ class Media {
     #likes
     #date
     #price
-    #liked // !!
+    #liked
 
     hasTheRightStructure(media) {
         if(!media.id || !media.photographerId || !media.title || !media.date || !media.price) return false
@@ -29,8 +29,8 @@ class Media {
     get title(){ return this.#title }
     get date(){ return this.#date }
     get likes(){ return this.#likes }
-    get liked(){ return this.#likes }
-    set liked(bool){ this.#likes = bool }
+    get liked(){ return this.#liked }
+    set liked(bool){ this.#liked = bool }
     get owner(){ return this.#owner }
     get id(){ return this.#id }
 }

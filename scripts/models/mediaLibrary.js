@@ -37,18 +37,25 @@ class MediaLibrary {
             this.#DOMTarget.appendChild(mediaCardDOM)
         })
     }
+    
+    addLiketoMedia(mediaId){
+        const media = this.getIndexOf(mediaId)
+        if(!media.mediaModel.liked) media.mediaModel.liked = true
+    }
 
     get totalLikes(){
-        // filtering mediaModel with liked = true, add length with total of likes / use accumulator instead of filtering
-        let sum = 0
-        this.#medias.forEach(media => {
-            //media.mediaModel.likes + media.mediaModel.liked
-        }) // accu instead
+        // adding likes number with liked (true = 1 / false = 0)
+        const likes = this.#medias.reduce( (accu, media, index) => { return(accu + media.mediaModel.likes + media.mediaModel.liked) }, 0)
+        return likes
     }
 
     isLiked(mediaId){ // or liked key into the media object?
         const mediaIndex = this.getIndexOf(mediaId)
         return this.#medias.mediaModel.liked
+    }
+
+    refreshStickyLikesBar(){
+
     }
 
     // used by the lightbox to avoid cycling out of boundaries
@@ -75,11 +82,6 @@ class MediaLibrary {
         if (argument === "dateDesc"  && this.length > 1) this.#medias.sort((a, b) => {return new Date(b.mediaModel.date) - new Date(a.mediaModel.date)})
         if (argument === "titleAsc"  && this.length > 1) this.#medias.sort((a, b) => {return a.mediaModel.title.toLowerCase().localeCompare(b.mediaModel.title.toLowerCase())})
         return this
-    }
-
-    addLiketoMedia(mediaId){
-        const media = this.getIndexOf(mediaId)
-        if(!media.mediaModel.liked) media.mediaModel.liked = true
     }
 
 }
