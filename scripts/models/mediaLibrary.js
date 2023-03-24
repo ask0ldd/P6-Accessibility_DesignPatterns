@@ -39,8 +39,8 @@ class MediaLibrary {
     }
     
     addLiketoMedia(mediaId){
-        const media = this.getIndexOf(mediaId)
-        if(!media.mediaModel.liked) media.mediaModel.liked = true
+        const mediaIndex = this.getIndexOf(mediaId)
+        if(!this.#medias[mediaIndex].mediaModel.liked) this.#medias[mediaIndex].mediaModel.liked = true
     }
 
     get totalLikes(){
@@ -52,10 +52,6 @@ class MediaLibrary {
     isLiked(mediaId){ // or liked key into the media object?
         const mediaIndex = this.getIndexOf(mediaId)
         return this.#medias.mediaModel.liked
-    }
-
-    refreshStickyLikesBar(){
-
     }
 
     // used by the lightbox to avoid cycling out of boundaries
@@ -83,5 +79,7 @@ class MediaLibrary {
         if (argument === "titleAsc"  && this.length > 1) this.#medias.sort((a, b) => {return a.mediaModel.title.toLowerCase().localeCompare(b.mediaModel.title.toLowerCase())})
         return this
     }
+
+    refreshView(){}
 
 }

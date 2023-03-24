@@ -1,6 +1,7 @@
 const currentPage = "photographer.html"
 const defaultFilter = "likesDesc"
 let lightbox
+let stickyBar
 
 // extrat the id param from the url
 const getIdParam = () => {
@@ -25,6 +26,11 @@ const dropdownChange = () => {
 
 }
 
+const addLiketoMedia = (mediaId) => {
+    mediaLibrary.addLiketoMedia(mediaId)
+    stickyBar.refresh()
+}
+
 async function init() {
     if (isNaN(currentPhotographerId)) return console.error("Missing id param. This user doesn't exist.")
 
@@ -42,7 +48,7 @@ async function init() {
     // specify a container into the DOM then push the medialibrary to the DOM
     mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
     console.log(mediaLibrary.totalLikes)
-    const stickyBar = new StickyBar(".sticky-bar").bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
+    stickyBar = new StickyBar(".sticky-bar").bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).refresh()
 }
 
 const mediaLibrary = new MediaLibrary()

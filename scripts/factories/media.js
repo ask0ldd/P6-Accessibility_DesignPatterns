@@ -45,7 +45,7 @@ class Image extends Media { // deport src + get src() to media class ?
     get src(){ return this.#src }
 
     getViewProps(){
-        return {id:this.id, src:this.#src, title:this.title, likes:this.likes}
+        return {id:this.id, src:this.#src, title:this.title, likes:this.likes + this.liked}
     }
 }
 
@@ -59,7 +59,7 @@ class Video extends Media {
     get src(){ return this.#src }
 
     getViewProps(){
-        return {id:this.id, src:this.#src, title:this.title, likes:this.likes}
+        return {id:this.id, src:this.#src, title:this.title, likes:this.likes + this.liked}
     }
 }
 

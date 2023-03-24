@@ -5,7 +5,7 @@ const getVideoView = ({id, src, title, likes}) => {
         <video src=${src} controls="true"></video>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <p>${likes}</p>
+            <p onclick="addLiketoMedia(${id})">${likes}</p>
         </div>
     </article>
     `
@@ -16,11 +16,11 @@ const getImageView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : alt added
     // aria button for like icon
     const NodeStringified = `
-    <article>
+    <article id="media-${id}">
         <img src=${src} alt="${title}" onclick="lightbox.open(${id})"></video>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <p>${likes}</p>
+            <p onclick="addLiketoMedia(${id})">${likes}</p>
         </div>
     </article>
     `
