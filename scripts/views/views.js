@@ -59,3 +59,14 @@ const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, 
     // onclick="displayModal()"
     return NodeStringified
 }
+
+const getStickBarView = ({totalLikes, dailyFees}) => {
+    // TODO : alt to add to video??
+    const NodeStringified = `
+    <article class="sticky-bar">
+        <div>${totalLikes}</div>
+        <span>${dailyFees}</span>
+    </article>
+    `
+    return NodeStringified
+}
