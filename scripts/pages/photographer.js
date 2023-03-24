@@ -42,6 +42,7 @@ async function init() {
     // specify a container into the DOM then push the medialibrary to the DOM
     mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
     console.log(mediaLibrary.totalLikes)
+    const stickyBar = new StickyBar(".sticky-bar").bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
 }
 
 const mediaLibrary = new MediaLibrary()
