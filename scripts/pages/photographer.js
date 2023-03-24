@@ -20,14 +20,15 @@ function photographerInfostoDOM(photographerInfos){
     //document.querySelector("#openModalButton").addEventListener('click', () => displayModal())
 }
 
-const dropdownChange = () => {
+function dropdownChange () {
     const select = document.querySelector("#sort-select")
     mediaLibrary.sort(select.value).pushtoDOM()
-
 }
 
-const addLiketoMedia = (mediaId) => {
+// add a like to a media and refresh the likes total of the sticky bar
+function addLiketoMedia (mediaId) {
     mediaLibrary.addLiketoMedia(mediaId)
+    // TODO should refresh the likes value of the media article
     stickyBar.update()
 }
 
@@ -48,6 +49,7 @@ async function init() {
     // specify a container into the DOM then push the medialibrary to the DOM
     mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
 
+    // create the sticky bar at the bottom right of the screen
     stickyBar = new StickyBar(".sticky-bar")
     stickyBar.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
 }

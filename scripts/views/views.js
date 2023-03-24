@@ -5,7 +5,7 @@ const getVideoView = ({id, src, title, likes}) => {
         <video src=${src} controls="true"></video>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <p onclick="addLiketoMedia(${id})">${likes}</p>
+            <div><p>${likes}</p><img src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
         </div>
     </article>
     `
@@ -20,7 +20,7 @@ const getImageView = ({id, src, title, likes}) => {
         <img src=${src} alt="${title}" onclick="lightbox.open(${id})"></video>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <p onclick="addLiketoMedia(${id})">${likes}</p>
+            <div><p>${likes}</p><img src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
         </div>
     </article>
     `
@@ -60,13 +60,13 @@ const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, 
     return NodeStringified
 }
 
-const getStickBarView = ({totalLikes, dailyFees}) => {
+/*const getStickBarView = ({totalLikes, dailyFees}) => {
     // TODO : alt to add to video??
     const NodeStringified = `
     <article class="sticky-bar">
-        <div>${totalLikes}</div>
+        <div>${totalLikes}<img src="../assets/icons/blackheart.svg"/></div>
         <span>${dailyFees}</span>
     </article>
     `
     return NodeStringified
-}
+}*/

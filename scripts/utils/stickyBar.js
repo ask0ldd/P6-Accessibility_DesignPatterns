@@ -23,7 +23,6 @@ class StickyBar{
         if(this.#mediaLibrary == undefined) throw new Error("The sticky bar needs to be binded to a media library. Use the bindtoMediaLibrary method.")
         document.querySelector("#sticky-daily-fees").innerHTML = this.#photographerInfos.price + ' / jour'
         document.querySelector("#sticky-total-likes").innerHTML = this.#mediaLibrary.totalLikes
-        // return this
     }
 
 }

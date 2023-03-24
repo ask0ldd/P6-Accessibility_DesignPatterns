@@ -195,6 +195,26 @@ form input {
   align-items: center;
 }
 
+.gallery .mediaInfos div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
+.gallery .mediaInfos img {
+  width: 19px;
+  height: 18px;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.gallery .mediaInfos p {
+  font-weight: 500;
+  font-size: 24px;
+  color: #901c1c;
+}
+
 .gallery h2 {
   color: #901c1c;
   font-weight: 400;
@@ -272,6 +292,10 @@ form input {
   width: 376px;
   height: 90px;
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0 2rem;
+}
+
+.sticky-bar img {
+  margin-left: 1rem;
 }
