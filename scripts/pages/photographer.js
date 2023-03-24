@@ -27,7 +27,6 @@ function dropdownChange () {
 
 // add a like to a media and refresh the likes total of the sticky bar
 function addLiketoMedia (mediaId) {
-    //mediaLibrary.addLiketoMedia(mediaId)
     mediaLibrary.selectMedia(mediaId).liked = true
     updateSelectedCardLikes(mediaId)
     stickyBar.update()

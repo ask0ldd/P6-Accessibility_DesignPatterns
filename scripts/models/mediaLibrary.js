@@ -43,30 +43,11 @@ class MediaLibrary {
         return this.#medias[mediaIndex].mediaModel
     }
 
-    /*addLiketoMedia(mediaId){
-        const mediaIndex = this.getIndexOf(mediaId)
-        if(!this.#medias[mediaIndex].mediaModel.liked) this.#medias[mediaIndex].mediaModel.liked = true
-    }*/
-
-    /*addLike(){
-        if(!this.liked) this.liked = true
-    }*/
-
     get totalLikes(){
         // adding likes number with liked (true = 1 / false = 0)
         const likes = this.#medias.reduce( (accu, media, index) => { return(accu + media.mediaModel.likes + media.mediaModel.liked) }, 0)
         return likes
     }
-
-    /*getLikes(mediaId){
-        const mediaIndex = this.getIndexOf(mediaId)
-        return this.#medias[mediaIndex].mediaModel.likes
-    }
-
-    isLiked(mediaId){ // or liked key into the media object?
-        const mediaIndex = this.getIndexOf(mediaId)
-        return this.#medias[mediaIndex].mediaModel.liked
-    }*/
 
     // used by the lightbox to avoid cycling out of boundaries
     get length(){
