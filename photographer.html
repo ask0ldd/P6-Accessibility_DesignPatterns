@@ -42,16 +42,16 @@
         </header>
 				<form> <!-- TODO FORM -->
 					<div>
-						<label for="prenom">Prénom</label> <!-- ACCESSIBILITY : FOR -->
-						<input id="prenom">
-            <label for="nom">Nom</label>
-						<input id="nom">
-            <label for="email">Email</label>
-						<input id="email">
-            <label for="message">Votre message</label>
-						<input id="message">
+						<label id="prenom-label" for="prenom">Prénom</label> <!-- ACCESSIBILITY : FOR -->
+						<input aria-labelledby="prenom-label" type="text" id="prenom">
+            <label id="nom-label" for="nom">Nom</label>
+						<input aria-labelledby="prenom-label" type="text" id="nom">
+            <label id="email-label" for="email">Email</label>
+						<input aria-labelledby="prenom-label" type="email" id="email">
+            <label id="message-label" for="message">Votre message</label>
+						<input aria-labelledby="prenom-label" id="message"> <!-- !!! !!! !!! switch to textarea-->
 					</div>
-          <button type="submit" class="contact_button" aria-label="Send form">Envoyer</button> <!-- ACCESSIBILITY : aria label + type submit -->
+          <button role="button" type="submit" class="contact_button" aria-label="Send form">Envoyer</button> <!-- ACCESSIBILITY : aria label + type submit -->
 				</form>
 			</div>
 		</dialog>
