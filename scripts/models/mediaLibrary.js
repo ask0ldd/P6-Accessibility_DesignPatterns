@@ -38,6 +38,7 @@ class MediaLibrary {
         })
     }
     
+    // return mediaModel so getter and setter methods can't be accessed through chaining
     selectMedia(mediaId){
         const mediaIndex = this.getIndexOf(mediaId)
         return this.#medias[mediaIndex].mediaModel

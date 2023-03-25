@@ -227,8 +227,7 @@ form input {
   width: 80vw;
   display: hidden;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  place-content: center;
   padding: 35px;
   background-color: #fff;
   border: none;
@@ -260,22 +259,27 @@ form input {
 }
 
 .sort-container select {
+  appearance: none;
   margin-left: 2rem;
   background: #911c1c;
   color: #fff;
   border: none;
   border-radius: 5px;
   width: 180px;
-  height: 2rem;
+  padding: 1rem;
+  font-weight: 600;
 }
 
 .sort-container select:active {
   border: none;
 }
 
-.sort-container select option {
-  height: 2rem;
+.sort-container option {
+  appearance: none;
+  padding: 1rem;
   border-bottom: 1px solid white;
+  line-height: 4rem;
+  height: 32px;
 }
 
 .sticky-bar {
