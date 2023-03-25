@@ -37,7 +37,7 @@ class Lightbox {
     }
 
     updateDisplayedMedia(media){
-        const mediaDOM = media.getMediaCardDOM()
+        const mediaDOM = media.getShortMediaCardDOM()
         this.#modaleNode.innerHTML=""
         this.#modaleNode.appendChild(mediaDOM)
     }

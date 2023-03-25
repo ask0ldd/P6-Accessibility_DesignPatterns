@@ -13,6 +13,7 @@ class MediaLibrary {
         medias.forEach(media => {
             const mediaModel = mediaFactory(media) // TODO error testing
             mediaLibrary.add(mediaModel)
+            console.log(mediaModel)
         })
         return this // for methods chaining
     }

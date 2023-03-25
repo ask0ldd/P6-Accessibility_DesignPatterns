@@ -75,7 +75,13 @@ function mediaFactory(media){
             return parsedViewNode
         }
 
-        return { mediaModel, getMediaCardDOM }
+        function getShortMediaCardDOM(){
+            const viewStringified = getShortVideoView(mediaModel.getViewProps())
+            const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
+            return parsedViewNode
+        }
+
+        return { mediaModel, getMediaCardDOM, getShortMediaCardDOM }
     }
 
     if(media.image){
@@ -87,7 +93,13 @@ function mediaFactory(media){
             return parsedViewNode
         }
 
-        return { mediaModel, getMediaCardDOM }
+        function getShortMediaCardDOM(){
+            const viewStringified = getShortImageView(mediaModel.getViewProps())
+            const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
+            return parsedViewNode
+        }
+
+        return { mediaModel, getMediaCardDOM, getShortMediaCardDOM }
     }
 
     return {error : "can't create the object : invalid media datas"}

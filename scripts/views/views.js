@@ -13,6 +13,18 @@ const getVideoView = ({id, src, title, likes}) => {
     return NodeStringified
 }
 
+const getShortVideoView = ({id, src, title, likes}) => {
+    // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
+    // aria button for like icon + alt likes
+    const NodeStringified = `
+    <article id="media-${id}">
+        <video src=${src} aria-label="${title}" controls />
+        <h2>${title}</h2>
+    </article>
+    `
+    return NodeStringified
+}
+
 const getImageView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
@@ -23,6 +35,18 @@ const getImageView = ({id, src, title, likes}) => {
             <h2>${title}</h2>
             <div><p id="likecontainer-${id}">${likes}</p><img aria="button" alt="likes" src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
         </div>
+    </article>
+    `
+    return NodeStringified
+}
+
+const getShortImageView = ({id, src, title, likes}) => {
+    // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
+    // aria button for like icon + alt likes
+    const NodeStringified = `
+    <article id="media-${id}">
+        <img src=${src} alt="${title}"/>
+        <h2>${title}</h2>
     </article>
     `
     return NodeStringified
