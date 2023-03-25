@@ -67,6 +67,7 @@ class Lightbox {
         this.updateDisplayedMedia(media)
         this.#modaleNode.showModal()
         this.#modaleNode.style.display = "flex"
+        this.#modaleNode.style.justifyContent = "center"
     }
 
     close(){

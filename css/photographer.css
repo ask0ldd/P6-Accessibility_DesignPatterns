@@ -240,7 +240,8 @@ form input {
 }
 
 #lightbox_modal {
-  width: 100%;
+  width: 80%;
+  height: 90%;
   display: hidden;
   justify-content: center;
   align-items: center;
@@ -248,8 +249,21 @@ form input {
 
 #lightbox_modal img,
 #lightbox_modal video {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#lightbox_modal h2 {
+  width: fit-content;
+}
+
+#lightbox_modal article {
+  width: fit-content;
   max-width: 80%;
-  max-height: 85vh;
+  max-height: 90%;
+  display: flex;
+  place-content: center;
+  flex-direction: column;
 }
 
 #lightbox_modal::backdrop {
