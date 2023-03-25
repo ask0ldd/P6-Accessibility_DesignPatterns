@@ -1,11 +1,12 @@
 const getVideoView = ({id, src, title, likes}) => {
-    // TODO : alt to add to video??
+    // ACCESSIBILITY : aria label added + open closeup view to hint its function + tabindex image
+    // TODO : alt to add to video?? / !!! don't forget onclick
     const NodeStringified = `
     <article>
-        <video src=${src} controls="true"></video>
+        <video aria-label="${title}, open closeup view" tabindex="0" src=${src} onclick="lightbox.open(${id})"></video>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <div><p id="likecontainer-${id}">${likes}</p><img src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
+            <div><p id="likecontainer-${id}">${likes}</p><img aria="button" alt="likes" src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
         </div>
     </article>
     `
@@ -13,14 +14,14 @@ const getVideoView = ({id, src, title, likes}) => {
 }
 
 const getImageView = ({id, src, title, likes}) => {
-    // ACCESSIBILITY : alt added
-    // aria button for like icon
+    // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
+    // aria button for like icon + alt likes
     const NodeStringified = `
     <article id="media-${id}">
-        <img src=${src} alt="${title}" onclick="lightbox.open(${id})"></video>
+        <img tabindex="0" src=${src} alt="${title}, open closeup view" onclick="lightbox.open(${id})"/>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <div><p id="likecontainer-${id}">${likes}</p><img src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
+            <div><p id="likecontainer-${id}">${likes}</p><img aria="button" alt="likes" src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
         </div>
     </article>
     `
@@ -44,7 +45,7 @@ const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fe
 }
 
 const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, fees}) => {
-    // ACCESSIBILITY : alt added to img
+    // ACCESSIBILITY : alt added to img + type="button" for the button
     const NodeStringified = `
     <section class="photograph-header">
         <div>
@@ -52,7 +53,7 @@ const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, 
             <p class="header-location">${location}</p>
             <p class="header-quote">${quote}</p>
         </div>
-        <button id="openModalButton" onclick="displayModal()" class="contact_button">Contactez-moi</button>
+        <button type="button" id="openModalButton" onclick="displayModal()" class="contact_button">Contactez-moi</button>
         <img src="${portraitSrc}" alt="${name}'s portrait" />
     </section>
     `

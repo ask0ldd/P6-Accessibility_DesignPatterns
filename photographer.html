@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" alt="fisheye logo"> <!-- ACCESSIBILITY : fisheye logo -->
+      <a href="index.html" title="fisheye homepage"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"></a> <!-- ACCESSIBILITY : fisheye logo + <a> title -->
     </header>
     <main id="main">
 
@@ -19,7 +19,7 @@
 
       <!-- added-->
       <div class="sort-container">
-        <label for="sort-select">Trier par</label> <!-- ACCESSIBILITY : fisheye logo -->
+        <label for="sort-select">Trier par</label> <!-- ACCESSIBILITY : for attribute -->
         <select name="sort-select" id="sort-select" onchange="dropdownChange()">
           <option value="likesDesc">Popularité</option>
           <option value="dateDesc">Date</option>
@@ -57,12 +57,12 @@
 		</dialog>
 
     <!-- LIGHTBOX MODAL -->
-    <dialog id="lightbox_modal">
+    <dialog id="lightbox_modal" aria-label="image closeup view"> <!-- ACCESSIBILITY : aria label -->
     </dialog>
 
     <article class="sticky-bar">
-      <div><span id="sticky-total-likes">totalLikes</span><img src="assets/icons/blackheart.svg"></div>
-      <span id="sticky-daily-fees">dailyFees/Jour</span>
+      <div><span id="sticky-total-likes"></span><img src="assets/icons/blackheart.svg"></div>
+      <span id="sticky-daily-fees"></span>
     </article>
 
     <script src="scripts/views/views.js" defer></script>

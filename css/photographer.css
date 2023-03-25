@@ -8,6 +8,10 @@
   text-decoration: none;
   list-style: none;
 }
+
+/**:focus {
+  outline: #d66363;
+}*/
 /* */
 
 body {
@@ -185,6 +189,7 @@ form input {
   object-fit: cover;
   /*height: 450px;*/
   aspect-ratio: 350/300;
+  cursor: pointer;
 }
 
 .gallery .mediaInfos {
@@ -268,6 +273,7 @@ form input {
   width: 180px;
   padding: 1rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .sort-container select:active {
