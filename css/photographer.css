@@ -205,13 +205,21 @@ form textarea {
   flex: 1 1 25%;
 }
 
+.gallery a {
+  width: 100%;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+}
+
 .gallery img,
 .gallery video {
+  display: block;
   width: 100%;
   object-fit: cover;
   /*height: 450px;*/
   aspect-ratio: 350/300;
-  cursor: pointer;
+  /*cursor: pointer;*/
 }
 
 .gallery .mediaInfos {

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - Site pour photographe freelancer </title>
   </head>
   <body>
     <header>
@@ -35,7 +35,7 @@
     <!-- CONTACT MODAL -->
     <dialog aria-labelledby="modal-heading" id="contact_modal"> <!-- div > dialog --><!-- ACCESSIBILITY : labelledby -->
 				<header>
-          <h2 id="modal-heading">Contactez-moi Name</h2>
+          <h2 id="modal-heading" tabindex="0">Contactez-moi Name</h2>
           <input type="image" src="assets/icons/close.svg" role="button" aria-label="Close contact form" alt="close modale" onclick="closeModal()" tabindex="1"> <!-- ACCESSIBILITY : ARIA ROLE + ALT + tabindex + aria label -->
         </header>
 				<form>
@@ -49,7 +49,7 @@
             <label id="message-label" for="message">Votre message</label>
 						<textarea aria-labelledby="message-label" rows="3" id="message" required></textarea> <!-- !!! !!! !!! switch to textarea-->
 					</div>
-          <button role="button" type="submit" class="contact_button" aria-label="Send form">Envoyer</button> <!-- ACCESSIBILITY : aria label + type submit -->
+          <button role="button" type="submit" class="contact_button" aria-label="transmettre">Envoyer</button> <!-- ACCESSIBILITY : aria label + type submit -->
 				</form>
 		</dialog>
 
