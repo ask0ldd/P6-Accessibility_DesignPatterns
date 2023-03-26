@@ -67,7 +67,7 @@ const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fe
     const NodeStringified = `
     <article>
         <a href="photographer.html?id=${userId}">
-            <img src="${portraitSrc}" alt="${name}'s portrait"/>
+            <img src="${portraitSrc}" alt="photo"/>
             <h2>${name}</h2>
         </a>
         <p class="location">${location}</p>
@@ -82,7 +82,7 @@ const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, 
     // ACCESSIBILITY : alt added to img + type="button" for the button
     const NodeStringified = `
     <section class="photograph-header">
-        <div>
+        <div class="namenlocation-container">
             <h1>${name}</h1>
             <p class="header-location">${location}</p>
             <p class="header-quote">${quote}</p>

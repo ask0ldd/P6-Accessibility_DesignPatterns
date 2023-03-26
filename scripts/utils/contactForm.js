@@ -10,4 +10,14 @@ function closeModal() {
     modal.style.display = "none"
 }
 
+function submitForm(e){
+    e.preventDefault()
+    const formdata = new FormData(document.querySelector("#contact-form"))
+    console.log('PRENOM : ',formdata.get('prenom'))
+    console.log('NOM : ',formdata.get('nom'))
+    console.log('EMAIL : ',formdata.get('email'))
+    console.log('MESSAGE : ',formdata.get('message'))
+}
+
 window.addEventListener('keydown', e => {if(e.keyCode == 27) return closeModal()} )
+document.querySelector('#contact-form').addEventListener("submit", e =>  submitForm(e))

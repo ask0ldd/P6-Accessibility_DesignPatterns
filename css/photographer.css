@@ -25,7 +25,7 @@ body {
 
 .photograph-header {
   background-color: #fafafa;
-  height: 300px;
+  /*height: 300px;*/
   margin: 0 100px;
   /* ADDED */
   display: flex;
@@ -43,12 +43,23 @@ body {
   object-fit: cover;
 }
 
+.photograph-header .namenlocation-container {
+  width: fit-content;
+}
+
 .photograph-header h1 {
   /* ADDED */
   font-weight: 400;
   font-size: 64px;
   color: #d3573c;
   margin-left: -3px;
+  margin-right: 0;
+  width: fit-content;
+}
+
+.photograph-header p {
+  width: fit-content;
+  margin-right: 0;
 }
 
 .photograph-header .header-location {
@@ -393,4 +404,30 @@ form textarea {
 
 .sticky-bar img {
   margin-left: 1rem;
+}
+
+@media screen and (max-width: 1350px) {
+  .photograph-header h1 {
+    font-size: 48px;
+  }
+
+  .photograph-header .contact_button {
+    font-size: 16px;
+    height: 50px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .photograph-header img {
+    height: 160px;
+    width: 160px;
+  }
+
+  .gallery {
+    column-gap: 32px;
+  }
+
+  .gallery article {
+    max-width: calc((100% - 64px) / 3);
+  }
 }
