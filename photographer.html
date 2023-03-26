@@ -24,7 +24,7 @@
           <option value="titleAsc">Titre</option>
         </select>
       </div>
-      
+
       <section class="gallery">
 
       </section>
@@ -33,10 +33,10 @@
     </main>
 
     <!-- CONTACT MODAL -->
-    <dialog id="contact_modal"> <!-- div > dialog -->
-			<div class="modal">
+    <dialog aria-labelledby="modal-heading" id="contact_modal"> <!-- div > dialog --><!-- ACCESSIBILITY : labelledby -->
+			<div class="modal"> 
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2 id="modal-heading">Contactez-moi</h2>
           <img src="assets/icons/close.svg" role="button" aria-label="Close contact form" alt="close modale button" onclick="closeModal()" tabindex="0"> <!-- ACCESSIBILITY : ARIA ROLE + ALT + tabindex + aria label -->
         </header>
 				<form> <!-- TODO FORM -->

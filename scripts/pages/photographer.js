@@ -48,6 +48,7 @@ async function init() {
 
     photographerInfostoDOM(photographerInfos)
 
+    // instanciate lightbox
     lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
 
     // building the medialibrary before sorting it
@@ -59,6 +60,8 @@ async function init() {
     // create the sticky bar at the bottom right of the screen
     stickyBar = new StickyBar(".sticky-bar")
     stickyBar.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
+
+    document.querySelector('#modal-heading').innerHTML="Contactez-moi<br>" + photographerInfos.name
 }
 
 const mediaLibrary = new MediaLibrary()

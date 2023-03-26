@@ -17,10 +17,14 @@ const getShortVideoView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
     const NodeStringified = `
-    <article id="media-${id}">
-        <video src=${src} aria-label="${title}" controls />
-        <h2>${title}</h2>
-    </article>
+    <div class="arrownmedia-container">
+        <div class="leftarrow-container"><a tabindex="0" href="javascript:lightbox.prevMedia()"><img class="arrow" role="button" alt="previous media" src="../assets/icons/rightarrow.svg"/></a></div>
+        <article class="light-container" id="media-${id}">
+            <video src=${src} aria-label="${title}" controls></video>
+            <h2>${title}</h2>
+        </article>
+        <div class="rightarrow-container"><a tabindex="0" href="javascript:lightbox.nextMedia()"><img class="arrow" role="button" alt="next media" src="../assets/icons/rightarrow.svg"/></a><img class="close" src="../assets/icons/closegallery.svg"/></div>
+    </div>
     `
     return NodeStringified
 }
@@ -43,11 +47,16 @@ const getImageView = ({id, src, title, likes}) => {
 const getShortImageView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
+    // aria role buttons next prev + alt + tabindex
     const NodeStringified = `
-    <article id="media-${id}">
-        <img src=${src} alt="${title}"/>
-        <h2>${title}</h2>
-    </article>
+    <div class="arrownmedia-container">
+    <div class="leftarrow-container"><a tabindex="0" href="javascript:lightbox.prevMedia()"><img class="arrow" role="button" alt="previous media" src="../assets/icons/rightarrow.svg"/></a></div>
+        <article class="light-container" id="media-${id}">
+            <img src=${src} alt="${title}"/>
+            <h2>${title}</h2>
+        </article>
+        <div class="rightarrow-container"><a tabindex="0" href="javascript:lightbox.nextMedia()"><img class="arrow" role="button" alt="next media" src="../assets/icons/rightarrow.svg"/></a><img class="close" src="../assets/icons/closegallery.svg"/></div>
+    </div>
     `
     return NodeStringified
 }
@@ -84,14 +93,3 @@ const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, 
     // onclick="displayModal()"
     return NodeStringified
 }
-
-/*const getStickBarView = ({totalLikes, dailyFees}) => {
-    // TODO : alt to add to video??
-    const NodeStringified = `
-    <article class="sticky-bar">
-        <div>${totalLikes}<img src="../assets/icons/blackheart.svg"/></div>
-        <span>${dailyFees}</span>
-    </article>
-    `
-    return NodeStringified
-}*/
