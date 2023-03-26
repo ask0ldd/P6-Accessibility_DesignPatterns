@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function displayModal() {
     const modal = document.querySelector("#contact_modal")
     modal.showModal()

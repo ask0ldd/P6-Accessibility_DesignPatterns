@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars, no-undef */
 const currentPage = "index.html"
 
 // 2 > converting photographers datas into DOM nodes 
@@ -10,8 +11,8 @@ function datastoDOM(photographers) {
         const photographerModel = photographerFactory(photographer)
         const userCardDOM = photographerModel.getUserCardDOM()
         photographersSection.appendChild(userCardDOM)
-    });
-};
+    })
+}
 
 // 1 > fetching photographers datas 
 // 2 > converting into DOM nodes 
@@ -26,6 +27,6 @@ async function init() {
             console.log(errorMessage)
             // afficher message d'erreur
         }
-};
+}
 
-init();
+init()

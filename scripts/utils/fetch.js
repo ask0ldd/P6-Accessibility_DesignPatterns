@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const jsonUrl = "../data/photographers.json"
 
 const fetchDatas = async() => {

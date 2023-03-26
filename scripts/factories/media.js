@@ -1,4 +1,5 @@
 // Products blueprints
+/* eslint-disable no-unused-vars,no-undef */
 class Media {
     #id
     #owner
@@ -35,7 +36,7 @@ class Media {
     get id(){ return this.#id }
 }
 
-class Image extends Media { // deport src + get src() to media class ?
+class Picture extends Media { // deport src + get src() to media class ?
     #src 
     constructor(media){
         super(media)
@@ -85,7 +86,7 @@ function mediaFactory(media){
     }
 
     if(media.image){
-        mediaModel = new Image(media)
+        mediaModel = new Picture(media)
 
         function getMediaCardDOM(){
             const viewStringified = getImageView(mediaModel.getViewProps())

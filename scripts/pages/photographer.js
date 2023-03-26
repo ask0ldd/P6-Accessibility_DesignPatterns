@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars, no-undef */
 const currentPage = "photographer.html"
 const defaultFilter = "likesDesc"
 let lightbox

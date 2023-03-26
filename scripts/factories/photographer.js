@@ -1,4 +1,5 @@
 // Photographer blueprints
+/* eslint-disable no-unused-vars,no-undef */
 class Photographer {
 
     #name
