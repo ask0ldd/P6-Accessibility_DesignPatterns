@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars,no-undef*/
 class MediaLibrary {
     #medias = [] // [{ mediaModel , getMediaCardDOM }, ...]
     #likes
@@ -8,11 +9,11 @@ class MediaLibrary {
         if(DOMTarget) this.#DOMTarget = DOMTarget
     }
 
-    // build the medialibrary cycling through all the medias produced by the mediafactory
+    // build the medialibrary from all the medias produced by the mediafactory
     build(medias){
         medias.forEach(media => {
             const mediaModel = mediaFactory(media) // TODO error testing
-            mediaLibrary.add(mediaModel)
+            this.add(mediaModel)
         })
         return this // for methods chaining
     }
@@ -46,7 +47,7 @@ class MediaLibrary {
 
     get totalLikes(){
         // adding likes number with liked (true = 1 / false = 0)
-        const likes = this.#medias.reduce( (accu, media, index) => { return(accu + media.mediaModel.likes + media.mediaModel.liked) }, 0)
+        const likes = this.#medias.reduce( (accu, media) => { return(accu + media.mediaModel.likes + media.mediaModel.liked) }, 0)
         return likes
     }
 

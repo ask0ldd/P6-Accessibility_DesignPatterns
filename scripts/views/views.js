@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const getVideoView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : aria label added + open closeup view to hint its function + tabindex image
     // TODO : alt to add to video?? / !!! don't forget onclick
@@ -13,7 +14,7 @@ const getVideoView = ({id, src, title, likes}) => {
     return NodeStringified
 }
 
-const getShortVideoView = ({id, src, title, likes}) => {
+const getShortVideoView = ({id, src, title}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
     const NodeStringified = `
@@ -44,7 +45,7 @@ const getImageView = ({id, src, title, likes}) => {
     return NodeStringified
 }
 
-const getShortImageView = ({id, src, title, likes}) => {
+const getShortImageView = ({id, src, title}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
     // aria role buttons next prev + alt + tabindex
@@ -78,7 +79,7 @@ const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fe
     return NodeStringified
 }
 
-const getPhotographerHeaderView = ({userId, portraitSrc, name, location, quote, fees}) => {
+const getPhotographerHeaderView = ({portraitSrc, name, location, quote}) => {
     // ACCESSIBILITY : alt added to img + type="button" for the button
     const NodeStringified = `
     <section class="photograph-header">

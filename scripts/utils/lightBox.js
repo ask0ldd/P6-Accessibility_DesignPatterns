@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 class Lightbox {
 
     #currentLibraryIndex
@@ -42,7 +43,8 @@ class Lightbox {
         this.#modaleNode.appendChild(mediaDOM)
     }
 
-    retrieveMediaFromLibrary(mediaId){
+    // retrieveMediaFromLibrary(mediaId){
+    retrieveMediaFromLibrary(){
         const media = this.#mediaLibrary.getMediaAtIndex(this.#currentLibraryIndex)
         return media 
     }
