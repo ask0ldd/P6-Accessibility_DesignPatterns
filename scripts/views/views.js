@@ -18,12 +18,12 @@ const getShortVideoView = ({id, src, title, likes}) => {
     // aria button for like icon + alt likes
     const NodeStringified = `
     <div class="arrownmedia-container">
-        <div class="leftarrow-container"><a tabindex="0" href="javascript:lightbox.prevMedia()"><img class="arrow" role="button" alt="previous media" src="../assets/icons/rightarrow.svg"/></a></div>
+        <div class="leftarrow-container"><a tabindex="2" href="javascript:lightbox.prevMedia()"><img class="arrow" role="button" alt="previous media" src="../assets/icons/rightarrow.svg"/></a></div>
         <article class="light-container" id="media-${id}">
             <video src=${src} aria-label="${title}" controls></video>
             <h2>${title}</h2>
         </article>
-        <div class="rightarrow-container"><a tabindex="0" href="javascript:lightbox.nextMedia()"><img class="arrow" role="button" alt="next media" src="../assets/icons/rightarrow.svg"/></a><img class="close" src="../assets/icons/closegallery.svg"/></div>
+        <div class="rightarrow-container"><a tabindex="3" href="javascript:lightbox.nextMedia()"><img class="arrow" role="button" alt="next media" src="../assets/icons/rightarrow.svg"/></a><img class="close" tabindex="1" role="button" aria-label="close lightbox" alt="close lightbox button" src="../assets/icons/closegallery.svg" onclick="lightbox.close()"/></div>
     </div>
     `
     return NodeStringified
@@ -50,12 +50,12 @@ const getShortImageView = ({id, src, title, likes}) => {
     // aria role buttons next prev + alt + tabindex
     const NodeStringified = `
     <div class="arrownmedia-container">
-    <div class="leftarrow-container"><a tabindex="0" href="javascript:lightbox.prevMedia()"><img class="arrow" role="button" alt="previous media" src="../assets/icons/rightarrow.svg"/></a></div>
+    <div class="leftarrow-container"><a tabindex="2" href="javascript:lightbox.prevMedia()"><img class="arrow" role="button" alt="previous media" src="../assets/icons/rightarrow.svg"/></a></div>
         <article class="light-container" id="media-${id}">
             <img src=${src} alt="${title}"/>
             <h2>${title}</h2>
         </article>
-        <div class="rightarrow-container"><a tabindex="0" href="javascript:lightbox.nextMedia()"><img class="arrow" role="button" alt="next media" src="../assets/icons/rightarrow.svg"/></a><img class="close" src="../assets/icons/closegallery.svg"/></div>
+        <div class="rightarrow-container"><a tabindex="3" href="javascript:lightbox.nextMedia()"><img class="arrow" role="button" alt="next media" src="../assets/icons/rightarrow.svg"/></a><img class="close" tabindex="1" role="button" aria-label="close lightbox" alt="close lightbox button" src="../assets/icons/closegallery.svg" onclick="lightbox.close()"/></div>
     </div>
     `
     return NodeStringified

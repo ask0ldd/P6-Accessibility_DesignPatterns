@@ -85,12 +85,12 @@ body {
 
 #contact_modal {
   border-radius: 5px;
-  width: 40%;
+  width: 35%;
   display: hidden;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 35px;
+  padding: 25px 35px;
   background-color: #db8876;
   border: none;
   margin: auto;
@@ -112,35 +112,36 @@ body {
   margin: auto;
 }*/
 
-.modal {
+/*.modal {
   padding-bottom: 0.75rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   background-color: blue;
-}
+}*/
 
-.modal header {
+#contact_modal header {
   display: flex;
   justify-content: space-between;
   width: 100%;
   align-items: flex-start;
-  background-color: red;
+  height: fit-content;
+  margin: 0;
 }
 
-.modal header img {
+#contact_modal header img {
   cursor: pointer;
 }
 
-.modal header h2 {
+#contact_modal header h2 {
   font-size: 64px;
   font-weight: normal;
   text-align: left;
-  line-height: 75px;
-  margin-bottom: 4rem;
+  line-height: 70px;
+  margin-top: -10px;
 }
 
-.modal label {
+#contact_modal label {
   margin-top: 1rem;
 }
 
@@ -169,6 +170,7 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  margin-top: 2px;
 }
 
 /* ADDED */
