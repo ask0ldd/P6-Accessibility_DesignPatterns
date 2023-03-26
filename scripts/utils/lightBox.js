@@ -18,9 +18,9 @@ class Lightbox {
 
     #keyboardListener(e) // ACCESSIBILITY : keyboard navigation
     {
-        if(e.keyCode == 27) return this.close() 
-        if(e.keyCode == 39) return this.nextMedia()
-        if(e.keyCode == 37) return this.prevMedia()
+        if(e.code == "Escape") return this.close() 
+        if(e.code == "ArrowRight") return this.nextMedia()
+        if(e.code == "ArrowLeft") return this.prevMedia()
     }
 
     #scrollLock(bool = false)

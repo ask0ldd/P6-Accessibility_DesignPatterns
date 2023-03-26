@@ -20,5 +20,5 @@ function submitForm(e){
     console.log('MESSAGE : ',formdata.get('message'))
 }
 
-window.addEventListener('keydown', e => {if(e.keyCode == 27) return closeModal()} )
+window.addEventListener('keydown', e => {if(e.code == "Escape") return closeModal()} )
 document.querySelector('#contact-form').addEventListener("submit", e =>  submitForm(e))

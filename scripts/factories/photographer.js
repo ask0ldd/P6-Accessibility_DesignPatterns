@@ -31,7 +31,7 @@ function photographerFactory(data) {
 
     const photographer = new Photographer(data) // TODO needs to deal with errors if one value is missing / into the photographer class constructor?
 
-    // different photographer nodes group generated if request comes from index || photographer.html
+    // different photographer cards generated if request comes from index || photographer.html
     if(currentPage === "index.html") 
         photographer.getUserCardDOM = () =>  {
             const viewStringified = getPhotographerCardView(photographer.getViewProps())
@@ -46,11 +46,5 @@ function photographerFactory(data) {
             return parsedViewNode       
         }
     
-    return (photographer) /* , getUserCardDOM */ 
+    return (photographer)
 }
-
-
-    /*const { name , id : userId, city, country, tagline : quote, price : fees, portrait } = data // TODO needs to deal with errors if one value is missing / into the photographer class constructor?
-
-    const portraitSrc = `./assets/photographers/${portrait}`
-    const location = city + ', ' + country*/

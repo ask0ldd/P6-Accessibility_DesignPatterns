@@ -82,7 +82,7 @@ function mediaFactory(media){
             return parsedViewNode
         }
 
-        return (mediaModel) /*, getMediaCardDOM, getShortMediaCardDOM*/
+        return (mediaModel)
     }
 
     if(media.image){
@@ -100,7 +100,7 @@ function mediaFactory(media){
             return parsedViewNode
         }
 
-        return (mediaModel) /*, getMediaCardDOM, getShortMediaCardDOM */
+        return (mediaModel)
     }
 
     return {error : "can't create the object : invalid media datas"}
