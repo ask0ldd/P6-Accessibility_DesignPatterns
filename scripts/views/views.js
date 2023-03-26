@@ -4,7 +4,7 @@ const getVideoView = ({id, src, title, likes}) => {
     // TODO : alt to add to video?? / !!! don't forget onclick
     const NodeStringified = `
     <article>
-    <a href="javascript:lightbox.open(${id})"><video aria-label="${title} video, open closeup view" src=${src} onclick="lightbox.open(${id})"></video></a>
+    <a href="javascript:lightbox.open(${id})"><video aria-label="${title} video, open closeup view" src=${src}></video></a>
         <div class="mediaInfos">
             <h2>${title}</h2>
             <div><p id="likecontainer-${id}">${likes}</p><input type="image" tabindex="0" aria="button" alt="likes button" src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>

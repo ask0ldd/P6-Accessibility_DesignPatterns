@@ -74,7 +74,7 @@ class Lightbox {
 
     close(){
         this.#scrollLock(false)
-        this.#modaleNode.style.display = "none"
         this.#modaleNode.close()
+        this.#modaleNode.style.display = "none"
     }
 }

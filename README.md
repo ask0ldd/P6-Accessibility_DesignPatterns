@@ -1,6 +1,3 @@
-# Base de code du projet P6 - Parcours Front-end
+A graduation project : Some gallery to gives freelance photographers an opportunity to show their work to potential clients.
 
-## Démarrer le projet
-
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+I have to say I had no control at all over the design. Keeping it as it is was part of the assignment.

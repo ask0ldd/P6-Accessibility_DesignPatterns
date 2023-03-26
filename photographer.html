@@ -18,11 +18,13 @@
       <!-- added-->
       <div class="sort-container">
         <label for="sort-select">Trier par</label> <!-- ACCESSIBILITY : for attribute -->
-        <select name="sort-select" id="sort-select" onchange="dropdownChange()">
-          <option value="likesDesc">Popularité</option>
-          <option value="dateDesc">Date</option>
-          <option value="titleAsc">Titre</option>
-        </select>
+        <div class="custom-select">
+          <select name="sort-select" id="sort-select" onchange="dropdownChange()">
+            <option value="likesDesc">Popularité</option>
+            <option value="dateDesc">Date</option>
+            <option value="titleAsc">Titre</option>
+          </select>
+        </div>
       </div>
 
       <section class="gallery">

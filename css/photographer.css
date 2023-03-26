@@ -359,6 +359,10 @@ form textarea {
   align-items: center;
 }
 
+.sort-container label {
+  font-weight: 600;
+}
+
 .sort-container select {
   appearance: none;
   margin-left: 2rem;
@@ -370,6 +374,12 @@ form textarea {
   padding: 1rem;
   font-weight: 600;
   cursor: pointer;
+  /*display: none;*/
+}
+
+.custom-select {
+  width: 180px;
+  position: relative;
 }
 
 .sort-container select:active {
