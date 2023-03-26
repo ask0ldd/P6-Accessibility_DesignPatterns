@@ -70,37 +70,37 @@ function mediaFactory(media){
     if(media.video){
         mediaModel = new Video(media)
 
-        function getMediaCardDOM(){
+        mediaModel.getMediaCardDOM = () => {
             const viewStringified = getVideoView(mediaModel.getViewProps())
             const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
             return parsedViewNode
         }
 
-        function getShortMediaCardDOM(){
+        mediaModel.getShortMediaCardDOM = () => {
             const viewStringified = getShortVideoView(mediaModel.getViewProps())
             const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
             return parsedViewNode
         }
 
-        return { mediaModel, getMediaCardDOM, getShortMediaCardDOM }
+        return (mediaModel) /*, getMediaCardDOM, getShortMediaCardDOM*/
     }
 
     if(media.image){
         mediaModel = new Picture(media)
 
-        function getMediaCardDOM(){
+        mediaModel.getMediaCardDOM = () => {
             const viewStringified = getImageView(mediaModel.getViewProps())
             const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
             return parsedViewNode
         }
 
-        function getShortMediaCardDOM(){
+        mediaModel.getShortMediaCardDOM = () => {
             const viewStringified = getShortImageView(mediaModel.getViewProps())
             const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
             return parsedViewNode
         }
 
-        return { mediaModel, getMediaCardDOM, getShortMediaCardDOM }
+        return (mediaModel) /*, getMediaCardDOM, getShortMediaCardDOM */
     }
 
     return {error : "can't create the object : invalid media datas"}

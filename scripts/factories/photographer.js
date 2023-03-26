@@ -33,20 +33,20 @@ function photographerFactory(data) {
 
     // different photographer nodes group generated if request comes from index || photographer.html
     if(currentPage === "index.html") 
-        function getUserCardDOM() {
+        photographer.getUserCardDOM = () =>  {
             const viewStringified = getPhotographerCardView(photographer.getViewProps())
             const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
             return parsedViewNode
         }
 
     if(currentPage === "photographer.html") 
-        function getUserCardDOM() {
+        photographer.getUserCardDOM = () =>  {
             const viewStringified = getPhotographerHeaderView(photographer.getViewProps())
             const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
             return parsedViewNode       
         }
     
-    return { photographer, getUserCardDOM }
+    return (photographer) /* , getUserCardDOM */ 
 }
 
 
