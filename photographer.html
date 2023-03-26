@@ -38,16 +38,16 @@
           <h2 id="modal-heading">Contactez-moi Name</h2>
           <img src="assets/icons/close.svg" role="button" aria-label="Close contact form" alt="close modale button" onclick="closeModal()" tabindex="1"> <!-- ACCESSIBILITY : ARIA ROLE + ALT + tabindex + aria label -->
         </header>
-				<form> <!-- TODO FORM -->
+				<form>
 					<div>
-						<label id="prenom-label" for="prenom">Prénom</label> <!-- ACCESSIBILITY : FOR -->
+						<label id="prenom-label" for="prenom" required>Prénom</label> <!-- ACCESSIBILITY : FOR -->
 						<input aria-labelledby="prenom-label" type="text" id="prenom">
             <label id="nom-label" for="nom">Nom</label>
 						<input aria-labelledby="nom-label" type="text" id="nom">
-            <label id="email-label" for="email">Email</label>
+            <label id="email-label" for="email" required>Email</label>
 						<input aria-labelledby="email-label" type="email" id="email">
             <label id="message-label" for="message">Votre message</label>
-						<input aria-labelledby="message-label" id="message"> <!-- !!! !!! !!! switch to textarea-->
+						<textarea aria-labelledby="message-label" rows="3" id="message" required></textarea> <!-- !!! !!! !!! switch to textarea-->
 					</div>
           <button role="button" type="submit" class="contact_button" aria-label="Send form">Envoyer</button> <!-- ACCESSIBILITY : aria label + type submit -->
 				</form>
