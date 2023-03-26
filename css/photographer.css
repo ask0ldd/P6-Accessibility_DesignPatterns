@@ -229,7 +229,7 @@ form textarea {
   height: 100%;
 }
 
-.gallery .mediaInfos img {
+.gallery .mediaInfos input {
   width: 19px;
   height: 18px;
   margin-left: 0.5rem;
