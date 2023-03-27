@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-function StringtoNodeConverter(viewStringified){
+function StringtoNode(viewStringified){
     const viewAsANode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild
     return viewAsANode
 }
@@ -16,7 +16,7 @@ const getVideoView = ({id, src, title, likes}) => {
         </div>
     </article>
     `
-    return StringtoNodeConverter(NodeStringified)
+    return StringtoNode(NodeStringified)
 }
 
 const getShortVideoView = ({id, src, title}) => {
@@ -32,7 +32,7 @@ const getShortVideoView = ({id, src, title}) => {
         <div class="rightarrow-container"><a tabindex="3" href="javascript:lightbox.nextMedia()"><img class="arrow" role="button" alt="next media" src="../assets/icons/rightarrow.svg"/></a><input type="image" class="close" role="button" tabindex="1" aria-label="close lightbox" alt="close lightbox" src="../assets/icons/closegallery.svg" onclick="lightbox.close()"/></div>
     </div>
     `
-    return StringtoNodeConverter(NodeStringified)
+    return StringtoNode(NodeStringified)
 }
 
 const getImageView = ({id, src, title, likes}) => {
@@ -47,7 +47,7 @@ const getImageView = ({id, src, title, likes}) => {
         </div>
     </article>
     `
-    return StringtoNodeConverter(NodeStringified)
+    return StringtoNode(NodeStringified)
 }
 
 const getShortImageView = ({id, src, title}) => {
@@ -65,7 +65,7 @@ const getShortImageView = ({id, src, title}) => {
         <div class="rightarrow-container"><a tabindex="4" href="javascript:lightbox.nextMedia()"><img class="arrow" role="button" alt="next media" src="../assets/icons/rightarrow.svg"/></a><input type="image" class="close" role="button" tabindex="1" aria-label="close lightbox" alt="close lightbox" src="../assets/icons/closegallery.svg" onclick="lightbox.close()"/></div>
     </div>
     `
-    return StringtoNodeConverter(NodeStringified)
+    return StringtoNode(NodeStringified)
 }
 
 const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fees}) => {
@@ -81,7 +81,7 @@ const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fe
         <p class="fees">${fees}€/jour</p>
     </article>
     `
-    return StringtoNodeConverter(NodeStringified)
+    return StringtoNode(NodeStringified)
 }
 
 const getPhotographerHeaderView = ({portraitSrc, name, location, quote}) => {
@@ -97,5 +97,5 @@ const getPhotographerHeaderView = ({portraitSrc, name, location, quote}) => {
         <img src="${portraitSrc}" alt="${name}'s portrait" />
     </section>
     `
-    return StringtoNodeConverter(NodeStringified)
+    return StringtoNode(NodeStringified)
 }
