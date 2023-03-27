@@ -43,10 +43,9 @@ function updateSelectedCardLikes(mediaId){
 async function init() {
     if (isNaN(currentPhotographerId)) return console.error("Missing id param. This user doesn't exist.")
 
+    // retrieve the photographer info and push it to the DOM
     const {photographerInfos, medias, errorMessage } = await fetchSelectedPhotographerDatas(currentPhotographerId) // TODO deal with unknown id
-
     if(errorMessage !== undefined) return console.error(errorMessage)
-
     photographerInfostoDOM(photographerInfos)
 
     // instanciate lightbox
@@ -55,7 +54,7 @@ async function init() {
     // building the medialibrary before sorting it
     mediaLibrary.build(medias).sort(defaultFilter)
     const gallerySection = document.querySelector(".gallery")
-    // specify a container into the DOM then push the medialibrary to the DOM
+    // specify a DOM container to push the medialibrary into then push it
     mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
 
     // create the sticky bar at the bottom right of the screen

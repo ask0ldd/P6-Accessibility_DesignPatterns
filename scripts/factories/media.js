@@ -71,15 +71,13 @@ function mediaFactory(media){
         mediaModel = new Video(media)
 
         mediaModel.getMediaCardDOM = () => {
-            const viewStringified = getVideoView(mediaModel.getViewProps())
-            const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
-            return parsedViewNode
+            const viewNode = getVideoView(mediaModel.getViewProps())
+            return viewNode
         }
 
         mediaModel.getShortMediaCardDOM = () => {
-            const viewStringified = getShortVideoView(mediaModel.getViewProps())
-            const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
-            return parsedViewNode
+            const viewNode = getShortVideoView(mediaModel.getViewProps())
+            return viewNode
         }
 
         return (mediaModel)
@@ -89,15 +87,13 @@ function mediaFactory(media){
         mediaModel = new Picture(media)
 
         mediaModel.getMediaCardDOM = () => {
-            const viewStringified = getImageView(mediaModel.getViewProps())
-            const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
-            return parsedViewNode
+            const viewNode = getImageView(mediaModel.getViewProps())
+            return viewNode
         }
 
         mediaModel.getShortMediaCardDOM = () => {
-            const viewStringified = getShortImageView(mediaModel.getViewProps())
-            const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
-            return parsedViewNode
+            const viewNode = getShortImageView(mediaModel.getViewProps())
+            return viewNode
         }
 
         return (mediaModel)
