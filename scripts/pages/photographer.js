@@ -41,7 +41,7 @@ function updateSelectedCardLikes(mediaId){
 }
 
 async function init() {
-    if (isNaN(currentPhotographerId)) return console.error("Missing id param. This user doesn't exist.")
+    if (isNaN(currentPhotographerId)) return console.error("Missing id param. This professional doesn't exist.")
 
     // retrieve the photographer info and push it to the DOM
     const {photographerInfos, medias, errorMessage } = await fetchSelectedPhotographerDatas(currentPhotographerId) // TODO deal with unknown id

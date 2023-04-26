@@ -53,23 +53,27 @@ class Lightbox {
         this.#currentLibraryIndex-1>=0 ? this.#currentLibraryIndex-- : this.#currentLibraryIndex = this.#mediaLibrary.length-1
         const media = this.retrieveMediaFromLibrary(this.#currentLibraryIndex)
         this.updateDisplayedMedia(media)
+        // focus() image for screen reader to describe image right after switching
+        document.querySelector('#main-media').focus()
     }
 
     nextMedia(){
         this.#currentLibraryIndex+1 > this.#mediaLibrary.length-1 ? this.#currentLibraryIndex = 0 : this.#currentLibraryIndex++
         const media = this.retrieveMediaFromLibrary(this.#currentLibraryIndex)
         this.updateDisplayedMedia(media)
+        // focus() image for screen reader to describe image right after switching
+        document.querySelector('#main-media').focus()
     }
 
     open(mediaId){
         this.#scrollLock(true)
         this.#currentLibraryIndex = this.#mediaLibrary.getIndexOf(mediaId)
         const media = this.#mediaLibrary.getMediaAtIndex(this.#currentLibraryIndex)
-        //const media = this.retrieveMediaFromLibrary(mediaId)
         this.updateDisplayedMedia(media)
         this.#modaleNode.showModal()
         this.#modaleNode.style.display = "flex"
-        //this.#modaleNode.style.justifyContent = "center"
+        // focus() for screen reader to describe image right after opening the lightbox
+        document.querySelector('#main-media').focus()
     }
 
     close(){

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 const jsonUrl = "../data/photographers.json"
 
-const fetchDatas = async() => {
+const fetchDatas = async() => { // !!! deals with errors
     const response =  await fetch(jsonUrl)
     const datas = await response.json() 
     return datas
@@ -11,7 +11,7 @@ function getSelectedPhotographerMedias(photographerId, datas){
     return datas.media.filter(media => media.photographerId === photographerId)
 }
 
-async function fetchSelectedPhotographerDatas(photographerId) {
+export async function fetchSelectedPhotographerDatas(photographerId) {
     try{
         const datas = await fetchDatas()
         const photographer = datas.photographers.filter(photographer => photographer.id === photographerId)[0] // TODO deal with no photographer after filtering
@@ -30,7 +30,7 @@ async function fetchSelectedPhotographerDatas(photographerId) {
     }
 }
 
-async function fetchPhotographers() {
+export async function fetchPhotographers() {
 
     try{
         const datas = await fetchDatas()

@@ -27,7 +27,7 @@ class Photographer {
 }
 
 
-function photographerFactory(data) {
+export function photographerFactory(data) {
 
     const photographer = new Photographer(data) // TODO needs to deal with errors if one value is missing / into the photographer class constructor?
 
