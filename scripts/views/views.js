@@ -99,7 +99,7 @@ export const getPhotographerHeaderView = ({portraitSrc, name, location, quote}) 
             <p class="header-location">${location}</p>
             <p class="header-quote">${quote}</p>
         </div>
-        <button type="button" id="openModalButton" onclick="displayModal()" class="contact_button">Contactez-moi</button>
+        <button type="button" id="openModalButton" onclick="javascript:modale.open()" class="contact_button">Contactez-moi</button>
         <img src="${portraitSrc}" alt="${name}'s portrait" />
     </section>
     `

@@ -2,8 +2,9 @@
 import MediaLibrary from "../models/mediaLibrary.js"
 import { fetchSelectedPhotographerDatas } from "../utils/fetch.js"
 import photographerFactory from "../factories/photographer.js"
-import Lightbox from "../utils/lightBox.js"
-import StickyBar from "../utils/stickyBar.js"
+import Lightbox from "../components/lightBox.js"
+import StickyBar from "../components/stickyBar.js"
+import formModale from "../components/contactForm.js"
 
 const currentPage = "photographer.html"
 const defaultFilter = "likesDesc"
@@ -70,6 +71,9 @@ async function init() {
 }
 
 export const mediaLibrary = new MediaLibrary()
+window.modale = new formModale('#contact_modal', '#contact-form')
+window.addEventListener('keydown', e => {if(e.code == "Escape") return modale.close()})
+modale.formNode.addEventListener("submit", e => modale.submitForm(e))
 
 const initializedComponents = await init()
 const stickyBar = initializedComponents.stickybar
