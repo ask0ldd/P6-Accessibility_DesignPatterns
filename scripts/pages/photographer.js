@@ -7,10 +7,8 @@ import StickyBar from "../utils/stickyBar.js"
 
 const currentPage = "photographer.html"
 const defaultFilter = "likesDesc"
-/*let lightbox
-let stickyBar*/
 
-// extrat the id param from the url
+// extract the id param from the url
 const getIdParam = () => {
     const params = (new URL(document.location)).searchParams
     return parseInt(params.get('id'))
@@ -32,7 +30,7 @@ function dropdownChange () {
     mediaLibrary.sort(select.value).pushtoDOM()
 }
 
-// add a like to a media and refresh the likes total of the sticky bar
+// add a like to a media and refresh the likes total within the sticky bar
 window.addLiketoMedia = (mediaId) => {
     if(mediaLibrary.selectMedia(mediaId).liked !== true){
         mediaLibrary.selectMedia(mediaId).liked = true
@@ -49,18 +47,17 @@ function updateSelectedCardLikes(mediaId){
 async function init() {
     if (isNaN(currentPhotographerId)) return console.error("Missing id param. This professional doesn't exist.")
 
-    // retrieve the photographer info and push it to the DOM
+    // retrieve the photographer infos and push those to the DOM
     const {photographerInfos, medias, errorMessage } = await fetchSelectedPhotographerDatas(currentPhotographerId) // TODO deal with unknown id
     if(errorMessage !== undefined) return console.error(errorMessage)
     photographerInfostoDOM(photographerInfos)
 
-    // instanciate lightbox
+    // instanciate a lightbox
     const lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
 
-    // building the medialibrary before sorting it
+    // building the medialibrary before sorting it & push the library into a target DOM container
     mediaLibrary.build(medias).sort(defaultFilter)
     const gallerySection = document.querySelector(".gallery")
-    // specify a DOM container to push the medialibrary into then push it
     mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
 
     // create the sticky bar at the bottom right of the screen
@@ -74,9 +71,9 @@ async function init() {
 
 export const mediaLibrary = new MediaLibrary()
 
-const components = await init()
-const stickyBar = components.stickybar
+const initializedComponents = await init()
+const stickyBar = initializedComponents.stickybar
 // lightbox as a global variable so i can access it through inline html event listeners instead of adding addeventlistener to each card
-window.lightbox = components.lightbox
+window.lightbox = initializedComponents.lightbox
 
 document.querySelector('#sort-select').addEventListener('change', () => dropdownChange())

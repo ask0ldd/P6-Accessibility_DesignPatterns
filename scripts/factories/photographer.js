@@ -37,18 +37,12 @@ export default function photographerFactory(data, currentPage) {
     // different photographer cards generated if request comes from index || photographer.html
     if(currentPage === "index.html") 
         photographer.getUserCardDOM = () =>  {
-            /*const viewStringified = getPhotographerCardView(photographer.getViewProps())
-            const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
-            return parsedViewNode*/
             const viewNode = getPhotographerCardView(photographer.getViewProps())
             return viewNode
         }
 
     if(currentPage === "photographer.html") 
         photographer.getUserCardDOM = () =>  {
-            /*const viewStringified = getPhotographerHeaderView(photographer.getViewProps())
-            const parsedViewNode = new DOMParser().parseFromString(viewStringified, "text/html").querySelector("body").firstChild // node converted to a document so must retrieve the body's child
-            return parsedViewNode*/
             const viewNode = getPhotographerHeaderView(photographer.getViewProps())
             return viewNode
         }

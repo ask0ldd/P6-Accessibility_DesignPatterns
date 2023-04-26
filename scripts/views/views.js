@@ -4,12 +4,13 @@ function StringtoNode(viewStringified){
     return viewAsANode
 }
 
+// view dedicated to the gallery
 export const getVideoView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : aria label added + open closeup view to hint its function + tabindex image
     // TODO : alt to add to video?? / !!! don't forget onclick
     const NodeStringified = `
     <article>
-    <a href="javascript:lightbox.open(${id})"><video aria-label="${title} video, open closeup view" src=${src}></video></a>
+        <a href="javascript:lightbox.open(${id})"><video aria-label="${title} video, open closeup view" src=${src}></video></a>
         <div class="mediaInfos">
             <h2>${title}</h2>
             <div><p id="likecontainer-${id}">${likes}</p><input type="image" tabindex="0" aria="button" alt="likes button" src="../assets/icons/heart.svg" onclick="addLiketoMedia(${id})"></div>
@@ -19,6 +20,7 @@ export const getVideoView = ({id, src, title, likes}) => {
     return StringtoNode(NodeStringified)
 }
 
+// view dedicated to the modale
 export const getShortVideoView = ({id, src, title}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
@@ -35,6 +37,7 @@ export const getShortVideoView = ({id, src, title}) => {
     return StringtoNode(NodeStringified)
 }
 
+// view dedicated to the gallery
 export const getImageView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
@@ -50,6 +53,7 @@ export const getImageView = ({id, src, title, likes}) => {
     return StringtoNode(NodeStringified)
 }
 
+// view dedicated to the modale
 export const getShortImageView = ({id, src, title}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
@@ -68,6 +72,7 @@ export const getShortImageView = ({id, src, title}) => {
     return StringtoNode(NodeStringified)
 }
 
+// view dedicated to the index page
 export const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fees}) => {
     // ACCESSIBILITY : alt added to img
     const NodeStringified = `
@@ -84,6 +89,7 @@ export const getPhotographerCardView = ({userId, portraitSrc, name, location, qu
     return StringtoNode(NodeStringified)
 }
 
+// view dedicated to the photographer page
 export const getPhotographerHeaderView = ({portraitSrc, name, location, quote}) => {
     // ACCESSIBILITY : alt added to img + type="button" for the button
     const NodeStringified = `

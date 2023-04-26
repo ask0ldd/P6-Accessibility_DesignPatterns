@@ -16,7 +16,6 @@ export default class MediaLibrary {
         medias.forEach(media => {
             const mediaModel = mediaFactory(media) // TODO error testing
             this.add(mediaModel)
-            //console.log(mediaModel)
         })
         return this // for methods chaining
     }
