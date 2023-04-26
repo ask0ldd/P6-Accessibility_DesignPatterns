@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+// !!!! transform as a class and instantiate
 function displayModal() {
     const modal = document.querySelector("#contact_modal")
     modal.showModal()

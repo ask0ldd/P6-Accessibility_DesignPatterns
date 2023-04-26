@@ -33,7 +33,7 @@ function dropdownChange () {
 }
 
 // add a like to a media and refresh the likes total of the sticky bar
-function addLiketoMedia (mediaId) {
+window.addLiketoMedia = (mediaId) => {
     if(mediaLibrary.selectMedia(mediaId).liked !== true){
         mediaLibrary.selectMedia(mediaId).liked = true
         updateSelectedCardLikes(mediaId)
@@ -55,7 +55,7 @@ async function init() {
     photographerInfostoDOM(photographerInfos)
 
     // instanciate lightbox
-    const litebox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
+    const lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
 
     // building the medialibrary before sorting it
     mediaLibrary.build(medias).sort(defaultFilter)
@@ -64,18 +64,19 @@ async function init() {
     mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
 
     // create the sticky bar at the bottom right of the screen
-    const sticky = new StickyBar(".sticky-bar")
-    sticky.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
+    const stickybar = new StickyBar(".sticky-bar")
+    stickybar.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
 
     document.querySelector('#modal-heading').innerHTML="Contactez-moi<br>" + photographerInfos.name
 
-    return [litebox, sticky]
+    return {lightbox, stickybar}
 }
 
 export const mediaLibrary = new MediaLibrary()
 
-const result = await init()
-const lightbox = result[0]
-const stickyBar = result[1]
+const components = await init()
+const stickyBar = components.stickybar
+// lightbox as a global variable so i can access it through inline html event listeners instead of adding addeventlistener to each card
+window.lightbox = components.lightbox
 
 document.querySelector('#sort-select').addEventListener('change', () => dropdownChange())
