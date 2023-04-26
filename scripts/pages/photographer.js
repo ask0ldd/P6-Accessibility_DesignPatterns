@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars, no-undef */
 import MediaLibrary from "../models/mediaLibrary.js"
 import { fetchSelectedPhotographerDatas } from "../utils/fetch.js"
-import { photographerFactory } from "../factories/photographer.js"
+import photographerFactory from "../factories/photographer.js"
 import Lightbox from "../utils/lightBox.js"
+import StickyBar from "../utils/stickyBar.js"
 
 const currentPage = "photographer.html"
 const defaultFilter = "likesDesc"

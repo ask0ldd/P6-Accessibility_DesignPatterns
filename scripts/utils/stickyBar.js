@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-class StickyBar{
+export default class StickyBar{
     #photographerInfos
     #mediaLibrary
     #stickyBarNode
