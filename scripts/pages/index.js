@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars, no-undef */
 import { fetchPhotographers } from "../utils/fetch.js"
-import { photographerFactory } from "../factories/photographer.js"
+import photographerFactory from "../factories/photographer.js"
 
 const currentPage = "index.html"
 

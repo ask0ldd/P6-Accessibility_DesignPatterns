@@ -7,8 +7,8 @@ import StickyBar from "../utils/stickyBar.js"
 
 const currentPage = "photographer.html"
 const defaultFilter = "likesDesc"
-let lightbox
-let stickyBar
+/*let lightbox
+let stickyBar*/
 
 // extrat the id param from the url
 const getIdParam = () => {
@@ -55,7 +55,7 @@ async function init() {
     photographerInfostoDOM(photographerInfos)
 
     // instanciate lightbox
-    lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
+    const litebox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
 
     // building the medialibrary before sorting it
     mediaLibrary.build(medias).sort(defaultFilter)
@@ -64,11 +64,18 @@ async function init() {
     mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
 
     // create the sticky bar at the bottom right of the screen
-    stickyBar = new StickyBar(".sticky-bar")
-    stickyBar.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
+    const sticky = new StickyBar(".sticky-bar")
+    sticky.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
 
     document.querySelector('#modal-heading').innerHTML="Contactez-moi<br>" + photographerInfos.name
+
+    return [litebox, sticky]
 }
 
 export const mediaLibrary = new MediaLibrary()
-init()
+
+const result = await init()
+const lightbox = result[0]
+const stickyBar = result[1]
+
+document.querySelector('#sort-select').addEventListener('change', () => dropdownChange())
