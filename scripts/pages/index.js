@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars, no-undef */
 import { fetchPhotographers } from "../utils/fetch.js"
+import { photographerFactory } from "../factories/photographer.js"
 
 const currentPage = "index.html"
 
@@ -10,7 +11,7 @@ function datastoDOM(photographers) {
     const photographersSection = document.querySelector(".photographer_section")
 
     photographers.forEach((photographer) => {
-        const photographerModel = photographerFactory(photographer)
+        const photographerModel = photographerFactory(photographer, currentPage)
         const userCardDOM = photographerModel.getUserCardDOM()
         photographersSection.appendChild(userCardDOM)
     })

@@ -1,4 +1,9 @@
 /* eslint-disable no-unused-vars, no-undef */
+import MediaLibrary from "../models/mediaLibrary.js"
+import { fetchSelectedPhotographerDatas } from "../utils/fetch.js"
+import { photographerFactory } from "../factories/photographer.js"
+import Lightbox from "../utils/lightBox.js"
+
 const currentPage = "photographer.html"
 const defaultFilter = "likesDesc"
 let lightbox
@@ -15,7 +20,7 @@ const currentPhotographerId = getIdParam()
 // push the photographer's infos to the DOM
 function photographerInfostoDOM(photographerInfos){
     const mainNode = document.querySelector("#main")
-    const photographerModel = photographerFactory(photographerInfos)
+    const photographerModel = photographerFactory(photographerInfos, currentPage)
     const photographerSectionDOM = photographerModel.getUserCardDOM()
     mainNode.prepend(photographerSectionDOM)
     //document.querySelector("#openModalButton").addEventListener('click', () => displayModal())
@@ -64,5 +69,5 @@ async function init() {
     document.querySelector('#modal-heading').innerHTML="Contactez-moi<br>" + photographerInfos.name
 }
 
-const mediaLibrary = new MediaLibrary()
+export const mediaLibrary = new MediaLibrary()
 init()

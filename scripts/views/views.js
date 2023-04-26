@@ -4,7 +4,7 @@ function StringtoNode(viewStringified){
     return viewAsANode
 }
 
-const getVideoView = ({id, src, title, likes}) => {
+export const getVideoView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : aria label added + open closeup view to hint its function + tabindex image
     // TODO : alt to add to video?? / !!! don't forget onclick
     const NodeStringified = `
@@ -19,7 +19,7 @@ const getVideoView = ({id, src, title, likes}) => {
     return StringtoNode(NodeStringified)
 }
 
-const getShortVideoView = ({id, src, title}) => {
+export const getShortVideoView = ({id, src, title}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
     const NodeStringified = `
@@ -35,7 +35,7 @@ const getShortVideoView = ({id, src, title}) => {
     return StringtoNode(NodeStringified)
 }
 
-const getImageView = ({id, src, title, likes}) => {
+export const getImageView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
     const NodeStringified = `
@@ -50,7 +50,7 @@ const getImageView = ({id, src, title, likes}) => {
     return StringtoNode(NodeStringified)
 }
 
-const getShortImageView = ({id, src, title}) => {
+export const getShortImageView = ({id, src, title}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
     // aria role buttons next prev + alt + tabindex
@@ -68,7 +68,7 @@ const getShortImageView = ({id, src, title}) => {
     return StringtoNode(NodeStringified)
 }
 
-const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fees}) => {
+export const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fees}) => {
     // ACCESSIBILITY : alt added to img
     const NodeStringified = `
     <article>
@@ -84,7 +84,7 @@ const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fe
     return StringtoNode(NodeStringified)
 }
 
-const getPhotographerHeaderView = ({portraitSrc, name, location, quote}) => {
+export const getPhotographerHeaderView = ({portraitSrc, name, location, quote}) => {
     // ACCESSIBILITY : alt added to img + type="button" for the button
     const NodeStringified = `
     <section class="photograph-header">

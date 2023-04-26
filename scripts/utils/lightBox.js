@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-class Lightbox {
+export default class Lightbox {
 
     #currentLibraryIndex
     #modaleNode

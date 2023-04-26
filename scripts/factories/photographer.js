@@ -1,5 +1,8 @@
 // Photographer blueprints
 /* eslint-disable no-unused-vars,no-undef */
+import { getPhotographerCardView } from "../views/views.js"
+import { getPhotographerHeaderView } from "../views/views.js"
+
 class Photographer {
 
     #name
@@ -27,7 +30,7 @@ class Photographer {
 }
 
 
-export function photographerFactory(data) {
+export default function photographerFactory(data, currentPage) {
 
     const photographer = new Photographer(data) // TODO needs to deal with errors if one value is missing / into the photographer class constructor?
 

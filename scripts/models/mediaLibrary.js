@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars,no-undef*/
-class MediaLibrary {
+import mediaFactory from "../factories/media.js"
+
+export default class MediaLibrary {
     #medias = [] // [{ mediaModel , getMediaCardDOM }, ...]
     #likes
     #currentSorting

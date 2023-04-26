@@ -1,5 +1,6 @@
 // Products blueprints
 /* eslint-disable no-unused-vars,no-undef */
+import { getVideoView } from "../views/views.js"
 class Media {
     #id
     #owner
@@ -65,7 +66,7 @@ class Video extends Media {
 }
 
 // Factory function
-function mediaFactory(media){
+export default function mediaFactory(media){
     let mediaModel
     if(media.video){
         mediaModel = new Video(media)
