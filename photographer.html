@@ -6,7 +6,7 @@
     <meta description="Fisheye permet à tout photographe freelance de déposer ses travaux de manière à attirer de nouveaux prospects.">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Fisheye - Site pour photographe freelancer </title>
   </head>
   <body>
@@ -18,14 +18,14 @@
       <!-- added-->
       <div class="sort-container">
         <label for="sort-select">Trier par</label> <!-- ACCESSIBILITY : for attribute -->
-        <div class="custom-select">
+        <div class="custom-select-container">
           <select name="sort-select" id="sort-select"><!-- onchange="dropdownChange()" -->
             <option value="likesDesc">Popularité</option>
             <option value="dateDesc">Date</option>
             <option value="titleAsc">Titre</option>
           </select>
-          <custom-select tabindex="0"></custom-select>
         </div>
+        <custom-select tabindex="0"></custom-select>
       </div>
 
       <section class="gallery">

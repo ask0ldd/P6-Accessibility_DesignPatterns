@@ -11,23 +11,28 @@
 .customSelectContainer {
   display: flex;
   flex-direction: column;
-  min-height: 70px;
-  width: 300px;
+  min-height: 50px;
+  width: 240px;
   background: #911c1c;
   border-radius: 5px;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  overflow: visible;
+  position: relative;
 }
 
 .customSelectLabel {
   display: flex;
   width: 100%;
-  height: 70px;
+  height: 50px;
   align-items: center;
   justify-content: space-between;
   padding: 0 1.5rem;
   color: #fff;
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 18px;
   cursor: pointer;
+  font-family: "DM Sans";
+  font-style: normal;
 }
 
 .customSelectArrow {
@@ -37,8 +42,13 @@
 .customSelectOptionsContainer {
   flex-direction: column;
   width: 100%;
-  padding: 8px 0 0 0;
+  padding: 0;
   display: none;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  z-index: 100;
+  background: #911c1c;
 }
 
 .customSelectOption {
@@ -50,6 +60,7 @@
   padding-left: 1.5rem;
   color: #fff;
   cursor: pointer;
+  border-bottom: 2px solid white;
 }
 
 .selectedOption {

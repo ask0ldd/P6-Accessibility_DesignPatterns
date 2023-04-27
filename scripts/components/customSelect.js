@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars, no-undef */
+import { dropdownChange } from "../pages/photographer.js"
 class CustomSelect extends HTMLElement{
     #shadowDOM
     #ghostSelectNode
@@ -57,7 +58,7 @@ class CustomSelect extends HTMLElement{
         viewContainer.innerHTML = `
         <link rel="stylesheet" href="../css/customSelect.css"/>
         <div class="customSelectContainer">
-            <span tabindex="0" aria-controls="customListbox" id="customSelectLabel" role="combobox" aria-haspopup="listbox" aria-activedescendant aria-expanded="false" class="customSelectLabel">Ingrédients<img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/></span>
+            <span tabindex="0" aria-controls="customListbox" id="customSelectLabel" role="combobox" aria-haspopup="listbox" aria-activedescendant aria-expanded="false" class="customSelectLabel">Popularité<img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/></span>
             <ul tabindex="-1" id="customListbox" aria-labelledby="customSelectLabel" class="customSelectOptionsContainer" role="listbox">`+
             masterSelectOptions.reduce((accu, option) => 
             accu + `<li id="${option.value}"
@@ -135,6 +136,7 @@ class CustomSelect extends HTMLElement{
         customOption.classList.add("selectedOption")
         customOption.setAttribute("aria-selected", true)
         this.#updateLabel(customOption.innerText)
+        dropdownChange()
     }
 
     // sets an option as highlighted

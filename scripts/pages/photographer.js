@@ -26,7 +26,7 @@ function photographerInfostoDOM(photographerInfos){
     //document.querySelector("#openModalButton").addEventListener('click', () => displayModal())
 }
 
-function dropdownChange () {
+export function dropdownChange () {
     const select = document.querySelector("#sort-select")
     mediaLibrary.sort(select.value).pushtoDOM()
 }
@@ -84,5 +84,3 @@ const initializedComponents = await init()
 const stickyBar = initializedComponents.stickybar
 // lightbox as a global variable so it can be accessible through inline html listeners
 window.lightbox = initializedComponents.lightbox
-
-document.querySelector('#sort-select').addEventListener('change', () => dropdownChange())
