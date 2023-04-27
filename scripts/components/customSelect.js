@@ -28,4 +28,43 @@ class CustomSelect extends HTMLElement{
         return formattedOptions
     }
 
+    get ShadowDOMNode(){
+        return this.#shadowDOM
+    }
+
+    
+    #updateLabel(text){
+        this.#customSelectLabel.innerHTML = text + `<img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/>`
+    }
+
+    // sets an option as selected
+    #setAsSelected(customOption){
+        this.#customSelectOptions.forEach(option => {
+            option.classList.remove("selectedOption")
+            option.setAttribute("aria-selected", false)
+        })
+        this.#ghostSelectNode.value = customOption.getAttribute("data-value")
+        customOption.classList.add("selectedOption")
+        customOption.setAttribute("aria-selected", true)
+        this.#updateLabel(customOption.innerText)
+    }
+
+    // sets an option as highlighted
+    #setAsHighlighted(customOption){
+        this.#customSelectOptions.forEach(option => {
+            option.classList.remove("highlightedOption")
+        })
+        customOption.classList.add("highlightedOption")
+        this.#customSelectLabel.setAttribute('aria-activedescendant', customOption.id)
+    }
+
+    #getSelectedOption(){
+        return this.#shadowDOM.querySelector('.selectedOption')
+    }
+
+    #getHighlightedOption(){
+        return this.#shadowDOM.querySelector('.highlightedOption')
+    }
 }
+
+customElements.define("custom-select", CustomSelect)
