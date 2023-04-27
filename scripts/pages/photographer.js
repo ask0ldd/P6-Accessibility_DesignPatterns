@@ -70,14 +70,18 @@ async function init() {
     return {lightbox, stickybar}
 }
 
+// prerequisite to build the gallery
 export const mediaLibrary = new MediaLibrary()
+
+// instanciate the modale
 window.modale = new formModale('#contact_modal', '#contact-form')
 window.addEventListener('keydown', e => {if(e.code == "Escape") return modale.close()})
 modale.formNode.addEventListener("submit", e => modale.submitForm(e))
 
+// init : instanciate the stickybar + the lightbox / build the gallery
 const initializedComponents = await init()
 const stickyBar = initializedComponents.stickybar
-// lightbox as a global variable so i can access it through inline html event listeners instead of adding addeventlistener to each card
+// lightbox as a global variable so it can be accessible through inline html listeners
 window.lightbox = initializedComponents.lightbox
 
 document.querySelector('#sort-select').addEventListener('change', () => dropdownChange())
