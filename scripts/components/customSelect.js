@@ -5,16 +5,36 @@ class CustomSelect extends HTMLElement{
     #customSelectOptions
     #customSelectLabel 
 
-    constructor(ghostSelectSelector){
+    constructor(){
         super()
-        this.#ghostSelectNode = document.querySelector(ghostSelectSelector)
+        this.#ghostSelectNode = document.querySelector("#sort-select")
         this.#shadowDOM = this.attachShadow({ mode: "open" })
         // retrieve the options of the ghostSelect to build the customSelect view
-        const masterOptions = this.#getMasterSelectOptions()
+        const masterOptions = this.#retrieveMasterSelectOptions()
+        const view = this.#buildView(masterOptions)
+        // view to the ShadowDOM
+        this.#shadowDOM.append(view)
 
+        // where the selected option is displayed on the custom select
+        this.#customSelectLabel = this.#shadowDOM.querySelector(".customSelectLabel")
+        this.#customSelectLabel.addEventListener('click', () => this.#optionsListOpenClose())
+
+        window.addEventListener('keydown', e => this.#keyboardListener(e))
+
+        this.#customSelectOptions = Array.from(this.#shadowDOM.querySelectorAll('.customSelectOption'))
+
+        // click : select custom option / mouse over : highlight custom option
+        this.#customSelectOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                this.#setAsSelected(option)
+                this.#setAsHighlighted(option)
+                this.#optionsListOpenClose()
+            })
+            option.addEventListener('mouseover', () => this.#setAsHighlighted(option))
+        })
     }
 
-    #getMasterSelectOptions(){
+    #retrieveMasterSelectOptions(){
         const options = this.#ghostSelectNode.querySelectorAll("option")
         const formattedOptions = [...options].map(option => {
             return {
@@ -32,6 +52,25 @@ class CustomSelect extends HTMLElement{
         return this.#shadowDOM
     }
 
+    #buildView(masterSelectOptions){
+        const viewContainer = document.createElement("template")
+        viewContainer.innerHTML = `
+        <link rel="stylesheet" href="../css/customSelect.css"/>
+        <div class="customSelectContainer">
+            <span tabindex="0" aria-controls="customListbox" id="customSelectLabel" role="combobox" aria-haspopup="listbox" aria-activedescendant aria-expanded="false" class="customSelectLabel">Ingrédients<img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/></span>
+            <ul tabindex="-1" id="customListbox" aria-labelledby="customSelectLabel" class="customSelectOptionsContainer" role="listbox">`+
+            masterSelectOptions.reduce((accu, option) => 
+            accu + `<li id="${option.value}"
+            role="option" data-value="${option.value}"
+            class="customSelectOption ${ option.selected === true ? 'selectedOption' : ''  }" aria-selected="${option.selected === true ? true : false}">
+            ${option.label}</li>`, '')
+            +`</ul>
+        </div>
+        `
+
+        // return the content of the view container (template)
+        return viewContainer.content.cloneNode(true)
+    }
     
     #updateLabel(text){
         this.#customSelectLabel.innerHTML = text + `<img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/>`
