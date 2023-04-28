@@ -91,7 +91,10 @@ body {
 }
 
 .contact_button:hover {
-  background-color: #ad3a3a;
+  /*background-color: #ad3a3a;*/
+  background: #db8876;
+  color: #000;
+  border: 2px solid #901c1c;
 }
 
 #contact_modal {
@@ -381,7 +384,7 @@ form textarea {
 .custom-select-container {
   width: 180px;
   position: relative;
-  display: none;
+  /*display: none;*/
 }
 
 .sort-container select:active {

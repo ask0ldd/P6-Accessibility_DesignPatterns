@@ -112,3 +112,7 @@ header a {
   object-fit: cover;
   overflow-clip-margin: unset; /* less pixelated img */
 }
+
+.photographer_section article a img:hover {
+  filter: brightness(1.2) saturate(1.2) sepia(0.6);
+}
