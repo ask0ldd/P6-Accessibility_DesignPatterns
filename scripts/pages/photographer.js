@@ -77,7 +77,7 @@ export const mediaLibrary = new MediaLibrary()
 // instanciate the modale
 window.modale = new formModale('#contact_modal', '#contact-form')
 window.addEventListener('keydown', e => {if(e.code == "Escape") return modale.close()})
-modale.formNode.addEventListener("submit", e => modale.submitForm(e))
+window.modale.formNode.addEventListener("submit", e => modale.submitForm(e))
 
 // init : instanciate the stickybar + the lightbox / build the gallery
 const initializedComponents = await init()
