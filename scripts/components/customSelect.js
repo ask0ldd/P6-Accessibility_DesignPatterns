@@ -37,8 +37,10 @@ class CustomSelect extends HTMLElement{
             option.addEventListener('mouseover', () => this.#setAsHighlighted(option))
         })
 
-        // when clicking outside of the list : close it
-        document.querySelector('custom-select').addEventListener('focusout', () => this.#closeList())
+        // when clicking outside of the list & if the list is open : close it
+        document.querySelector('custom-select').addEventListener('focusout', () => {
+            if(this.#optionsContainer.style.display !== 'none') this.#closeList()
+        })
     }
 
     #retrieveMasterSelectOptions(){
