@@ -3,8 +3,9 @@ import { dropdownChange } from "../pages/photographer.js"
 class CustomSelect extends HTMLElement{
     #shadowDOM
     #ghostSelectNode
+    #customSelectLabel
+    #optionsContainer
     #customSelectOptions
-    #customSelectLabel 
 
     constructor(){
         super()
@@ -16,21 +17,23 @@ class CustomSelect extends HTMLElement{
         // view to the ShadowDOM
         this.#shadowDOM.append(view)
 
-        // where the selected option is displayed on the custom select
+        // where the active option is displayed on the custom select
         this.#customSelectLabel = this.#shadowDOM.querySelector(".customSelectLabel")
         this.#customSelectLabel.addEventListener('click', () => this.#optionsListOpenClose())
 
         window.addEventListener('keydown', e => this.#keyboardListener(e))
 
+        this.#optionsContainer = this.#shadowDOM.querySelector('.customSelectOptionsContainer')
         this.#customSelectOptions = Array.from(this.#shadowDOM.querySelectorAll('.customSelectOption'))
 
-        // click : select custom option / mouse over : highlight custom option
         this.#customSelectOptions.forEach(option => {
+            // set clicked option as selected
             option.addEventListener('click', () => {
                 this.#setAsSelected(option)
                 this.#setAsHighlighted(option)
                 this.#optionsListOpenClose()
             })
+            // set hovered option as hightlighted
             option.addEventListener('mouseover', () => this.#setAsHighlighted(option))
         })
     }
@@ -81,11 +84,11 @@ class CustomSelect extends HTMLElement{
     #keyboardListener(e)
     {
         if(document.activeElement !== document.querySelector('custom-select')) return false
-        if(e.code == "Escape") this.#optionsListOpenClose()
-        /*if(e.code == "Tab") this.#optionsListOpenClose()*/
-        if(e.code == "Enter") this.#optionsListOpenClose()
-        if(e.code == "ArrowUp") this.#previousOption()
-        if(e.code == "ArrowDown") this.#nextOption()
+        if(e.code == "ArrowUp") return this.#previousOption()
+        if(e.code == "ArrowDown") return this.#nextOption()
+        if(this.#optionsContainer.style.display === 'flex') return this.#closeList()
+        // if(e.code == "Escape") this.#closeList()
+        if(e.code == "Enter" || e.code == "NumpadEnter") this.#optionsListOpenClose()
     }
 
     #previousOption(){
@@ -111,22 +114,29 @@ class CustomSelect extends HTMLElement{
     }
 
     #optionsListOpenClose(){
-        const optionsContainer = this.#shadowDOM.querySelector(".customSelectOptionsContainer")
         const arrow = this.#shadowDOM.querySelector(".customSelectArrow")
-        const isListClosed = optionsContainer.style.display === "none" || optionsContainer.style.display === ""
+        const isListClosed = this.#optionsContainer.style.display === "none" || this.#optionsContainer.style.display === ""
         if(isListClosed) { 
-            optionsContainer.style.display = 'flex'
+            this.#optionsContainer.style.display = 'flex'
             arrow.style.transform = "rotate(0deg)"
             this.#customSelectLabel.setAttribute("aria-expanded", true)
             this.#shadowDOM.querySelector('.customSelectContainer').style.borderRadius = "5px 5px 0 0"
         }
         else{ 
-            optionsContainer.style.display = 'none'
+            this.#optionsContainer.style.display = 'none'
             arrow.style.transform = "rotate(180deg)"
             this.#customSelectLabel.setAttribute("aria-expanded", false)
             this.#shadowDOM.querySelector('.customSelectContainer').style.borderRadius = "5px"
             this.#customSelectLabel.focus()
         }                  
+    }
+
+    #closeList(){
+        this.#optionsContainer.style.display = 'none'
+        this.#shadowDOM.querySelector(".customSelectArrow").style.transform = "rotate(180deg)"
+        this.#customSelectLabel.setAttribute("aria-expanded", false)
+        this.#shadowDOM.querySelector('.customSelectContainer').style.borderRadius = "5px"
+        this.#customSelectLabel.focus()
     }
 
     // sets an option as selected
