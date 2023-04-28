@@ -27,11 +27,6 @@ function photographerInfostoDOM(photographerInfos){
 }
 
 export function dropdownChange (filterValue) {
-    // const select = document.querySelector("#sort-select")
-    // const select = document.querySelector("custom-select")
-    // console.log(select.value)
-    // mediaLibrary.sort(select.value).pushtoDOM()
-    // console.log(filterValue)
     mediaLibrary.sort(filterValue).pushtoDOM()
 }
 

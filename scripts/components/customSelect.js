@@ -2,7 +2,6 @@
 import { dropdownChange } from "../pages/photographer.js"
 class CustomSelect extends HTMLElement{
     #shadowDOM
-    // #ghostSelectNode
     #customSelectLabel
     #optionsContainer
     #customSelectOptions
@@ -10,12 +9,8 @@ class CustomSelect extends HTMLElement{
 
     constructor(){
         super()
-        // this.#ghostSelectNode = document.querySelector("#sort-select")
         this.#shadowDOM = this.attachShadow({ mode: "open" })
-        // retrieve the options of the ghostSelect to build the customSelect view
-        // const masterOptions = this.#retrieveMasterSelectOptions()
         this.#optionsList = this.buildOptions()
-        // const view = this.#buildView(masterOptions)
         const view = this.#buildView(this.#optionsList)
         // view to the ShadowDOM
         this.#shadowDOM.append(view)
@@ -45,20 +40,6 @@ class CustomSelect extends HTMLElement{
             if(this.#optionsContainer.style.display !== 'none') this.#closeList()
         })
     }
-
-    /*#retrieveMasterSelectOptions(){
-        const options = this.#ghostSelectNode.querySelectorAll("option")
-        const formattedOptions = [...options].map(option => {
-            return {
-                value : option.value,
-                label : option.label,
-                selected : option.selected,
-                originalElement : option
-            }
-        })
-
-        return formattedOptions
-    }*/
 
     buildOptions(){
         return [
@@ -92,7 +73,6 @@ class CustomSelect extends HTMLElement{
         <div class="customSelectContainer">
             <span tabindex="0" name="customSelectLabel"  aria-controls="customListbox" id="customSelectLabel" role="combobox" aria-haspopup="listbox" aria-activedescendant="${selectedOptionId[0].value}" aria-expanded="false" class="customSelectLabel">Popularité<img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/></span>
             <ul tabindex="-1" id="customListbox" aria-labelledby="customSelectLabel" class="customSelectOptionsContainer" role="listbox">`+
-            // masterSelectOptions.reduce((accu, option) => 
             selectOptions.reduce((accu, option) => 
             accu + `<li id="${option.value}"
             role="option" data-value="${option.value}" value="${option.value}"
@@ -176,7 +156,6 @@ class CustomSelect extends HTMLElement{
             option.classList.remove("selectedOption")
             option.setAttribute("aria-selected", false)
         })
-        // this.#ghostSelectNode.value = customOption.getAttribute("data-value")
         customOption.classList.add("selectedOption")
         customOption.setAttribute("aria-selected", true)
         this.#updateLabel(customOption.innerText)
