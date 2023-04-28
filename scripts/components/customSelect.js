@@ -118,11 +118,13 @@ class CustomSelect extends HTMLElement{
             optionsContainer.style.display = 'flex'
             arrow.style.transform = "rotate(0deg)"
             this.#customSelectLabel.setAttribute("aria-expanded", true)
+            this.#shadowDOM.querySelector('.customSelectContainer').style.borderRadius = "5px 5px 0 0"
         }
         else{ 
             optionsContainer.style.display = 'none'
             arrow.style.transform = "rotate(180deg)"
             this.#customSelectLabel.setAttribute("aria-expanded", false)
+            this.#shadowDOM.querySelector('.customSelectContainer').style.borderRadius = "5px"
             this.#customSelectLabel.focus()
         }                  
     }

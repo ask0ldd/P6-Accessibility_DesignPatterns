@@ -49,6 +49,8 @@
   top: 50px;
   z-index: 100;
   background: #911c1c;
+  overflow: hidden;
+  border-radius: 0 0 6px 6px;
 }
 
 .customSelectOption {
@@ -60,7 +62,7 @@
   padding-left: 1.5rem;
   color: #fff;
   cursor: pointer;
-  border-bottom: 1.5px solid white;
+  border-top: 1.5px solid white;
 }
 
 .selectedOption {

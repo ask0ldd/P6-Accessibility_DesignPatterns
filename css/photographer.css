@@ -384,7 +384,7 @@ form textarea {
 .custom-select-container {
   width: 180px;
   position: relative;
-  /*display: none;*/
+  display: none;
 }
 
 .sort-container select:active {
