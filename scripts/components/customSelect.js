@@ -2,18 +2,21 @@
 import { dropdownChange } from "../pages/photographer.js"
 class CustomSelect extends HTMLElement{
     #shadowDOM
-    #ghostSelectNode
+    // #ghostSelectNode
     #customSelectLabel
     #optionsContainer
     #customSelectOptions
+    #optionsList
 
     constructor(){
         super()
-        this.#ghostSelectNode = document.querySelector("#sort-select")
+        // this.#ghostSelectNode = document.querySelector("#sort-select")
         this.#shadowDOM = this.attachShadow({ mode: "open" })
         // retrieve the options of the ghostSelect to build the customSelect view
-        const masterOptions = this.#retrieveMasterSelectOptions()
-        const view = this.#buildView(masterOptions)
+        // const masterOptions = this.#retrieveMasterSelectOptions()
+        this.#optionsList = this.buildOptions()
+        // const view = this.#buildView(masterOptions)
+        const view = this.#buildView(this.#optionsList)
         // view to the ShadowDOM
         this.#shadowDOM.append(view)
 
@@ -43,7 +46,7 @@ class CustomSelect extends HTMLElement{
         })
     }
 
-    #retrieveMasterSelectOptions(){
+    /*#retrieveMasterSelectOptions(){
         const options = this.#ghostSelectNode.querySelectorAll("option")
         const formattedOptions = [...options].map(option => {
             return {
@@ -55,23 +58,44 @@ class CustomSelect extends HTMLElement{
         })
 
         return formattedOptions
+    }*/
+
+    buildOptions(){
+        return [
+            {
+                value : 'likesDesc',
+                label : 'Popularité',
+                selected : true
+            },
+            {
+                value : 'dateDesc',
+                label : 'Date',
+                selected : false
+            },
+            {
+                value : 'titleAsc',
+                label : 'Titre',
+                selected : false
+            },
+        ]
     }
 
     get ShadowDOMNode(){
         return this.#shadowDOM
     }
 
-    #buildView(masterSelectOptions){
+    #buildView(selectOptions){
         const viewContainer = document.createElement("template")
-        const selectedOptionId = masterSelectOptions.filter(option => option.selected === true)
+        const selectedOptionId = selectOptions.filter(option => option.selected === true)
         viewContainer.innerHTML = `
         <link rel="stylesheet" href="../css/customSelect.css"/>
         <div class="customSelectContainer">
             <span tabindex="0" name="customSelectLabel"  aria-controls="customListbox" id="customSelectLabel" role="combobox" aria-haspopup="listbox" aria-activedescendant="${selectedOptionId[0].value}" aria-expanded="false" class="customSelectLabel">Popularité<img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/></span>
             <ul tabindex="-1" id="customListbox" aria-labelledby="customSelectLabel" class="customSelectOptionsContainer" role="listbox">`+
-            masterSelectOptions.reduce((accu, option) => 
+            // masterSelectOptions.reduce((accu, option) => 
+            selectOptions.reduce((accu, option) => 
             accu + `<li id="${option.value}"
-            role="option" data-value="${option.value}"
+            role="option" data-value="${option.value}" value="${option.value}"
             class="customSelectOption ${ option.selected === true ? 'selectedOption' : ''  }" aria-selected="${option.selected === true ? true : false}">
             ${option.label}</li>`, '')
             +`</ul>
@@ -152,11 +176,12 @@ class CustomSelect extends HTMLElement{
             option.classList.remove("selectedOption")
             option.setAttribute("aria-selected", false)
         })
-        this.#ghostSelectNode.value = customOption.getAttribute("data-value")
+        // this.#ghostSelectNode.value = customOption.getAttribute("data-value")
         customOption.classList.add("selectedOption")
         customOption.setAttribute("aria-selected", true)
         this.#updateLabel(customOption.innerText)
-        dropdownChange()
+        const filterValue = customOption.getAttribute("value")
+        dropdownChange(filterValue) // !!!! on change on custom select instead
     }
 
     // sets an option as highlighted

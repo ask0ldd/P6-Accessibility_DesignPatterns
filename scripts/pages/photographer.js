@@ -26,9 +26,13 @@ function photographerInfostoDOM(photographerInfos){
     //document.querySelector("#openModalButton").addEventListener('click', () => displayModal())
 }
 
-export function dropdownChange () {
-    const select = document.querySelector("#sort-select")
-    mediaLibrary.sort(select.value).pushtoDOM()
+export function dropdownChange (filterValue) {
+    // const select = document.querySelector("#sort-select")
+    // const select = document.querySelector("custom-select")
+    // console.log(select.value)
+    // mediaLibrary.sort(select.value).pushtoDOM()
+    // console.log(filterValue)
+    mediaLibrary.sort(filterValue).pushtoDOM()
 }
 
 // add a like to a media and refresh the likes total within the sticky bar
