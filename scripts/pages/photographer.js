@@ -42,11 +42,19 @@ function updateSelectedCardLikes(mediaId){
 
 async function init() {
     // !!!! Deal with unknown photographer id : add a message on the page
-    if (isNaN(currentPhotographerId)) return console.error("Missing id param. This professional doesn't exist.")
+    if (isNaN(currentPhotographerId)) {
+        console.error("Missing id param. This professional doesn't exist.")
+        document.querySelector(".gallery").innerHTML = "Erreur : Photographe introuvable."
+        document.querySelector(".gallery").classList.add('galleryError')
+    }
 
     // retrieve the photographer infos and push those to the DOM
     const {photographerInfos, medias, errorMessage } = await fetchSelectedPhotographerDatas(currentPhotographerId) // TODO deal with unknown id
-    if(errorMessage !== undefined) return console.error(errorMessage)
+    if(errorMessage !== undefined) {
+        console.error(errorMessage)
+        document.querySelector(".gallery").innerHTML = "Erreur : Photographe introuvable."
+        document.querySelector(".gallery").classList.add('galleryError')
+    }
     photographerInfostoDOM(photographerInfos)
 
     // instanciate a lightbox

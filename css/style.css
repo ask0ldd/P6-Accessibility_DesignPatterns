@@ -114,5 +114,5 @@ header a {
 }
 
 .photographer_section article a img:hover {
-  filter: brightness(1.2) saturate(1.2) sepia(0.6);
+  filter: brightness(1.2) saturate(1.2) sepia(0.4);
 }

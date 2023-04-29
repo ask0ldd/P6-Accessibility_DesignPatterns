@@ -210,6 +210,16 @@ form textarea {
   width: calc(100% - 200px);
 }
 
+.galleryError {
+  font-weight: 600;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8rem;
+  font-size: 32px;
+}
+
 .gallery article {
   display: flex;
   flex-direction: column;
