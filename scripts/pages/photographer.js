@@ -27,7 +27,7 @@ function photographerInfostoDOM(photographerInfos){
 }
 
 // add a like to a media and refresh the likes total within the sticky bar
-window.addLiketoMedia = (mediaId) => {
+window.likeUnlikeMedia = (mediaId) => {
     /*if(mediaLibrary.selectMedia(mediaId).liked !== true){
         mediaLibrary.selectMedia(mediaId).liked = true
         updateSelectedCardLikes(mediaId)
