@@ -31,7 +31,7 @@ window.addLiketoMedia = (mediaId) => {
     if(mediaLibrary.selectMedia(mediaId).liked !== true){
         mediaLibrary.selectMedia(mediaId).liked = true
         updateSelectedCardLikes(mediaId)
-        stickyBar.update()
+        window.stickybar.update()
     }
 }
 
@@ -82,11 +82,16 @@ window.modale = new formModale('#contact_modal', '#contact-form')
 window.addEventListener('keydown', e => {if(e.code == "Escape") return modale.close()})
 window.modale.formNode.addEventListener("submit", e => modale.submitForm(e))
 
+try{
 // init : instanciate the stickybar + the lightbox / build the gallery
 const initializedComponents = await init()
-const stickyBar = initializedComponents.stickybar
+window.stickybar = initializedComponents.stickybar
 // lightbox as a global variable so it can be accessible through inline html listeners
 window.lightbox = initializedComponents.lightbox
 
 // when the value of the custom select change, an event is triggered to call for a medialibrary resorting
 document.querySelector('custom-select').addEventListener('valueChange', (e) => mediaLibrary.sort(e.detail.customSelectValue).pushtoDOM())
+}
+catch(e){
+    console.error(e)
+}
