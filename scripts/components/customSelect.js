@@ -1,47 +1,59 @@
 /* eslint-disable no-unused-vars, no-undef */
-import { dropdownChange } from "../pages/photographer.js"
 class CustomSelect extends HTMLElement{
     #shadowDOM
     #customSelectLabel
     #optionsContainer
     #customSelectOptions
     #optionsList
+    #isOptionsListOpen
+    // #customSelectValueChangeEvent
 
     constructor(){
         super()
         this.#shadowDOM = this.attachShadow({ mode: "open" })
-        this.#optionsList = this.buildOptions()
+        this.#isOptionsListOpen = false
+
+        // build the options out of a hardcoded array
+        this.#optionsList = this.buildOptionsList()
+
+        // <custom-select> : value attribute = default selected option
+        const selectedOptionValue = this.#optionsList.filter(option => option.selected === true)[0].value
+        this.setAttribute('value', selectedOptionValue)
+
+        // build the view and push it to the ShadowDOM
         const view = this.#buildView(this.#optionsList)
-        // view to the ShadowDOM
         this.#shadowDOM.append(view)
 
-        // where the active option is displayed on the custom select
+        this.setEventsListeners()
+    }
+
+    setEventsListeners(){
+        // opening / closing options list
         this.#customSelectLabel = this.#shadowDOM.querySelector(".customSelectLabel")
         this.#customSelectLabel.addEventListener('click', () => this.#optionsListOpenClose())
 
+        // keyboard handling
         window.addEventListener('keydown', e => this.#keyboardListener(e))
 
+        // adding event listeners to each option of the list : select / highlight
         this.#optionsContainer = this.#shadowDOM.querySelector('.customSelectOptionsContainer')
         this.#customSelectOptions = Array.from(this.#shadowDOM.querySelectorAll('.customSelectOption'))
-
         this.#customSelectOptions.forEach(option => {
-            // set clicked option as selected
             option.addEventListener('click', () => {
                 this.#setAsSelected(option)
                 this.#setAsHighlighted(option)
                 this.#optionsListOpenClose()
             })
-            // set hovered option as hightlighted
             option.addEventListener('mouseover', () => this.#setAsHighlighted(option))
         })
 
-        // when clicking outside of the list & if the list is open : close it
+        // clicking outside of the open list should close it
         document.querySelector('custom-select').addEventListener('focusout', () => {
             if(this.#optionsContainer.style.display !== 'none') this.#closeList()
         })
     }
 
-    buildOptions(){
+    buildOptionsList(){
         return [
             {
                 value : 'likesDesc',
@@ -82,7 +94,6 @@ class CustomSelect extends HTMLElement{
         </div>
         `
     
-
         // return the content of the view container (template)
         return viewContainer.content.cloneNode(true)
     }
@@ -95,11 +106,14 @@ class CustomSelect extends HTMLElement{
     #keyboardListener(e)
     {
         if(document.activeElement !== document.querySelector('custom-select')) return false
-        if(e.code == "ArrowUp") return this.#previousOption()
-        if(e.code == "ArrowDown") return this.#nextOption()
-        if(this.#optionsContainer.style.display === 'flex') return this.#closeList()
-        // if(e.code == "Escape") this.#closeList()
-        if(e.code == "Enter" || e.code == "NumpadEnter") this.#optionsListOpenClose()
+        if(e.code == "Enter" || e.code == "NumpadEnter") return this.#optionsListOpenClose()
+        if(this.#isOptionsListOpen === true){
+            // e.preventdefault to avoid screen scrolling when using the arrow keys to select an option
+            if(e.code == "ArrowUp" && this.#isOptionsListOpen === true) {e.preventDefault(); return this.#previousOption()} 
+            if(e.code == "ArrowDown" && this.#isOptionsListOpen === true) {e.preventDefault(); return this.#nextOption()}
+            // if the list is open, any key pressed besides arrowup and arrowdown should close it
+            return this.#closeList()
+        }
     }
 
     #previousOption(){
@@ -127,18 +141,15 @@ class CustomSelect extends HTMLElement{
     #optionsListOpenClose(){
         const arrow = this.#shadowDOM.querySelector(".customSelectArrow")
         const isListClosed = this.#optionsContainer.style.display === "none" || this.#optionsContainer.style.display === ""
-        if(isListClosed) { 
+        if(isListClosed) {
             this.#optionsContainer.style.display = 'flex'
             arrow.style.transform = "rotate(0deg)"
             this.#customSelectLabel.setAttribute("aria-expanded", true)
             this.#shadowDOM.querySelector('.customSelectContainer').style.borderRadius = "5px 5px 0 0"
+            this.#isOptionsListOpen = true
         }
         else{ 
-            this.#optionsContainer.style.display = 'none'
-            arrow.style.transform = "rotate(180deg)"
-            this.#customSelectLabel.setAttribute("aria-expanded", false)
-            this.#shadowDOM.querySelector('.customSelectContainer').style.borderRadius = "5px"
-            this.#customSelectLabel.focus()
+            this.#closeList()
         }                  
     }
 
@@ -148,6 +159,7 @@ class CustomSelect extends HTMLElement{
         this.#customSelectLabel.setAttribute("aria-expanded", false)
         this.#shadowDOM.querySelector('.customSelectContainer').style.borderRadius = "5px"
         this.#customSelectLabel.focus()
+        this.#isOptionsListOpen = false
     }
 
     // sets an option as selected
@@ -159,8 +171,9 @@ class CustomSelect extends HTMLElement{
         customOption.classList.add("selectedOption")
         customOption.setAttribute("aria-selected", true)
         this.#updateLabel(customOption.innerText)
+        
         const filterValue = customOption.getAttribute("value")
-        dropdownChange(filterValue) // !!!! on change on custom select instead
+        this.#updateCustomSelectValueAttribute(filterValue)
     }
 
     // sets an option as highlighted
@@ -179,6 +192,21 @@ class CustomSelect extends HTMLElement{
     #getHighlightedOption(){
         return this.#shadowDOM.querySelector('.highlightedOption')
     }
+
+    #updateCustomSelectValueAttribute(value){
+        this.setAttribute('value', value)
+        // event sending the value of the custom select
+        const customSelectValueChangeEvent = new CustomEvent("valueChange", {
+            detail: {
+                customSelectValue : value
+            },
+            bubbles: true,
+            cancelable: true,
+            composed: true, // true : the event bubbles through the shadowDOM
+        })
+        this.dispatchEvent(customSelectValueChangeEvent);
+    }
+
 }
 
 customElements.define("custom-select", CustomSelect)

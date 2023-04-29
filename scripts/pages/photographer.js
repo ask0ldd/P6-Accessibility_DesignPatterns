@@ -26,10 +26,6 @@ function photographerInfostoDOM(photographerInfos){
     //document.querySelector("#openModalButton").addEventListener('click', () => displayModal())
 }
 
-export function dropdownChange (filterValue) {
-    mediaLibrary.sort(filterValue).pushtoDOM()
-}
-
 // add a like to a media and refresh the likes total within the sticky bar
 window.addLiketoMedia = (mediaId) => {
     if(mediaLibrary.selectMedia(mediaId).liked !== true){
@@ -83,3 +79,6 @@ const initializedComponents = await init()
 const stickyBar = initializedComponents.stickybar
 // lightbox as a global variable so it can be accessible through inline html listeners
 window.lightbox = initializedComponents.lightbox
+
+// when the value of the custom select change, an event is triggered to call for a medialibrary resorting
+document.querySelector('custom-select').addEventListener('valueChange', (e) => mediaLibrary.sort(e.detail.customSelectValue).pushtoDOM())
