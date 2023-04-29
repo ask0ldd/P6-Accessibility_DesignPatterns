@@ -28,11 +28,14 @@ function photographerInfostoDOM(photographerInfos){
 
 // add a like to a media and refresh the likes total within the sticky bar
 window.addLiketoMedia = (mediaId) => {
-    if(mediaLibrary.selectMedia(mediaId).liked !== true){
+    /*if(mediaLibrary.selectMedia(mediaId).liked !== true){
         mediaLibrary.selectMedia(mediaId).liked = true
         updateSelectedCardLikes(mediaId)
         window.stickybar.update()
-    }
+    }*/
+    mediaLibrary.selectMedia(mediaId).liked = !mediaLibrary.selectMedia(mediaId).liked
+    updateSelectedCardLikes(mediaId)
+    window.stickybar.update()
 }
 
 function updateSelectedCardLikes(mediaId){
