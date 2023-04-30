@@ -2,9 +2,13 @@
 const jsonUrl = "../data/photographers.json"
 
 const fetchDatas = async() => { // !!! deals with errors
-    const response =  await fetch(jsonUrl)
-    const datas = await response.json() 
-    return datas
+    try{
+        const response =  await fetch(jsonUrl)
+        const datas = await response.json() 
+        return datas
+    }catch(error){
+        console.error(error)
+    }
 }
 
 function getSelectedPhotographerMedias(photographerId, datas){
