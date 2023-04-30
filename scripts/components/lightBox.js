@@ -9,6 +9,9 @@ export default class Lightbox {
         window.addEventListener('keydown', e => this.#keyboardListener(e))
         this.#modaleNode = modaleNode
         this.#currentLibraryIndex = 0
+        modaleNode.addEventListener('click', (event)=> {
+            if(event.target==modaleNode) this.close()
+        })
      }
 
     bindto(mediaLibrary){

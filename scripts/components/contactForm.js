@@ -29,6 +29,9 @@ export default class formModale {
         this.modaleNode = document.querySelector(modaleSelector)
         this.formSelector = formSelector
         this.formNod = document.querySelector(formSelector)
+        this.modaleNode.addEventListener('click', (event)=> {
+            if(event.target==this.modaleNode) this.close()
+        })
     }
 
     open(){
