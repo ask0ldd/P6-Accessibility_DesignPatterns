@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars, no-undef */
-import { fetchPhotographers } from "../utils/fetch.js"
 import photographerFactory from "../factories/photographer.js"
+import API from "../api/apiAdapter.js"
 
 const currentPage = "index.html"
 
-// 2 : converting photographers datas into DOM nodes 
-// 3 : appending to the DOM
+// converting photographers datas into nodes and appending those to the DOM
 function datastoDOM(photographers) {
 
     const photographersSection = document.querySelector(".photographer_section")
@@ -18,18 +17,17 @@ function datastoDOM(photographers) {
 }
 
 // 1 : fetching photographers datas 
-// 2 : converting into DOM nodes 
-// 3 : appending to the DOM
+// 2 : converting into DOM nodes + appending to the DOM
 async function init() {
-    // 1 :
-    const { photographers, errorMessage } = await fetchPhotographers();
-    // 2 + 3 :
+
+    const { photographers, errorMessage } = await API.getAllPhotographers()
+
     if(errorMessage === undefined) {
-        datastoDOM(photographers)}
-        else{
-            console.log(errorMessage)
-            // afficher message d'erreur
-        }
+        datastoDOM(photographers)
+    }
+    else{
+        console.log(errorMessage)
+    }
 }
 
 init()

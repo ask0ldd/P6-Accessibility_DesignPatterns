@@ -100,7 +100,7 @@ window.stickybar = initializedComponents.stickybar
 window.lightbox = initializedComponents.lightbox
 
 // when the value of the custom select change, an event is triggered to call for a medialibrary resorting
-document.querySelector('custom-select').addEventListener('valueChange', (e) => mediaLibrary.sort(e.detail.customSelectValue).pushtoDOM())
+// document.querySelector('custom-select').addEventListener('valueChange', (e) => mediaLibrary.sort(e.detail.customSelectValue).pushtoDOM())
 }
 catch(e){
     console.error(e)
