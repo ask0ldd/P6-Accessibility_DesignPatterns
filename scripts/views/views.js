@@ -66,12 +66,22 @@ export const getShortImageView = ({id, src, title}) => {
     // <img class="close" tabindex="1" role="button" aria-label="close lightbox" alt="close lightbox button" src="../assets/icons/closegallery.svg" onclick="lightbox.close()"/>
     const NodeStringified = `
     <div class="arrownmedia-container">
-        <div class="leftarrow-container"><a tabindex="2" href="javascript:lightbox.prevMedia()"><img class="arrow" role="button" alt="previous media" src="assets/icons/rightarrow.svg"/></a></div>
+        <div class="leftarrow-container">
+            <a tabindex="2" href="javascript:lightbox.prevMedia()">
+                <img class="arrow" role="button" alt="previous media" src="assets/icons/rightarrow.svg"/>
+            </a>
+        </div>
         <article class="light-container" id="media-${id}">
             <img id="main-media" tabindex="1" src=${src} alt="${title}"/>
             <h2>${title}</h2>
         </article>
-        <div class="rightarrow-container"><a tabindex="3" href="javascript:lightbox.nextMedia()"><img class="arrow" role="button" alt="next media" src="assets/icons/rightarrow.svg"/></a><input type="image" class="close" role="button" tabindex="4" aria-label="close lightbox" alt="close lightbox" src="assets/icons/closegallery.svg" onclick="lightbox.close()"/></div>
+        <div class="rightarrow-container">
+            <a tabindex="3" href="javascript:lightbox.nextMedia()">
+                <img class="arrow" role="button" alt="next media" src="assets/icons/rightarrow.svg"/>
+            </a>
+            <input type="image" class="close" role="button" tabindex="4" aria-label="close lightbox" alt="close lightbox" 
+            src="assets/icons/closegallery.svg" onclick="lightbox.close()"/>
+        </div>
     </div>
     `
     return StringtoNode(NodeStringified)
