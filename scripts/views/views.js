@@ -4,7 +4,7 @@ function StringtoNode(viewStringified){
     return viewAsANode
 }
 
-// view dedicated to the gallery
+// view related to the gallery
 export const getVideoView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : aria label added + open closeup view to hint its function + tabindex image
     // TODO : alt to add to video?? / !!! don't forget onclick
@@ -14,14 +14,15 @@ export const getVideoView = ({id, src, title, likes}) => {
         <div class="mediaInfos">
             <h2>${title}</h2>
             <div><p id="likecontainer-${id}">${likes}</p><input type="image" tabindex="0" 
-            aria="button" alt="likes button" src="../assets/icons/heart.svg" onclick="likeUnlikeMedia(${id})"></div>
+            aria="button" alt="likes button" src="../assets/icons/heart.svg" 
+            onmouseover="this.src='../assets/icons/heartactive.svg'" onmouseout="this.src='../assets/icons/heart.svg'" onclick="likeUnlikeMedia(${id})"></div>
         </div>
     </article>
     `
     return StringtoNode(NodeStringified)
 }
 
-// view dedicated to the modale
+// view related to the modale
 export const getShortVideoView = ({id, src, title}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
@@ -38,7 +39,7 @@ export const getShortVideoView = ({id, src, title}) => {
     return StringtoNode(NodeStringified)
 }
 
-// view dedicated to the gallery
+// view related to the gallery
 export const getImageView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
@@ -47,14 +48,15 @@ export const getImageView = ({id, src, title, likes}) => {
         <a href="javascript:lightbox.open(${id})"><img src=${src} alt="${title} picture, open closeup view"/></a>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <div><p id="likecontainer-${id}">${likes}</p><input type="image" tabindex="0" aria="button" alt="likes" src="../assets/icons/heart.svg" onclick="likeUnlikeMedia(${id})"></div>
+            <div><p id="likecontainer-${id}">${likes}</p><input type="image" tabindex="0" aria="button" alt="likes" src="../assets/icons/heart.svg" 
+            onmouseover="this.src='../assets/icons/heartactive.svg'" onmouseout="this.src='../assets/icons/heart.svg'" onclick="likeUnlikeMedia(${id})"></div>
         </div>
     </article>
     `
     return StringtoNode(NodeStringified)
 }
 
-// view dedicated to the modale
+// view related to the modale
 export const getShortImageView = ({id, src, title}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
@@ -73,7 +75,7 @@ export const getShortImageView = ({id, src, title}) => {
     return StringtoNode(NodeStringified)
 }
 
-// view dedicated to the index page
+// view related to the index page
 export const getPhotographerCardView = ({userId, portraitSrc, name, location, quote, fees}) => {
     // ACCESSIBILITY : alt added to img
     const NodeStringified = `
@@ -90,7 +92,7 @@ export const getPhotographerCardView = ({userId, portraitSrc, name, location, qu
     return StringtoNode(NodeStringified)
 }
 
-// view dedicated to the photographer page
+// view related to the photographer page
 export const getPhotographerHeaderView = ({portraitSrc, name, location, quote}) => {
     // ACCESSIBILITY : alt added to img + type="button" for the button
     const NodeStringified = `
