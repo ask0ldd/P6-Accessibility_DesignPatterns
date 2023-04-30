@@ -47,7 +47,7 @@ export const getImageView = ({id, src, title, likes}) => {
     // aria button for like icon + alt likes
     const NodeStringified = `
     <article id="media-${id}">
-        <a href="javascript:lightbox.open(${id})"><img src=${src} alt="${title} picture, open closeup view"/></a>
+        <a href="javascript:lightbox.open(${id})"><img src=${src} alt="${title} picture, open closeup view" onerror="this.src='assets/images/logo.png'; this.onerror='';"/></a>
         <div class="mediaInfos">
             <h2>${title}</h2>
             <div><p id="likecontainer-${id}">${likes}</p><input type="image" tabindex="0" aria="button" alt="likes" src="assets/icons/heart.svg" 

@@ -32,6 +32,8 @@ export default class formModale {
         this.modaleNode.addEventListener('click', (event)=> {
             if(event.target==this.modaleNode) this.close()
         })
+        this.formNod.addEventListener("submit", e => this.submitForm(e))
+        this.modaleNode.addEventListener('keydown', e => {if(e.code == "Escape") return this.close()})
     }
 
     open(){

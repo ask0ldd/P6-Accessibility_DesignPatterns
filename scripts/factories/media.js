@@ -18,12 +18,12 @@ class Media {
 
     constructor(media){
         if (this.hasTheRightStructure(media) === false) throw new Error('Cant create the requested object with such datas')
-        this.#id = media.id
-        this.#owner = media.photographerId
-        this.#likes = media.likes
-        this.#title = media.title
-        this.#date = media.date
-        this.#price = media.price
+        this.#id = media.id != null ? media.id : 'n/a'
+        this.#owner = media.photographerId != null ? media.photographerId : 'n/a'
+        this.#likes = media.likes != null ? media.likes : 'n/a'
+        this.#title = media.title != null ? media.title : 'n/a'
+        this.#date = media.date != null ? media.date : 'n/a'
+        this.#price = media.price != null ? media.price : 'n/a'
         this.#liked = false
     }
 

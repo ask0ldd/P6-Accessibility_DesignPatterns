@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars, no-undef */
+import { mediaLibrary } from "../pages/photographer.js"
 class CustomSelect extends HTMLElement{
     #shadowDOM
     #customSelectLabel
@@ -51,6 +52,9 @@ class CustomSelect extends HTMLElement{
         document.querySelector('custom-select').addEventListener('focusout', () => {
             if(this.#optionsContainer.style.display !== 'none') this.#closeList()
         })
+
+        // when the value of the custom select change, an event is triggered to call for a medialibrary resorting / moved from pages/photographer
+        document.querySelector('custom-select').addEventListener('valueChange', (e) => mediaLibrary.sort(e.detail.customSelectValue).pushtoDOM())
     }
 
     buildOptionsList(){

@@ -15,13 +15,14 @@ class Photographer {
 
     constructor (userDatas)
     {
-        this.#name = userDatas.name
-		this.#id = userDatas.id
-		this.#city = userDatas.city
-		this.#country = userDatas.country
-		this.#quote = userDatas.tagline
-		this.#fees = userDatas.price
-		this.#portrait = './assets/photographers/' + userDatas.portrait
+        // == null or undefined / === null only
+        this.#name = userDatas.name != null ? userDatas.name : 'n/a'
+		this.#id = userDatas.id != null ? userDatas.id : 'n/a'
+		this.#city = userDatas.city != null ? userDatas.city : 'n/a'
+		this.#country = userDatas.country != null ? userDatas.country : 'n/a'
+		this.#quote = userDatas.tagline != null ? userDatas.tagline : 'n/a'
+		this.#fees = userDatas.price != null ? userDatas.price : 'n/a'
+		this.#portrait = userDatas.portrait != null ? 'assets/photographers/' + userDatas.portrait : '' // !!!! add default portrait image
     }
 
     getViewProps(){

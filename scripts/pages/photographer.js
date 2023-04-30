@@ -79,13 +79,13 @@ async function init() {
     }
 }
 
+
+
 // prerequisite to build the gallery
 export const mediaLibrary = new MediaLibrary()
 
-// instanciate the modale + addlisteners
+// instanciate the form modale
 window.modale = new formModale('#contact_modal', '#contact-form')
-window.addEventListener('keydown', e => {if(e.code == "Escape") return modale.close()})
-window.modale.formNode.addEventListener("submit", e => modale.submitForm(e))
 
 try{
 // init : instanciate the stickybar + the lightbox / build the gallery
