@@ -20,8 +20,6 @@ export async function fetchSelectedPhotographerDatas(photographerId) {
         if(medias === undefined) throw new Error("No medias linked to this id.")      
         // TODO test if each media has a likes / date / title value, if not, show an error or maybe filtering out all media that don't have those values
         // move filtering to mediaLibrary
-        /*if (filter === "popularity"  && medias.length > 1) medias.sort((a, b) => {return b.likes - a.likes}) // SORTING if medias > 1
-        if (filter === "date"  && medias.length > 1) medias.sort((a, b) => {return new Date(b.date) - new Date(a.date)})*/
         return ({photographerInfos : photographer, medias})
     }
     catch(error){
