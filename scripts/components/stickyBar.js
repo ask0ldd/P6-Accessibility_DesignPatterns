@@ -26,4 +26,10 @@ export default class StickyBar{
         document.querySelector("#sticky-total-likes").innerHTML = this.#mediaLibrary.totalLikes
     }
 
+    hide(){
+        this.#stickyBarNode.style.display = "none"
+    }
+
 }
+
+window.stickybar = new StickyBar(".sticky-bar")

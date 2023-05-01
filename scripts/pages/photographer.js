@@ -43,8 +43,8 @@ async function getPhotographerDatasnMedias(currentPhotographerId){
     try{
         // if photographer id is invalid
         if (isNaN(currentPhotographerId)) {
-            // displayError()
             gallery.displayError()
+            window.stickybar.hide()
             throw new Error("Error : Unknown photographer.")
         }
 
@@ -52,6 +52,7 @@ async function getPhotographerDatasnMedias(currentPhotographerId){
         const { photographerInfos, medias, errorMessage } = await API.getPhotographerWithDatas(currentPhotographerId)
         if(errorMessage !== undefined) {
             gallery.displayError()
+            window.stickybar.hide()
             throw new Error("Error : Unknown photographer.")
         }
 
@@ -86,6 +87,5 @@ if(datas?.photographerInfos != null && datas?.medias != null) {
     window.modale = new formModale('#contact_modal', '#contact-form')
     document.querySelector('#modal-heading').innerHTML="Contactez-moi<br>" + photographerInfos?.name
     window.lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
-    window.stickybar = new StickyBar(".sticky-bar")
     window.stickybar.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
 }
