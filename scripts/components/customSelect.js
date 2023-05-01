@@ -91,7 +91,9 @@ class CustomSelect extends HTMLElement{
         viewContainer.innerHTML = `
         <link rel="stylesheet" href="css/customSelect.css"/>
         <div class="customSelectContainer">
-            <span tabindex="0" name="customSelectLabel"  aria-controls="customListbox" id="customSelectLabel" role="combobox" aria-haspopup="listbox" aria-activedescendant="${selectedOptionId[0].value}" aria-expanded="false" class="customSelectLabel">Popularité<img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/></span>
+            <span tabindex="0" name="customSelectLabel"  aria-controls="customListbox" id="customSelectLabel" role="combobox" 
+            aria-haspopup="listbox" aria-activedescendant="${selectedOptionId[0].value}" aria-expanded="false" class="customSelectLabel">Popularité
+            <img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/></span>
             <ul tabindex="-1" id="customListbox" aria-labelledby="customSelectLabel" class="customSelectOptionsContainer" role="listbox">`+
             selectOptions.reduce((accu, option) => 
             accu + `<li id="${option.value}"

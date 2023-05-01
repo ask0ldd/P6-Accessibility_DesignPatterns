@@ -25,7 +25,7 @@ class Gallery {
         })
         // clicking the like buttons > like added to the target media into the medialibrary
         const likeButtons = document.querySelectorAll('.heart-button')
-        likeButtons.forEach(button => button.addEventListener('click', () => likeUnlikeMedia(button.dataset.mediaIndex)))
+        likeButtons.forEach(button => button.addEventListener('click', () => mediaLibrary.likeUnlikeMedia(button.dataset.mediaIndex)))
     }
 
     updateMediaCardLikes(mediaId){

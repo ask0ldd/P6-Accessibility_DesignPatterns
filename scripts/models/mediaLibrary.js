@@ -68,21 +68,15 @@ class MediaLibrary {
         return this
     }
 
-    /*likeUnlikeMedia(mediaId) {
+    // adds a like to a media and refresh the likes total within the sticky bar
+    likeUnlikeMedia(mediaId) {
         this.selectMedia(mediaId).liked = !this.selectMedia(mediaId).liked
         gallery.updateMediaCardLikes(mediaId)
-        window.stickybar.update()
-    }*/
+        window.stickybar.update() // should trigger an event and sticky should have a listener
+    }
 
 }
 
 const mediaLibrary = new MediaLibrary()
-
-// adds a like to a media and refresh the likes total within the sticky bar
-window.likeUnlikeMedia = (mediaId) => {
-    mediaLibrary.selectMedia(mediaId).liked = !mediaLibrary.selectMedia(mediaId).liked
-    gallery.updateMediaCardLikes(mediaId)
-    window.stickybar.update()
-}
 
 export default mediaLibrary
