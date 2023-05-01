@@ -92,8 +92,7 @@ if(initializedComponents === undefined) {
 
 // global so they can be accessible through inline html listeners
 window.modale = new formModale('#contact_modal', '#contact-form')
-window.stickybar = initializedComponents.stickybar
-window.lightbox = initializedComponents.lightbox
+window.lightbox, window.strickybar = {...initializedComponents}
 
 }
 catch(e){

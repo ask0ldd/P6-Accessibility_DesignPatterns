@@ -36,12 +36,16 @@
 				<form id="contact-form">
 					<div>
 						<label id="prenom-label" for="prenom" required>Prénom</label> <!-- ACCESSIBILITY : FOR -->
+            <p id="prenom-error">Format incorrect ou nombre de caractères insuffisant.</p>
 						<input aria-labelledby="prenom-label" type="text" id="prenom" name="prenom">
             <label id="nom-label" for="nom">Nom</label>
+            <p id="nom-error">Format incorrect ou nombre de caractères insuffisant.</p>
 						<input aria-labelledby="nom-label" type="text" id="nom" name="nom">
             <label id="email-label" for="email" required>Email</label>
+            <p id="email-error">Format incorrect.</p>
 						<input aria-labelledby="email-label" type="email" id="email" name="email">
             <label id="message-label" for="message">Votre message</label>
+            <p id="message-error">Format incorrect ou nombre de caractères insuffisant.</p>
 						<textarea aria-labelledby="message-label" rows="3" id="message" name="message" required></textarea> <!-- !!! !!! !!! switch to textarea-->
 					</div>
           <button type="submit" class="contact_button" aria-label="transmettre">Envoyer</button> <!-- ACCESSIBILITY : aria label + type submit -->

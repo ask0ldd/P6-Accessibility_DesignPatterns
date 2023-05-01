@@ -179,6 +179,11 @@ form div {
   margin-bottom: 26px;
 }
 
+form div p {
+  color: #901c1c;
+  display: none;
+}
+
 form input {
   width: 100%;
   height: 60px;
