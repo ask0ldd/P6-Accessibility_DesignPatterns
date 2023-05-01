@@ -9,6 +9,7 @@ export default class MediaLibrary {
 
     constructor(DOMTarget){
         if(DOMTarget) this.#DOMTarget = DOMTarget
+        
     }
 
     // build the medialibrary from all the medias produced by the mediafactory

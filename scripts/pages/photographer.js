@@ -5,6 +5,7 @@ import photographerFactory from "../factories/photographer.js"
 import Lightbox from "../components/lightBox.js"
 import StickyBar from "../components/stickyBar.js"
 import formModale from "../components/contactForm.js"
+import gallery from "../components/gallery.js"
 
 const currentPage = "photographer.html"
 const defaultFilter = "likesDesc"
@@ -23,7 +24,6 @@ function photographerInfostoDOM(photographerInfos){
     const photographerModel = photographerFactory(photographerInfos, currentPage)
     const photographerSectionDOM = photographerModel.getUserCardDOM()
     mainNode.prepend(photographerSectionDOM)
-    //document.querySelector("#openModalButton").addEventListener('click', () => displayModal())
 }
 
 // add a like to a media and refresh the likes total within the sticky bar
@@ -31,46 +31,30 @@ window.likeUnlikeMedia = (mediaId) => {
     mediaLibrary.selectMedia(mediaId).liked = !mediaLibrary.selectMedia(mediaId).liked
     updateSelectedCardLikes(mediaId)
     window.stickybar.update()
-}
+} // move to medialibrary
 
 function updateSelectedCardLikes(mediaId){
     const target = document.querySelector('#likecontainer-'+mediaId)
     target.innerHTML = mediaLibrary.selectMedia(mediaId).liked + mediaLibrary.selectMedia(mediaId).likes
-}
+} // move to medialibrary
 
-async function init() {
+async function getPhotographerDatasnMedias(){
     try{
         // if photographer id is invalid
         if (isNaN(currentPhotographerId)) {
-            document.querySelector(".gallery").innerHTML = "Error : Unknown photographer."
-            document.querySelector(".gallery").classList.add('galleryError')
-            throw new Error("Unknown id. This professional doesn't exist.")
+            // displayError()
+            gallery.displayError()
+            throw new Error("Error : Unknown photographer.")
         }
 
         // retrieve the photographer infos and push them to the DOM
-        const {photographerInfos, medias, errorMessage } = await API.getPhotographerWithDatas(currentPhotographerId)
+        const { photographerInfos, medias, errorMessage } = await API.getPhotographerWithDatas(currentPhotographerId)
         if(errorMessage !== undefined) {
-            document.querySelector(".gallery").innerHTML = "Error : Unknown photographer."
-            document.querySelector(".gallery").classList.add('galleryError')
+            gallery.displayError()
             throw new Error("Error : Unknown photographer.")
         }
-        photographerInfostoDOM(photographerInfos)
 
-        // lightbox instanciation
-        const lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
-
-        // building + sorting the medialibrary then push it to a target DOM container
-        mediaLibrary.build(medias).sort(defaultFilter)
-        const gallerySection = document.querySelector(".gallery")
-        mediaLibrary.bindtoDOMTarget(gallerySection).pushtoDOM()
-
-        // create the sticky bar with the likes sum
-        const stickybar = new StickyBar(".sticky-bar")
-        stickybar.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
-
-        document.querySelector('#modal-heading').innerHTML="Contactez-moi<br>" + photographerInfos?.name
-
-        return {lightbox, stickybar}
+        return { photographerInfos, medias, errorMessage }
     }
     catch(e){
         console.error(e)
@@ -79,22 +63,27 @@ async function init() {
 
 
 
-// prerequisite to build the gallery
+///////
+// INIT
+///////
 export const mediaLibrary = new MediaLibrary()
 
-try{
-// init : instanciate the stickybar + the lightbox / build the gallery
-const initializedComponents = await init()
-if(initializedComponents === undefined) {
-    document.querySelector('.sticky-bar').style.display = "none"
-    throw new Error("Lightbox & Stickybar can't be initialized.")
-}
+// get the datas required to build the view
+const datas = await getPhotographerDatasnMedias()
 
-// global so they can be accessible through inline html listeners
-window.modale = new formModale('#contact_modal', '#contact-form')
-window.lightbox, window.strickybar = {...initializedComponents}
+// if those datas exists, build : gallery + header + lightbox + stickybar
+if(datas?.photographerInfos != null && datas?.medias != null) {
 
-}
-catch(e){
-    console.error(e)
+    const photographerInfos = datas?.photographerInfos
+    const medias = datas?.medias
+
+    photographerInfostoDOM(photographerInfos)
+    gallery.render({ photographerInfos, medias, mediaLibrary, defaultFilter : "likesDesc" })
+
+    // global so they can be accessible through inline html listeners
+    window.modale = new formModale('#contact_modal', '#contact-form')
+    document.querySelector('#modal-heading').innerHTML="Contactez-moi<br>" + photographerInfos?.name
+    window.lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
+    window.stickybar = new StickyBar(".sticky-bar")
+    window.stickybar.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
 }
