@@ -25,24 +25,9 @@ class MediaLibrary {
         if(mediaModel) this.#medias.push(mediaModel)
     }
 
-    // ---------- move to gallery ----------
-    // specify a container for the nodal representation of the medialibrary
-    bindtoDOMTarget(DOMTarget){
-        if(DOMTarget) this.#DOMTarget = DOMTarget
-        return this // for methods chaining
+    getAllMedias(){
+        return this.#medias
     }
-
-    // push to the DOM a nodal representation of the medialibrary
-    pushtoDOM(){
-        if(!this.#DOMTarget) throw new Error("Use addDOMTarget() method beforehand to specify a parent container")
-        this.#DOMTarget.innerHTML=""
-        this.#medias.forEach(media => {
-            const mediaCardDOM = media.getMediaCardDOM() // TODO error testing
-            this.#DOMTarget.appendChild(mediaCardDOM)
-        })
-    }
-
-    //------------------------------
     
     // return mediaModel so getter and setter methods can't be accessed through chaining
     selectMedia(mediaId){
@@ -85,4 +70,5 @@ class MediaLibrary {
 }
 
 const mediaLibrary = new MediaLibrary()
+
 export default mediaLibrary

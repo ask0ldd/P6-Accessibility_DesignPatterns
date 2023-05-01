@@ -39,7 +39,7 @@ function updateSelectedCardLikes(mediaId){
     target.innerHTML = mediaLibrary.selectMedia(mediaId).liked + mediaLibrary.selectMedia(mediaId).likes
 } // move to medialibrary
 
-async function getPhotographerDatasnMedias(){
+async function getPhotographerDatasnMedias(currentPhotographerId){
     try{
         // if photographer id is invalid
         if (isNaN(currentPhotographerId)) {
@@ -67,19 +67,20 @@ async function getPhotographerDatasnMedias(){
 ///////
 // INIT
 ///////
-// export const mediaLibrary = new MediaLibrary()
 
-// get the datas required to build the view
-const datas = await getPhotographerDatasnMedias()
+// get the datas required to build the views
+const datas = await getPhotographerDatasnMedias(currentPhotographerId)
 
 // if those datas exists, build : gallery + header + lightbox + stickybar
 if(datas?.photographerInfos != null && datas?.medias != null) {
 
-    const photographerInfos = datas?.photographerInfos
-    const medias = datas?.medias
+    const photographerInfos = datas.photographerInfos
+    const medias = datas.medias
+
+    mediaLibrary.build(medias).sort(defaultFilter)
 
     photographerInfostoDOM(photographerInfos)
-    gallery.render({ photographerInfos, medias, mediaLibrary, defaultFilter : "likesDesc" })
+    gallery.render(mediaLibrary.getAllMedias())
 
     // global so they can be accessible through inline html listeners
     window.modale = new formModale('#contact_modal', '#contact-form')

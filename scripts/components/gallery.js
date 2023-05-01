@@ -14,10 +14,13 @@ class Gallery {
         this.#galleryNode.classList.add('galleryError')    
     }
 
-    render({photographerInfos, medias, mediaLibrary, defaultFilter}){
-        // build the library with media & push it to the DOM
-        mediaLibrary.build(medias).sort(defaultFilter)
-        mediaLibrary.bindtoDOMTarget(this.#galleryNode).pushtoDOM() // instead of pushing it to dom, should be received then pushed by this method
+    render(medias){
+        // push the media views to the DOM
+        this.#galleryNode.innerHTML = ""
+        medias.forEach(media => {
+            const mediaCardDOM = media.getMediaCardDOM() // TODO error testing
+            this.#galleryNode.appendChild(mediaCardDOM)
+        })
     }
 
 

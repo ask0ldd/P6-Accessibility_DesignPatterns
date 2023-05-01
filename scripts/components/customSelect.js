@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars, no-undef */
+import gallery from "./gallery.js"
 import mediaLibrary from "../models/mediaLibrary.js"
 class CustomSelect extends HTMLElement{
     #shadowDOM
@@ -54,7 +55,10 @@ class CustomSelect extends HTMLElement{
         })
 
         // when the value of the custom select change, an event is triggered to call for a medialibrary resorting / moved from pages/photographer
-        document.querySelector('custom-select').addEventListener('valueChange', (e) => mediaLibrary.sort(e.detail.customSelectValue).pushtoDOM())
+        document.querySelector('custom-select').addEventListener('valueChange', (e) => {
+            mediaLibrary.sort(e.detail.customSelectValue)
+            gallery.render(mediaLibrary.getAllMedias())
+        })
     }
 
     buildOptionsList(){
