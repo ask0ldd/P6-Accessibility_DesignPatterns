@@ -9,7 +9,7 @@ export default class MediaLibrary {
 
     constructor(DOMTarget){
         if(DOMTarget) this.#DOMTarget = DOMTarget
-        
+
     }
 
     // build the medialibrary from all the medias produced by the mediafactory
@@ -26,6 +26,7 @@ export default class MediaLibrary {
         if(mediaModel) this.#medias.push(mediaModel)
     }
 
+    // ---------- move to gallery ----------
     // specify a container for the nodal representation of the medialibrary
     bindtoDOMTarget(DOMTarget){
         if(DOMTarget) this.#DOMTarget = DOMTarget
@@ -41,6 +42,8 @@ export default class MediaLibrary {
             this.#DOMTarget.appendChild(mediaCardDOM)
         })
     }
+
+    //------------------------------
     
     // return mediaModel so getter and setter methods can't be accessed through chaining
     selectMedia(mediaId){

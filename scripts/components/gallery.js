@@ -13,11 +13,9 @@ class Gallery {
     }
 
     render({photographerInfos, medias, mediaLibrary, defaultFilter}){
-        // push the photographer infos to the DOM
+        // build the library with media & push it to the DOM
         mediaLibrary.build(medias).sort(defaultFilter)
-
-        // push the mediaLibrary to the DOM
-        mediaLibrary.bindtoDOMTarget(this.#galleryNode).pushtoDOM()
+        mediaLibrary.bindtoDOMTarget(this.#galleryNode).pushtoDOM() // instead of pushing it to dom, should be received then pushed by this method
     }
 
 
