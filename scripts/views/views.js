@@ -13,9 +13,9 @@ export const getVideoView = ({id, src, title, likes}) => {
         <a href="javascript:lightbox.open(${id})"><video aria-label="${title} video, open closeup view" src=${src}></video></a>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <div><p id="likecontainer-${id}">${likes}</p><input type="image" tabindex="0" 
-            aria="button" alt="likes button" src="assets/icons/heart.svg" 
-            onmouseover="this.src='assets/icons/heartactive.svg'" onmouseout="this.src='assets/icons/heart.svg'" onclick="likeUnlikeMedia(${id})"></div>
+            <div><p id="likecontainer-${id}">${likes}</p>
+            <input type="image" class="heart-button" data-media-index="${id}" tabindex="0" aria="button" alt="likes button" src="assets/icons/heart.svg" 
+            onmouseover="this.src='assets/icons/heartactive.svg'" onmouseout="this.src='assets/icons/heart.svg'"></div>
         </div>
     </article>
     `
@@ -50,8 +50,9 @@ export const getImageView = ({id, src, title, likes}) => {
         <a href="javascript:lightbox.open(${id})"><img src=${src} alt="${title} picture, open closeup view" onerror="this.src='assets/images/logo.png'; this.onerror='';"/></a>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <div><p id="likecontainer-${id}">${likes}</p><input type="image" tabindex="0" aria="button" alt="likes" src="assets/icons/heart.svg" 
-            onmouseover="this.src='assets/icons/heartactive.svg'" onmouseout="this.src='assets/icons/heart.svg'" onclick="likeUnlikeMedia(${id})"></div>
+            <div><p id="likecontainer-${id}">${likes}</p>
+            <input type="image" class="heart-button" data-media-index="${id}" tabindex="0" aria="button" alt="likes" src="assets/icons/heart.svg" 
+            onmouseover="this.src='assets/icons/heartactive.svg'" onmouseout="this.src='assets/icons/heart.svg'"></div>
         </div>
     </article>
     `

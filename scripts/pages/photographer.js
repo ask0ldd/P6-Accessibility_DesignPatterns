@@ -25,19 +25,7 @@ function photographerInfostoDOM(photographerInfos){
     const photographerModel = photographerFactory(photographerInfos, currentPage)
     const photographerSectionDOM = photographerModel.getUserCardDOM()
     mainNode.prepend(photographerSectionDOM)
-}
-
-// add a like to a media and refresh the likes total within the sticky bar
-window.likeUnlikeMedia = (mediaId) => {
-    mediaLibrary.selectMedia(mediaId).liked = !mediaLibrary.selectMedia(mediaId).liked
-    updateSelectedCardLikes(mediaId)
-    window.stickybar.update()
-} // move to medialibrary
-
-function updateSelectedCardLikes(mediaId){
-    const target = document.querySelector('#likecontainer-'+mediaId)
-    target.innerHTML = mediaLibrary.selectMedia(mediaId).liked + mediaLibrary.selectMedia(mediaId).likes
-} // move to medialibrary
+} // create a component
 
 async function getPhotographerDatasnMedias(currentPhotographerId){
     try{
@@ -48,7 +36,7 @@ async function getPhotographerDatasnMedias(currentPhotographerId){
             throw new Error("Error : Unknown photographer.")
         }
 
-        // retrieve the photographer infos and push them to the DOM
+        // retrieve the photographer infos & medias
         const { photographerInfos, medias, errorMessage } = await API.getPhotographerWithDatas(currentPhotographerId)
         if(errorMessage !== undefined) {
             gallery.displayError()
@@ -62,8 +50,6 @@ async function getPhotographerDatasnMedias(currentPhotographerId){
         console.error(e)
     }
 }
-
-
 
 ///////
 // INIT

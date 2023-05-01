@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars,no-undef*/
 import mediaFactory from "../factories/media.js"
+import gallery from "../components/gallery.js"
 
 class MediaLibrary {
     #medias = []
@@ -31,7 +32,7 @@ class MediaLibrary {
     
     // return mediaModel so getter and setter methods can't be accessed through chaining
     selectMedia(mediaId){
-        const mediaIndex = this.getIndexOf(mediaId)
+        const mediaIndex = this.getIndexOf(parseInt(mediaId))
         return this.#medias[mediaIndex]
     }
 
@@ -67,8 +68,21 @@ class MediaLibrary {
         return this
     }
 
+    /*likeUnlikeMedia(mediaId) {
+        this.selectMedia(mediaId).liked = !this.selectMedia(mediaId).liked
+        gallery.updateMediaCardLikes(mediaId)
+        window.stickybar.update()
+    }*/
+
 }
 
 const mediaLibrary = new MediaLibrary()
+
+// adds a like to a media and refresh the likes total within the sticky bar
+window.likeUnlikeMedia = (mediaId) => {
+    mediaLibrary.selectMedia(mediaId).liked = !mediaLibrary.selectMedia(mediaId).liked
+    gallery.updateMediaCardLikes(mediaId)
+    window.stickybar.update()
+}
 
 export default mediaLibrary
