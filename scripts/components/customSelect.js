@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars, no-undef */
-import { mediaLibrary } from "../pages/photographer.js"
+import mediaLibrary from "../models/mediaLibrary.js"
 class CustomSelect extends HTMLElement{
     #shadowDOM
     #customSelectLabel

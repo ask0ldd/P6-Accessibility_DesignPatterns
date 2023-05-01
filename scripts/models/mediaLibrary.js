@@ -1,15 +1,14 @@
 /* eslint-disable no-unused-vars,no-undef*/
 import mediaFactory from "../factories/media.js"
 
-export default class MediaLibrary {
-    #medias = [] // [{ mediaModel , getMediaCardDOM }, ...]
+class MediaLibrary {
+    #medias = []
     #likes
     #currentSorting
     #DOMTarget
 
-    constructor(DOMTarget){
-        if(DOMTarget) this.#DOMTarget = DOMTarget
-
+    constructor(){
+        // if(DOMTarget) this.#DOMTarget = DOMTarget
     }
 
     // build the medialibrary from all the medias produced by the mediafactory
@@ -84,3 +83,6 @@ export default class MediaLibrary {
     }
 
 }
+
+const mediaLibrary = new MediaLibrary()
+export default mediaLibrary

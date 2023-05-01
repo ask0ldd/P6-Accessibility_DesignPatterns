@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars, no-undef */
-import MediaLibrary from "../models/mediaLibrary.js"
+// import MediaLibrary from "../models/mediaLibrary.js"
 import API from "../api/apiAdapter.js"
 import photographerFactory from "../factories/photographer.js"
 import Lightbox from "../components/lightBox.js"
 import StickyBar from "../components/stickyBar.js"
 import formModale from "../components/contactForm.js"
 import gallery from "../components/gallery.js"
+import mediaLibrary from "../models/mediaLibrary.js"
 
 const currentPage = "photographer.html"
 const defaultFilter = "likesDesc"
@@ -66,7 +67,7 @@ async function getPhotographerDatasnMedias(){
 ///////
 // INIT
 ///////
-export const mediaLibrary = new MediaLibrary()
+// export const mediaLibrary = new MediaLibrary()
 
 // get the datas required to build the view
 const datas = await getPhotographerDatasnMedias()

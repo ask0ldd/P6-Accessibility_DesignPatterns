@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars, no-undef */
 class Gallery {
+    
     #galleryNode
+
     constructor(gallerySelector){
         this.#galleryNode = document.querySelector(gallerySelector)
 
