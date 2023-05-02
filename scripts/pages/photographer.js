@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars, no-undef */
-// import MediaLibrary from "../models/mediaLibrary.js"
 import API from "../api/apiAdapter.js"
 import photographerFactory from "../factories/photographer.js"
 import Lightbox from "../components/lightBox.js"
-import StickyBar from "../components/stickyBar.js"
+import stickybar from "../components/stickyBar.js"
 import formModale from "../components/contactForm.js"
 import gallery from "../components/gallery.js"
 import mediaLibrary from "../models/mediaLibrary.js"
@@ -32,7 +31,7 @@ async function getPhotographerDatasnMedias(currentPhotographerId){
         // if photographer id is invalid
         if (isNaN(currentPhotographerId)) {
             gallery.displayError()
-            window.stickybar.hide()
+            stickybar.hide()
             throw new Error("Error : Unknown photographer.")
         }
 
@@ -40,7 +39,7 @@ async function getPhotographerDatasnMedias(currentPhotographerId){
         const { photographerInfos, medias, errorMessage } = await API.getPhotographerWithDatas(currentPhotographerId)
         if(errorMessage !== undefined) {
             gallery.displayError()
-            window.stickybar.hide()
+            stickybar.hide()
             throw new Error("Error : Unknown photographer.")
         }
 
@@ -55,7 +54,7 @@ async function getPhotographerDatasnMedias(currentPhotographerId){
 // INIT
 ///////
 
-// get the datas required to build the views
+// get the datas required to init our components
 const datas = await getPhotographerDatasnMedias(currentPhotographerId)
 
 // if those datas exists, build : gallery + header + lightbox + stickybar
@@ -64,7 +63,7 @@ if(datas?.photographerInfos != null && datas?.medias != null) {
     const photographerInfos = datas.photographerInfos
     const medias = datas.medias
 
-    mediaLibrary.build(medias).sort(defaultFilter)
+    mediaLibrary.populate(medias).sort(defaultFilter)
 
     photographerInfostoDOM(photographerInfos)
     gallery.render(mediaLibrary.getAllMedias())
@@ -73,5 +72,5 @@ if(datas?.photographerInfos != null && datas?.medias != null) {
     window.modale = new formModale('#contact_modal', '#contact-form')
     document.querySelector('#modal-heading').innerHTML="Contactez-moi<br>" + photographerInfos?.name
     window.lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
-    window.stickybar.bindtoMediaLibrary(mediaLibrary).setPhotographerFees(photographerInfos.price).update()
+    stickybar.bindtoMediaLibrary(mediaLibrary).setPhotographerFees(photographerInfos.price).update()
 }

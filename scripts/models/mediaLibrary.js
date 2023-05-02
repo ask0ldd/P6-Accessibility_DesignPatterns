@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars,no-undef*/
 import mediaFactory from "../factories/media.js"
 import gallery from "../components/gallery.js"
+import stickybar from "../components/stickyBar.js"
 
 class MediaLibrary {
     #medias = []
@@ -13,7 +14,7 @@ class MediaLibrary {
     }
 
     // build the medialibrary out of all the media objects produced by the mediafactory
-    build(medias){
+    populate(medias){
         medias.forEach(media => {
             const mediaModel = mediaFactory(media) // TODO error testing
             this.add(mediaModel)
@@ -73,7 +74,7 @@ class MediaLibrary {
         this.selectMedia(mediaId).liked = !this.selectMedia(mediaId).liked
         // update the card likes node to avoid a full refresh of the gallery
         gallery.updateMediaCardLikes(mediaId)
-        window.stickybar.update() // ???!!! should trigger an event and sticky should have a listener
+        stickybar.update() // ???!!! should trigger an event and sticky should have a listener
     }
 
 }

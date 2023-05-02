@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-export default class StickyBar{
+/*export default */ class StickyBar{
     #photographerInfos
     #mediaLibrary
     #stickyBarNode
@@ -33,4 +33,6 @@ export default class StickyBar{
 
 }
 
-window.stickybar = new StickyBar(".sticky-bar")
+const stickybar = new StickyBar(".sticky-bar")
+
+export default stickybar
