@@ -8,7 +8,6 @@ class CustomSelect extends HTMLElement{
     #customSelectOptions
     #optionsList
     #isOptionsListOpen
-    // #customSelectValueChangeEvent
 
     constructor(){
         super()
@@ -16,7 +15,7 @@ class CustomSelect extends HTMLElement{
         this.#isOptionsListOpen = false
 
         // build the options out of a hardcoded array
-        this.#optionsList = this.buildOptionsList()
+        this.#optionsList = this.#buildOptionsList()
 
         // <custom-select> : value attribute = default selected option
         const selectedOptionValue = this.#optionsList.filter(option => option.selected === true)[0].value
@@ -61,7 +60,7 @@ class CustomSelect extends HTMLElement{
         })
     }
 
-    buildOptionsList(){
+    #buildOptionsList(){
         return [
             {
                 value : 'likesDesc',
