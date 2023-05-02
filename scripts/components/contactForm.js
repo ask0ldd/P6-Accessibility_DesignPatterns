@@ -49,6 +49,8 @@ export default class formModale {
     }
 
     close(){
+        // hiding errors p
+        document.querySelectorAll('form p').forEach( p => p.style.display = "none")
         this.modaleNode.close()
         this.modaleNode.style.display = "none"
     }
