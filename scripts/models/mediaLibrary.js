@@ -4,12 +4,12 @@ import gallery from "../components/gallery.js"
 
 class MediaLibrary {
     #medias = []
-    #likes
+    // #likes
     #currentSorting
-    #DOMTarget
 
     constructor(){
-        // if(DOMTarget) this.#DOMTarget = DOMTarget
+        const defaultSorting = "likesDesc"
+        this.#currentSorting = defaultSorting
     }
 
     // build the medialibrary out of all the media objects produced by the mediafactory
@@ -37,7 +37,7 @@ class MediaLibrary {
     }
 
     get totalLikes(){
-        // adding likes + liked (true = 1 / false = 0)
+        // adding all medias likes + liked (true = 1 / false = 0)
         const likes = this.#medias.reduce( (accu, media) => { return(accu + media.likes + media.liked) }, 0)
         return likes
     }
@@ -71,8 +71,9 @@ class MediaLibrary {
     // adds a like to a media and refresh the likes total within the sticky bar
     invertMediaLikeState(mediaId) {
         this.selectMedia(mediaId).liked = !this.selectMedia(mediaId).liked
+        // update the card likes node to avoid a full refresh of the gallery
         gallery.updateMediaCardLikes(mediaId)
-        window.stickybar.update() // should trigger an event and sticky should have a listener
+        window.stickybar.update() // ???!!! should trigger an event and sticky should have a listener
     }
 
 }

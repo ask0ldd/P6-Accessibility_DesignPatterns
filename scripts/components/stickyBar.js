@@ -3,6 +3,7 @@ export default class StickyBar{
     #photographerInfos
     #mediaLibrary
     #stickyBarNode
+    #photographerFees
 
     constructor(stickyBarSelector){
         this.#stickyBarNode = document.querySelector(stickyBarSelector)
@@ -14,15 +15,15 @@ export default class StickyBar{
         return this
     }
 
-    bindtoPhotographerModel(photographerInfos){
-        this.#photographerInfos = photographerInfos
+    setPhotographerFees(fees){
+        this.#photographerFees = fees != null ? parseInt(fees) : 0
         return this
     }
 
     update(){
-        if(this.#photographerInfos == undefined) throw new Error("The sticky bar needs to be binded to a photographer model. use the bindtoPhotographerModel method.")
+        if(this.#photographerFees == undefined) throw new Error("The photographer's daily fees needs to be passed to the sticky bar via the setFees method.")
         if(this.#mediaLibrary == undefined) throw new Error("The sticky bar needs to be binded to a media library. Use the bindtoMediaLibrary method.")
-        document.querySelector("#sticky-daily-fees").innerHTML = this.#photographerInfos.price + ' / jour'
+        document.querySelector("#sticky-daily-fees").innerHTML = this.#photographerFees + '€ / jour'
         document.querySelector("#sticky-total-likes").innerHTML = this.#mediaLibrary.totalLikes
     }
 

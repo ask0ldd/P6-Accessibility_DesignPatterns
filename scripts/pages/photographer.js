@@ -73,5 +73,5 @@ if(datas?.photographerInfos != null && datas?.medias != null) {
     window.modale = new formModale('#contact_modal', '#contact-form')
     document.querySelector('#modal-heading').innerHTML="Contactez-moi<br>" + photographerInfos?.name
     window.lightbox = new Lightbox(document.querySelector('#lightbox_modal')).bindto(mediaLibrary)
-    window.stickybar.bindtoMediaLibrary(mediaLibrary).bindtoPhotographerModel(photographerInfos).update()
+    window.stickybar.bindtoMediaLibrary(mediaLibrary).setPhotographerFees(photographerInfos.price).update()
 }
