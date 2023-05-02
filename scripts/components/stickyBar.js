@@ -21,8 +21,8 @@
     }
 
     update(){
-        if(this.#photographerFees == undefined) throw new Error("The photographer's daily fees needs to be passed to the sticky bar via the setFees method.")
-        if(this.#mediaLibrary == undefined) throw new Error("The sticky bar needs to be binded to a media library. Use the bindtoMediaLibrary method.")
+        if(this.#photographerFees === undefined) throw new Error("The photographer's daily fees needs to be passed to the sticky bar via the setFees method.")
+        if(this.#mediaLibrary === undefined) throw new Error("The sticky bar needs to be binded to a media library. Use the bindtoMediaLibrary method.")
         document.querySelector("#sticky-daily-fees").innerHTML = this.#photographerFees + '€ / jour'
         document.querySelector("#sticky-total-likes").innerHTML = this.#mediaLibrary.totalLikes
     }

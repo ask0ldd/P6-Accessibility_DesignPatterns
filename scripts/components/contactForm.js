@@ -59,11 +59,11 @@ export default class formModale {
         e.preventDefault()
         const formdata = new FormData(this.formNod)
         const validatorsTests = validators.testAll(formdata.get('prenom'), formdata.get('nom'), formdata.get('email'), formdata.get('message'))
-        if(validatorsTests.result === false ){
-            if(validatorsTests.firstname === false) document.querySelector('#prenom-error').style.display = "block"
-            if(validatorsTests.name === false) document.querySelector('#nom-error').style.display = "block"
-            if(validatorsTests.email === false) document.querySelector('#email-error').style.display = "block"
-            if(validatorsTests.message === false) document.querySelector('#message-error').style.display = "block"
+        if(!validatorsTests.result){
+            if(!validatorsTests.firstname) document.querySelector('#prenom-error').style.display = "block"
+            if(!validatorsTests.name) document.querySelector('#nom-error').style.display = "block"
+            if(!validatorsTests.email) document.querySelector('#email-error').style.display = "block"
+            if(!validatorsTests.message) document.querySelector('#message-error').style.display = "block"
             return false
         }
         console.log('PRENOM : ',formdata.get('prenom'))
