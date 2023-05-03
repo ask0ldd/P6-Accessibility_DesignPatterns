@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import StringtoNode from "../utils/utils.js"
 
-// view related to the gallery
+// view related to the gallery => media card
 export const getVideoView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : aria label added + open closeup view to hint its function + tabindex image
     // alt videos / !!! don't forget onclick

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import StringtoNode from "../utils/utils.js"
 
-// view related to the gallery
+// view related to the gallery => media card
 export const getImageView = ({id, src, title, likes}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
