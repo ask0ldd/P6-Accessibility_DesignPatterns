@@ -1,7 +1,6 @@
 // Photographer blueprints
 /* eslint-disable no-unused-vars,no-undef */
-import { getPhotographerCardView } from "../views/views.js"
-import { getPhotographerHeaderView } from "../views/views.js"
+import { getPhotographerCardView, getPhotographerHeaderView } from "../views/photographer.js"
 
 class Photographer {
 

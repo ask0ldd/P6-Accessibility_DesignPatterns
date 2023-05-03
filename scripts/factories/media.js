@@ -1,6 +1,7 @@
 // Products blueprints
 /* eslint-disable no-unused-vars,no-undef */
-import { getVideoView, getImageView, getShortImageView, getShortVideoView } from "../views/views.js"
+import { getShortImageView, getImageView } from "../views/picture.js"
+import { getShortVideoView, getVideoView } from "../views/video.js"
 class Media {
     #id
     #owner
