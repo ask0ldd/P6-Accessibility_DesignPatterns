@@ -9,7 +9,7 @@ class StickyBar{
         if(this.#stickyBarNode == null) throw new Error("Non existing node.")
     }
 
-    // for likes sync on update
+    // amount of likes source, used during the refresh process
     bindtoMediaLibrary(mediaLibrary){
         this.#mediaLibrary = mediaLibrary
         return this
@@ -20,6 +20,7 @@ class StickyBar{
         return this
     }
 
+    // refresh the amount of likes displayed into the sticky bar
     update(){
         if(this.#photographerFees === undefined) throw new Error("The photographer's daily fees needs to be passed to the sticky bar via the setFees method.")
         if(this.#mediaLibrary === undefined) throw new Error("The sticky bar needs to be binded to a media library. Use the bindtoMediaLibrary method.")
