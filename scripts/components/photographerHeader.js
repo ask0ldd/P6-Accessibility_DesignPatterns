@@ -11,7 +11,7 @@ export default class PhotographerHeader {
         return this
     }
 
-    display(){
+    render(){
         this.#containerNode.prepend(this.#photographerSectionDOM)
     }
 }

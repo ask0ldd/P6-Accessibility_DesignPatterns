@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars, no-undef */
 import API from "../api/apiAdapter.js"
-// import photographerFactory from "../factories/photographer.js"
 import PhotographerHeader from "../components/photographerHeader.js"
 import Lightbox from "../components/lightBox.js"
 import stickybar from "../components/stickyBar.js"
@@ -18,14 +17,6 @@ const getIdParam = () => {
 }
 
 const currentPhotographerId = getIdParam()
-
-/*// push the photographer's infos to the DOM
-function photographerInfostoDOM(photographerInfos){
-    const mainNode = document.querySelector("#main")
-    const photographerModel = photographerFactory(photographerInfos, currentPage)
-    const photographerSectionDOM = photographerModel.getUserCardDOM()
-    mainNode.prepend(photographerSectionDOM)
-} // create a component*/
 
 async function getPhotographerDatasnMedias(currentPhotographerId){
     try{
@@ -66,8 +57,9 @@ if(datas?.photographerInfos != null && datas?.medias != null) {
 
     mediaLibrary.populate(medias).sort(defaultFilter)
 
-    // photographerInfostoDOM(photographerInfos)
-    const header = new PhotographerHeader(photographerInfos).display()
+    // photographer's header rendering
+    const header = new PhotographerHeader(photographerInfos).render()
+
     gallery.render(mediaLibrary.getAllMedias())
 
     // global so they can be accessible through inline html listeners
