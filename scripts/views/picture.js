@@ -7,13 +7,19 @@ export const getImageView = ({id, src, title, likes}) => {
     // aria button for like icon + alt likes
     const NodeStringified = `
     <article id="media-${id}">
-        <a href="javascript:lightbox.open(${id})"><img src=${src} alt="${title} picture, open closeup view" 
-        onerror="this.src='assets/images/logo.png'; this.onerror='';"/></a>
+        <a href="javascript:lightbox.open(${id})">
+            <img src=${src} alt="${title} picture, open closeup view" 
+            onerror="this.src='assets/images/logo.png'; this.onerror='';"/>
+        </a>
         <div class="mediaInfos">
             <h2>${title}</h2>
-            <div><p id="likecontainer-${id}">${likes}</p>
-            <input type="image" class="heart-button" data-media-index="${id}" tabindex="0" aria="button" alt="likes" src="assets/icons/heart.svg" 
-            onmouseover="this.src='assets/icons/heartactive.svg'" onmouseout="this.src='assets/icons/heart.svg'"></div>
+            <div>
+                <p id="likecontainer-${id}">${likes}</p>
+                <input type="image" class="heart-button" data-media-index="${id}" 
+                tabindex="0" aria="button" alt="likes" src="assets/icons/heart.svg" 
+                onmouseover="this.src='assets/icons/heartactive.svg'" 
+                onmouseout="this.src='assets/icons/heart.svg'">
+            </div>
         </div>
     </article>
     `
@@ -25,7 +31,6 @@ export const getShortImageView = ({id, src, title}) => {
     // ACCESSIBILITY : alt added + open closeup view to hint its function + tabindex image
     // aria button for like icon + alt likes
     // aria role buttons next prev + alt + tabindex
-    // <img class="close" tabindex="1" role="button" aria-label="close lightbox" alt="close lightbox button" src="../assets/icons/closegallery.svg" onclick="lightbox.close()"/>
     const NodeStringified = `
     <div class="arrownmedia-container">
         <div class="leftarrow-container">
