@@ -16,7 +16,6 @@ validators.message = (value) => {
 }
 
 validators.testAll = (firstname, name, email, message) => {
-    //return validators.name(firstname) && validators.name(name) && validators.email(email) && validators.message(message)
     return {
         result : validators.name(firstname) && validators.name(name) && validators.email(email) && validators.message(message),
         firstname : validators.name(firstname),
@@ -48,7 +47,7 @@ export default class formModale {
     }
 
     close(){
-        // hiding errors p
+        // hiding form errors lines
         document.querySelectorAll('form p').forEach( p => p.style.display = "none")
         this.modaleNode.close()
         this.modaleNode.style.display = "none"

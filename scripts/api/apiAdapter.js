@@ -52,8 +52,14 @@ export default class API {
     }
 
     static async getPhotographerWithDatas(photographerId){
-        const photographer = await this.getPhotographer(photographerId)
-        const medias = await this.getMedias(photographerId)
-        return ({photographerInfos : photographer, medias})
+        try{
+            const photographer = await this.getPhotographer(photographerId)
+            const medias = await this.getMedias(photographerId)
+            return ({photographerInfos : photographer, medias})
+        }
+        catch(error){
+            console.error(error)
+            return {errorMessage : error}
+        }
     }
 }

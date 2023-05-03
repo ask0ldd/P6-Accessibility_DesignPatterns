@@ -16,7 +16,7 @@ class MediaLibrary {
     // build the medialibrary out of all the media objects produced by the mediafactory
     populate(medias){
         medias.forEach(media => {
-            const mediaModel = mediaFactory(media) // TODO error testing
+            const mediaModel = mediaFactory(media)
             this.add(mediaModel)
         })
         return this // for methods chaining
@@ -74,7 +74,7 @@ class MediaLibrary {
         this.selectMedia(mediaId).liked = !this.selectMedia(mediaId).liked
         // update the card likes node to avoid a full refresh of the gallery
         gallery.updateMediaCardLikes(mediaId)
-        stickybar.update() // ???!!! should trigger an event and sticky should have a listener
+        stickybar.update()
     }
 
 }

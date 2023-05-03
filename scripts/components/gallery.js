@@ -20,7 +20,7 @@ class Gallery {
         this.#galleryNode.innerHTML = ""
         // push each media view to the DOM
         medias.forEach(media => {
-            const mediaCardDOM = media.getMediaCardDOM() // TODO error testing
+            const mediaCardDOM = media.getMediaCardDOM()
             this.#galleryNode.appendChild(mediaCardDOM)
         })
         // set like buttons clickable
