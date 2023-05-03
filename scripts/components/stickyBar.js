@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-/*export default */ class StickyBar{
-    #photographerInfos
+class StickyBar{
     #mediaLibrary
     #stickyBarNode
     #photographerFees
@@ -10,6 +9,7 @@
         if(this.#stickyBarNode == null) throw new Error("Non existing node.")
     }
 
+    // for likes sync on update
     bindtoMediaLibrary(mediaLibrary){
         this.#mediaLibrary = mediaLibrary
         return this

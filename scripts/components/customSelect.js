@@ -130,7 +130,6 @@ class CustomSelect extends HTMLElement{
         const currentHighlightedOptionIndex = this.#customSelectOptions.indexOf(currentHighlightedOption)
         const previousOption = this.#customSelectOptions[currentHighlightedOptionIndex].previousSibling
         if(previousOption) {
-            //this.#customSelectLabel.setAttribute('aria-activedescendant', previousOption.id)
             this.#setAsSelected(previousOption)
             this.#setAsHighlighted(previousOption)
         }
@@ -141,7 +140,6 @@ class CustomSelect extends HTMLElement{
         const currentHighlightedOptionIndex = this.#customSelectOptions.indexOf(currentHighlightedOption)
         const nextOption = this.#customSelectOptions[currentHighlightedOptionIndex].nextSibling
         if(nextOption) {
-            //this.#customSelectLabel.setAttribute('aria-activedescendant', nextOption.id)
             this.#setAsSelected(nextOption)
             this.#setAsHighlighted(nextOption)
         }

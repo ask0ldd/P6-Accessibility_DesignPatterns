@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 const validators = {}
 
 validators.name = (value) => {
