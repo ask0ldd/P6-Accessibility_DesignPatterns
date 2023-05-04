@@ -91,13 +91,17 @@ class CustomSelect extends HTMLElement{
         <link rel="stylesheet" href="css/customSelect.css"/>
         <div class="customSelectContainer">
             <span tabindex="0" name="customSelectLabel"  aria-controls="customListbox" id="customSelectLabel" role="combobox" 
-            aria-haspopup="listbox" aria-activedescendant="${selectedOptionId[0].value}" aria-expanded="false" class="customSelectLabel">Popularité
-            <img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/></span>
-            <ul tabindex="-1" id="customListbox" aria-labelledby="customSelectLabel" class="customSelectOptionsContainer" role="listbox">`+
-            selectOptions.reduce((accu, option) => 
-            accu + `<li id="${option.value}"
+            aria-haspopup="listbox" aria-activedescendant="${selectedOptionId[0].value}" 
+            aria-expanded="false" class="customSelectLabel">
+                Popularité
+                <img class="customSelectArrow" src="./assets/icons/select-arrow.svg"/>
+            </span>
+            <ul tabindex="-1" id="customListbox" aria-labelledby="customSelectLabel" 
+            class="customSelectOptionsContainer" role="listbox">` +
+            selectOptions.reduce((accu, option) => accu + `<li id="${option.value}"
             role="option" data-value="${option.value}" value="${option.value}"
-            class="customSelectOption ${ option.selected === true ? 'selectedOption' : ''  }" aria-selected="${option.selected === true ? true : false}">
+            class="customSelectOption ${ option.selected === true ? 'selectedOption' : ''  }" 
+            aria-selected="${option.selected === true ? true : false}">
             ${option.label}</li>`, '')
             +`</ul>
         </div>
@@ -118,8 +122,10 @@ class CustomSelect extends HTMLElement{
         if(e.code == "Enter" || e.code == "NumpadEnter") return this.#optionsListOpenClose()
         if(this.#isOptionsListOpen === true){
             // e.preventdefault to avoid screen scrolling when using the arrow keys to select an option
-            if(e.code == "ArrowUp" && this.#isOptionsListOpen === true) {e.preventDefault(); return this.#previousOption()} 
-            if(e.code == "ArrowDown" && this.#isOptionsListOpen === true) {e.preventDefault(); return this.#nextOption()}
+            if(e.code == "ArrowUp" && this.#isOptionsListOpen === true) 
+                { e.preventDefault(); return this.#previousOption() } 
+            if(e.code == "ArrowDown" && this.#isOptionsListOpen === true) 
+                { e.preventDefault(); return this.#nextOption() }
             // if the list is open, any key pressed besides arrowup and arrowdown should close it
             return this.#closeList()
         }

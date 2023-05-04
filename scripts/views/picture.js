@@ -9,7 +9,7 @@ export const getImageView = ({id, src, title, likes}) => {
     <article id="media-${id}">
         <a href="javascript:lightbox.open(${id})">
             <img src=${src} alt="${title} picture, open closeup view" 
-            onerror="this.src='assets/images/logo.png'; this.onerror='';"/>
+            onerror="this.src='assets/images/placeholder7.jpg'; this.onerror='';"/>
         </a>
         <div class="mediaInfos">
             <h2>${title}</h2>
