@@ -122,9 +122,9 @@ class CustomSelect extends HTMLElement{
         if(e.code == "Enter" || e.code == "NumpadEnter") return this.#optionsListOpenClose()
         if(this.#isOptionsListOpen === true){
             // e.preventdefault to avoid screen scrolling when using the arrow keys to select an option
-            if(e.code == "ArrowUp" && this.#isOptionsListOpen === true) 
+            if(e.code == "ArrowUp") 
                 { e.preventDefault(); return this.#previousOption() } 
-            if(e.code == "ArrowDown" && this.#isOptionsListOpen === true) 
+            if(e.code == "ArrowDown") 
                 { e.preventDefault(); return this.#nextOption() }
             // if the list is open, any key pressed besides arrowup and arrowdown should close it
             return this.#closeList()
