@@ -14,11 +14,6 @@ export default class Lightbox {
         })
      }
 
-    bindto(mediaLibrary){
-        this.#mediaLibrary = mediaLibrary // act as a reference, not a copy, so keep being updated // maybe use an observer instead to link both parties?
-        return this
-    }
-
     #keyboardListener(e) // ACCESSIBILITY : keyboard navigation
     {
         if(e.code == "Escape") return this.close() 
@@ -39,17 +34,22 @@ export default class Lightbox {
             window.onscroll = () => {}
         }
     }
-
-    updateDisplayedMedia(media){
-        const mediaDOM = media.getShortMediaCardDOM()
-        this.#modaleNode.innerHTML=""
-        this.#modaleNode.appendChild(mediaDOM)
+    
+    bindto(mediaLibrary){
+        this.#mediaLibrary = mediaLibrary // act as a reference, not a copy, so keep being updated // maybe use an observer instead to link both parties?
+        return this
     }
 
     // retrieveMediaFromLibrary(mediaId){
     retrieveMediaFromLibrary(){
         const media = this.#mediaLibrary.getMediaAtIndex(this.#currentLibraryIndex)
         return media 
+    }
+
+    updateDisplayedMedia(media){
+        const mediaDOM = media.getShortMediaCardDOM()
+        this.#modaleNode.innerHTML=""
+        this.#modaleNode.appendChild(mediaDOM)
     }
 
     prevMedia(){
