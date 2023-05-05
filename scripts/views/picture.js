@@ -39,7 +39,8 @@ export const getShortImageView = ({id, src, title}) => {
             </a>
         </div>
         <article class="light-container" id="media-${id}">
-            <img id="main-media" tabindex="1" src=${src} alt="${title}"/>
+            <img id="main-media" tabindex="1" src=${src} alt="${title}"
+            onerror="this.src='assets/images/placeholder12.jpg'; this.onerror='';"/>
             <h2>${title}</h2>
         </article>
         <div class="rightarrow-container">

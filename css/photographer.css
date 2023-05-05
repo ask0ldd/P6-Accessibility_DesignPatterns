@@ -318,6 +318,7 @@ form textarea {
 
 #lightbox_modal img,
 #lightbox_modal video {
+  margin: auto 0;
   max-width: 100%;
   max-height: calc(100% - 4rem);
   flex-shrink: 1;
